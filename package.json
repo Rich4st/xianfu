@@ -1,0 +1,23 @@
+{
+  "name": "xianfu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/tailwind.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rich4st/xianfu.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rich4st/xianfu/issues"
+  },
+  "homepage": "https://github.com/Rich4st/xianfu#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
+  }
+}
