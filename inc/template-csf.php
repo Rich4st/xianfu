@@ -28,6 +28,7 @@ if (!class_exists('CSF')) {
     '/plugins/codestar-framework/codestar-framework.php', //框架CSF
     '/options/admin-options.php', //后台设置
     '/options/metabox-options.php', //文章高级设置
+    '/options/widget-options.php', //小工具设置
   );
 
 
