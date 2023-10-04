@@ -1,5 +1,5 @@
 <?php get_header(); ?>
 
-<h1>
-  hello world!
-</h1>
+<main>
+  <?php get_template_part('template-parts/swiper/1') ?>
+</main>
