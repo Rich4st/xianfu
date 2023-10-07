@@ -1,5 +1,14 @@
-<?php get_header(); ?>
+<?php get_header();
 
-<main>
-  <?php get_template_part('template-parts/swiper/1') ?>
-</main>
+if (is_active_sidebar('home-module')) {
+  dynamic_sidebar('home-module');
+} else {
+  if (have_posts()) {
+    while (have_posts()) {
+      the_post();
+      the_title();
+    }
+  }
+}
+
+get_footer();

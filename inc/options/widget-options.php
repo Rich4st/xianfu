@@ -7,7 +7,7 @@ defined('ABSPATH') || exit;
  * 首页 - 幻灯片模块
  */
 CSF::createWidget('capalot_home_slider_widget', array(
-  'title' => '【首页】4.幻灯片模块',
+  'title' => '幻灯片模块',
   'className' => 'home-slider-widget',
   'desc' => '首页幻灯片模块',
   'fields'      => array(

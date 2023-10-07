@@ -33,11 +33,12 @@ function widget_init()
 }
 add_action('widgets_init', 'widget_init');
 
+// codestar framework
+require_once get_template_directory() . '/inc/template-csf.php';
+
 // 加载静态资源
 require_once get_template_directory() . '/inc/template-assets.php';
 
 // 主题性能优化
 require_once get_template_directory() . '/inc/template-clean.php';
 
-// codestar framework
-require_once get_template_directory() . '/inc/template-csf.php';
