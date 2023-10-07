@@ -6,32 +6,26 @@ if (empty($args)) {
 
 $config = [
   'lazy' => true,
-  'loop'     => true,
   'navigation' => [
     'nextEl' => '.swiper-button-next',
     'prevEl' => '.swiper-button-prev'
-  ]
+  ],
+  'slidesPerView' => $args['slidesPerView'], // 幻灯片列数
+  'spaceBetween' => $args['spaceBetween'], // 幻灯片列间距
+  'pagination' => [
+    'el' => '.swiper-pagination',
+    'clickable' => true
+  ],
 ];
 
 foreach ($args['config'] as $key) {
   $config[$key] = true;
 }
 
-$config['items'] = absint($args['items']);
-
-$container = _capalot('site_container_width', '1400');
-
-
 ?>
 
-<section class="dark:bg-dark">
-  <div class="swiper mySwiper  <?php echo $args['container']; ?> mx-auto" data-config='<?php echo json_encode($config); ?>' style="max-width: <?php
-                                                                                                                                              if ($container === '') {
-                                                                                                                                                echo '1280';
-                                                                                                                                              } else {
-                                                                                                                                                echo $container;
-                                                                                                                                              }
-                                                                                                                                              ?>px;">
+<section>
+  <div class="swiper mySwiper mx-auto" data-config='<?php echo json_encode($config); ?>'>
     <div class="swiper-wrapper ">
 
       <?php foreach ($args['data'] as $item) : ?>
@@ -52,25 +46,15 @@ $container = _capalot('site_container_width', '1400');
       <?php endforeach; ?>
 
     </div>
-    <div class="swiper-button-next after:text-white"></div>
-    <div class="swiper-button-prev after:text-white"></div>
+    <!-- 圆点按钮 -->
+    <?php if($config['dots'] && !$config['nav']): ?>
+      <div class="swiper-pagination"></div>
+    <?php endif; ?>
+
+    <!-- 切换按钮 -->
+    <?php if ($config['nav']) : ?>
+      <div class="swiper-button-next after:text-white"></div>
+      <div class="swiper-button-prev after:text-white"></div>
+    <?php endif; ?>
   </div>
 </section>
-
-<script>
-  // 判断页面是否渲染完成
-  if (document.readyState == 'complete') {
-    // 渲染完成
-    var swiper = new Swiper(".mySwiper", {
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-    });
-  } else {
-    // 未渲染完成
-    window.addEventListener('load', function() {
-      var mySwiper = new Swiper('.mySwiper', JSON.parse(document.querySelector('.mySwiper').dataset.config));
-    })
-  }
-</script>

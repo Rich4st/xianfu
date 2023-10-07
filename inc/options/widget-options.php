@@ -35,17 +35,26 @@ CSF::createWidget('capalot_home_slider_widget', array(
         'dots'     => '导航圆点',
       ),
       'inline'  => true,
-      'default' => array('autoplay'),
+      'default' => array('autoplay', 'nav'),
     ),
 
     array(
-      'id'          => 'items',
+      'id'          => 'slidesPerView',
       'type'        => 'number',
       'title'       => '幻灯片列数',
       'unit'        => '列',
       'output'      => '.heading',
       'output_mode' => 'width',
       'default'     => '1',
+    ),
+
+    array(
+      'id' => 'spaceBetween',
+      'type' => 'number',
+      'title' => '幻灯片列间距',
+      'unit' => 'px',
+      'default' => '0',
+      'dependency' => array('slidesPerView', '>', '1'),
     ),
 
     array(
@@ -64,7 +73,7 @@ CSF::createWidget('capalot_home_slider_widget', array(
           'type'     => 'textarea',
           'title'    => '描述内容，支持html代码',
           'sanitize' => false,
-          'default'  => '<h3 class="text-2xl font-bold">Hello, RiPro Theme</h3><p class="hidden md:block">这是一个简单的内容展示，您可以随意插入HTML代码任意组合显示.</p>',
+          'default'  => '<h3 class="text-2xl font-bold">Hello,</h3><p class="hidden md:block">这是一个简单的内容展示,您可以随意插入HTML代码任意组合显示.</p>',
         ),
         array(
           'id'      => '_href',
