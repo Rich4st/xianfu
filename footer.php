@@ -1,11 +1,5 @@
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <p>© 2017 Xianfu. All Rights Reserved.</p>
-      </div>
-    </div>
-  </div>
+<footer class="h-30 border-t mt-8 text-center py-4">
+  footer
 </footer>
 
 <?php wp_footer(); ?>
