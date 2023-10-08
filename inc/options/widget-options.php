@@ -119,3 +119,67 @@ function capalot_home_slider_widget($args, $instance)
 
   echo $args['after_widget'];
 }
+
+/**
+ * 首页 - 最新文章组件
+ */
+CSF::createWidget('capalot_home_latest_posts_widget', array(
+  'title' => '最新文章组件',
+  'className' => 'home-latest-posts-widget',
+  'desc' => '首页最新文章组件',
+  'fields' => array(
+
+    array(
+      'id' => 'title',
+      'type' => 'text',
+      'title' => '标题',
+      'default' => '最新文章',
+    ),
+
+    array(
+      'id' => 'desc',
+      'type' => 'text',
+      'title' => '描述介绍',
+      'default' => '当前最新发布更新的热门资源，我们将会持续保持更新',
+    ),
+
+    array(
+      'id'          => 'exclude',
+      'type'        => 'checkbox',
+      'inline'      => true,
+      'title'       => '要排除的分类',
+      'placeholder' => '选择要排除的分类',
+      'options'     => 'categories',
+    ),
+
+    array(
+      'id' => 'is_pagination',
+      'type' => 'switcher',
+      'title' => '是否开启分页',
+      'default' => true,
+    ),
+
+    array(
+      'type'    => 'subheading',
+      'content' => '文章数请在 WP后台->设置->阅读->博客页面至多显示 调整',
+    ),
+
+  )
+));
+function capalot_home_latest_posts_widget($args, $instance)
+{
+
+  $instance = array_merge(
+    array(
+      'title' => '最新推荐',
+      'desc' => '当前最新发布更新的热门资源，我们将会持续保持更新'
+    ),
+    $instance
+  );
+
+  echo $args['before_widget'];
+
+  get_template_part('template-parts/widget/home/latest-posts', '', $instance);
+
+  echo $args['after_widget'];
+}
