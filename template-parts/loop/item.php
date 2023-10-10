@@ -36,7 +36,7 @@ $post_id = get_the_id();
 
       <?php if ($args['is_entry_desc']) : ?>
         <div class=" text-gray-400 text-[12px] min-h-[1.25rem] line-clamp-1 my-1" title="<?php echo capalot_get_post_excerpt(40); ?>">
-          <?php echo capalot_get_post_excerpt(40); ?>
+          <?php capalot_get_post_excerpt(40); ?>
         </div>
       <?php endif; ?>
     </div>
