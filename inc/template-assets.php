@@ -20,5 +20,8 @@ function load_assets()
   wp_enqueue_script('swiper', get_template_directory_uri() . '/assets/js/swiper-bundle.min.js', array(), '10.1.0', true);
   // iconify
   wp_enqueue_script('icon', get_template_directory_uri() . '/assets/js/iconify.min.js', array(), '1.0.0', true);
+
+  // lazyload
+  wp_enqueue_script('lazyload', get_template_directory_uri() . '/assets/js/lazyload.min.js', array(), '17.8.0', true);
 }
 add_action('wp_enqueue_scripts', 'load_assets');
