@@ -10,5 +10,8 @@
 
 <body>
 
-  <header class="h-16 border-b mb-8">
+  <header class="h-16 border-b mb-8 flex items-center justify-center">
+    <a class="text-3xl font-bold block" href="<?php echo home_url(); ?>">
+      Home
+    </a>
   </header>
