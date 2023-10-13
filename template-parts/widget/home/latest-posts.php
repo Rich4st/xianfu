@@ -16,12 +16,12 @@ $item_config = get_posts_style_config();
 
 ?>
 
-<section class="dark:bg-dark">
+<section class="dark:bg-dark py-8">
   <?php
   $section_title = $args['title'] ?? '';
   $section_desc = $args['desc'] ?? '';
   ?>
-  <div class="flex-col-center w-full max-w-6xl p-8 mx-auto text-center">
+  <div class="flex-col-center max-w-6xl p-8 mx-auto text-center text-sm text-gray-400">
     <h2 class="text-xl md:text-3xl font-bold leading-tight text-gray-900 dark:text-gray-100">
       <?php echo $section_title; ?>
     </h2>

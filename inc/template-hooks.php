@@ -134,7 +134,10 @@ function capalot_meta_category($num = 2)
       if ($key == $num) {
         break;
       }
-      $output .= '<a href="' . esc_url(get_category_link($category->term_id)) . '">' . esc_html($category->name) . '</a>' . $separator;
+      $output .=  '<li class="flex items-center hover:text-pink-500 dark:text-gray-400 dark:hover:text-pink-500">
+      <i class="iconify" data-icon="ri:price-tag-3-line"></i>' .
+        '<a href="' . esc_url(get_category_link($category->term_id)) . '" title="' . esc_html($category->name) . '">' . esc_html($category->name) .
+        '</a></li>' . $separator;
     }
     echo trim($output, $separator);
   }
@@ -153,7 +156,8 @@ function capalot_get_post_excerpt($limit = '48')
 }
 
 // 获取商品标签
-function capalot_get_post_tags($post_id = null){
+function capalot_get_post_tags($post_id = null)
+{
   if (empty($post_id)) {
     global $post;
     $post_id = $post->ID;
