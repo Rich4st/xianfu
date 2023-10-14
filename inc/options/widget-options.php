@@ -144,6 +144,28 @@ CSF::createWidget('capalot_home_latest_posts_widget', array(
     ),
 
     array(
+      'id'      => 'style',
+      'type'    => 'image_select',
+      'title'   => '风格配置',
+      'inline'  => true,
+      'options' => array(
+        'grid'         => $template_dir . '/assets/img/options/item-grid.png',
+        'grid-overlay' => $template_dir . '/assets/img/options/item-grid-overlay.png',
+        'list'         => $template_dir . '/assets/img/options/item-list.png',
+        'title'        => $template_dir . '/assets/img/options/item-title.png',
+      ),
+      'default' => 'grid',
+    ),
+
+    array(
+      'id'      => 'col',
+      'type'    => 'number',
+      'title'   => '展示列数',
+      'unit'    => '列',
+      'default' => '4',
+    ),
+
+    array(
       'id'          => 'exclude',
       'type'        => 'checkbox',
       'inline'      => true,
