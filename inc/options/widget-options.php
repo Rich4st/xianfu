@@ -158,11 +158,41 @@ CSF::createWidget('capalot_home_latest_posts_widget', array(
     ),
 
     array(
-      'id'      => 'col',
+      'id' => 'thumbs_ratio',
+      'type' => 'image_select',
+      'title' => '缩略图比例',
+      'inline' => true,
+      'options' => array(
+        'ratio-2x3'  => $template_dir . '/assets/img/options/img-2x3.png',
+        'ratio-3x4'  => $template_dir . '/assets/img/options/img-3x4.png',
+        'ratio-1x1'  => $template_dir . '/assets/img/options/img-1x1.png',
+        'ratio-4x3'  => $template_dir . '/assets/img/options/img-4x3.png',
+        'ratio-3x2'  => $template_dir . '/assets/img/options/img-3x2.png',
+        'ratio-16x9' => $template_dir . '/assets/img/options/img-16x9.png',
+        'ratio-21x9' => $template_dir . '/assets/img/options/img-21x9.png',
+      ),
+      'default' => 'ratio-3x2',
+    ),
+
+    array(
+      'id'      => 'cols',
       'type'    => 'number',
       'title'   => '展示列数',
       'unit'    => '列',
       'default' => '4',
+    ),
+
+    array(
+      'id'      => 'extra_info',
+      'type'    => 'checkbox',
+      'title'   => '辅助信息显示',
+      'options' => array(
+        'category' => '显示分类',
+        'desc'   => '显示摘要',
+        'footer' => '显示时间，阅读数点赞数等',
+      ),
+      'inline'  => true,
+      'default' => array('category', 'desc', 'footer'),
     ),
 
     array(
