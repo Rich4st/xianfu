@@ -10,21 +10,25 @@ function capalot_get_thumbnail_url($post = null, $size = 'thumbnail')
   }
 
   if (!$post instanceof WP_Post) {
-    return get_default_thumbnail_src();
+    echo get_default_thumbnail_src();
+    return;
   }
 
   if (has_post_thumbnail($post)) {
-    return get_the_post_thumbnail_url($post, $size);
+    echo get_the_post_thumbnail_url($post, $size);
+    return;
   } elseif (_capalot('is_post_one_thumbnail', true) && !empty($post->post_content)) {
+    // 使用文章第一张图片作为缩略图
     ob_start();
     ob_end_clean();
     preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
     if (!empty($matches[1][0])) {
-      return $matches[1][0];
+      echo $matches[1][0];
+      return;
     }
   }
 
-  return get_default_thumbnail_src();
+  echo get_default_thumbnail_src();
 }
 
 // 获取默认缩略图
@@ -134,7 +138,7 @@ function capalot_meta_category($num = 2)
       if ($key == $num) {
         break;
       }
-      $output .=  '<li class="flex items-center hover:text-pink-500 dark:text-gray-400 dark:hover:text-pink-500">
+      $output .=  '<li class="flex items-center w-fit hover:text-pink-500 dark:text-gray-100 dark:hover:text-pink-500">
       <i class="iconify" data-icon="ri:price-tag-3-line"></i>' .
         '<a href="' . esc_url(get_category_link($category->term_id)) . '" title="' . esc_html($category->name) . '">' . esc_html($category->name) .
         '</a></li>' . $separator;
