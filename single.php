@@ -15,15 +15,15 @@ $post_id = get_the_ID();
     </div>
     <div class="space-y-2">
       <h3 class="text-2xl">
-        <?php capalot_meta_category(); ?>
+        <?php capalot_post_category(); ?>
       </h3>
       <div class="space-x-2"><?php capalot_get_post_tags(); ?></div>
       <h2 class="text-4xl font-semibold text-pink-500 pb-2 border-b"><?php echo the_title(); ?></h2>
-      <p><?php capalot_get_post_excerpt(999); ?></p>
+      <p><?php capalot_post_excerpt(999); ?></p>
     </div>
     <div>
       <div class="space-y-2">
-        <p> <?php capalot_meta_category(); ?> </p>
+        <p> <?php capalot_post_category(); ?> </p>
         <p class="font-semibold"><?php echo the_title(); ?></p>
         <p class="text-2xl font-bold text-red-400 mb-2 pb-2 border-b">
           ￥<?php capalot_get_product_price($post_id) ?>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 
 <head>
   <meta charset="UTF-8">
@@ -8,7 +8,7 @@
   <?php wp_head() ?>
 </head>
 
-<body>
+<body class="dark:bg-dark">
 
   <button class="p-2 bg-sky-400 rounded-full toggle-dark">
     Dark mode

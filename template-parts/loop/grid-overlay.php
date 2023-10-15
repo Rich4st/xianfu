@@ -14,14 +14,16 @@ $post_id = get_the_id();
 
       <a href="<?php the_permalink(); ?>" class="absolute top-0 bottom-0 left-0 right-0 z-40" style="display: block;"></a>
 
-      <div class="absolute bottom-8 left-2 w-full pr-2 z-50">
+      <div class="absolute bottom-7 left-2 w-full pr-2 z-50 space-y-1">
         <?php if (in_array('category', $args['extra_info'])) : ?>
-          <ul class="flex items-center space-x-1">
-            <?php capalot_meta_category(2); ?>
+          <ul class="flex items-center space-x-2">
+            <?php capalot_post_category(2); ?>
           </ul>
         <?php endif; ?>
 
         <a class="font-bold line-clamp-1 text-base hover:text-gray-300 w-fit" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
+
+        <p class="line-clamp-1" title="<?php capalot_post_excerpt(); ?>"><?php capalot_post_excerpt(); ?></p>
       </div>
     </div>
   </div>

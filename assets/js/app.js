@@ -1,5 +1,6 @@
 let currentPage = 1;
 const body = jQuery("body");
+const html = jQuery("html");
 
 let capalot = {
   init: function () {
@@ -28,7 +29,7 @@ let capalot = {
     if (!switcher) return;
 
     switcher.addEventListener('click', function () {
-      body.toggleClass('dark');
+      html.toggleClass('dark');
     })
   },
 
