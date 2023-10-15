@@ -159,6 +159,32 @@ function capalot_get_post_excerpt($limit = '48')
   echo wp_trim_words(strip_shortcodes($excerpt), $limit, '...');
 }
 
+// 获取文章最近修改时间
+function capalot_postupdate_time()
+{
+  $time = get_the_time('U');
+
+  $time_string = sprintf(
+    '<time class="pub-date" datetime="%1$s">%2$s</time>',
+    esc_attr(get_the_date(DATE_W3C)),
+    esc_html(human_time_diff($time, current_time('timestamp')) . '前')
+  );
+
+  if (false) {
+    // 显示最近修改时间
+    $modified_time = get_the_modified_time('U');
+    if ($time != $modified_time) {
+      $time_string .= sprintf(
+        '<time class="mod-date" datetime="%1$s">%2$s</time>',
+        esc_attr(get_the_modified_date(DATE_W3C)),
+        esc_html(human_time_diff($modified_time, current_time('timestamp')) . '前')
+      );
+    }
+  }
+
+  echo $time_string;
+}
+
 // 获取商品标签
 function capalot_get_post_tags($post_id = null)
 {
