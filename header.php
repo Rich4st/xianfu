@@ -10,5 +10,11 @@
 
 <body>
 
-  <header class="h-16 border-b mb-8">
+  <button class="p-2 bg-sky-400 rounded-full toggle-dark">
+    Dark mode
+  </button>
+  <header class="h-16 border-b mb-8 flex items-center justify-center">
+    <a class="text-3xl font-bold block" href="<?php echo home_url(); ?>">
+      Home
+    </a>
   </header>

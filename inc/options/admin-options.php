@@ -38,6 +38,14 @@ CSF::createSection($prefix, array(
       'default' => _capalot('site_favicon', get_template_directory_uri() . '/assets/img/favicon.png'),
     ),
 
+    array(
+      'id' => 'site_dark_mode',
+      'type' => 'switcher',
+      'title' => '网站暗黑模式',
+      'desc' => '开启后，网站可以切换白天黑夜模式',
+      'default' => false,
+    )
+
   ),
 ));
 
@@ -477,9 +485,9 @@ CSF::createSection($prefix, array(
 
     // rollbar
     array(
-      'id'      => 'site_footer_rollbar',
+      'id'      => 'site_fooPC端全站右下角菜单（返回顶部ter_rollbar',
       'type'    => 'group',
-      'title'   => 'PC端全站右下角菜单（返回顶部+）',
+      'title'   => '+）',
       'max'     => '10',
       'fields'  => array(
         array(

@@ -10,21 +10,25 @@ function capalot_get_thumbnail_url($post = null, $size = 'thumbnail')
   }
 
   if (!$post instanceof WP_Post) {
-    return get_default_thumbnail_src();
+    echo get_default_thumbnail_src();
+    return;
   }
 
   if (has_post_thumbnail($post)) {
-    return get_the_post_thumbnail_url($post, $size);
+    echo get_the_post_thumbnail_url($post, $size);
+    return;
   } elseif (_capalot('is_post_one_thumbnail', true) && !empty($post->post_content)) {
+    // 使用文章第一张图片作为缩略图
     ob_start();
     ob_end_clean();
     preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
     if (!empty($matches[1][0])) {
-      return $matches[1][0];
+      echo $matches[1][0];
+      return;
     }
   }
 
-  return get_default_thumbnail_src();
+  echo get_default_thumbnail_src();
 }
 
 // 获取默认缩略图
@@ -134,7 +138,10 @@ function capalot_meta_category($num = 2)
       if ($key == $num) {
         break;
       }
-      $output .= '<a href="' . esc_url(get_category_link($category->term_id)) . '">' . esc_html($category->name) . '</a>' . $separator;
+      $output .=  '<li class="flex items-center w-fit hover:text-pink-500 dark:text-gray-100 dark:hover:text-pink-500">
+      <i class="iconify" data-icon="ri:price-tag-3-line"></i>' .
+        '<a href="' . esc_url(get_category_link($category->term_id)) . '" title="' . esc_html($category->name) . '">' . esc_html($category->name) .
+        '</a></li>' . $separator;
     }
     echo trim($output, $separator);
   }
@@ -149,5 +156,62 @@ function capalot_get_post_excerpt($limit = '48')
     $excerpt = get_the_content();
   }
 
-  return wp_trim_words(strip_shortcodes($excerpt), $limit, '...');
+  echo wp_trim_words(strip_shortcodes($excerpt), $limit, '...');
+}
+
+// 获取商品标签
+function capalot_get_post_tags($post_id = null)
+{
+  if (empty($post_id)) {
+    global $post;
+    $post_id = $post->ID;
+  }
+
+  // 获取文章标签
+  $post_tags = get_the_tags($post);
+
+  // 输出文章标签
+  if (!empty($post_tags)) {
+    foreach ($post_tags as $tag) {
+      echo '<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#' . $tag->name . '</span>';
+    }
+  }
+}
+
+// 获取商品图库
+function capalot_get_product_gallery($post_id = null)
+{
+  if (empty($post_id)) {
+    global $post;
+    $post_id = $post->ID;
+  }
+
+  $gallery_ids = get_post_meta($post_id, 'product_images', true);
+
+  $gallery_ids = explode(',', $gallery_ids);
+
+  if (empty($gallery_ids)) {
+    return [];
+  }
+
+  $gallery = [];
+
+  foreach ($gallery_ids as $id) {
+    $gallery[] = wp_get_attachment_image_src($id, 'full')[0];
+  }
+
+  return $gallery;
+}
+
+// 获取商品价格
+function capalot_get_product_price($post_id = null)
+{
+  if (empty($post_id)) {
+    global $post;
+    $post_id = $post->ID;
+  }
+
+  $product_info = get_post_meta($post_id, 'product_info', true);
+
+  echo $product_info['product_price'];
 }
