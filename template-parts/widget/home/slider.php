@@ -28,7 +28,9 @@ foreach ($args['config'] as $key) {
   <div class="swiper mySwiper mx-auto" data-config='<?php echo json_encode($config); ?>'>
     <div class="swiper-wrapper ">
 
-      <?php foreach ($args['data'] as $item) : ?>
+      <?php
+      if(empty($args['data'])) return;
+      foreach ($args['data'] as $item) : ?>
 
         <div class="swiper-slide text-white ">
           <div class="relative h-[20rem] md:h-[36rem]">
