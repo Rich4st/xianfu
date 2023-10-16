@@ -18,7 +18,14 @@ $widget_config = [
   'extra_info' => $args['extra_info'],
   'exclude' => $args['exclude'],
   'is_pagination' => $args['is_pagination'],
+];
+
+$pagination_config = [
+  'style' => $args['style'],
+  'ul_id' => 'posts-wrapper-' . time(),
+  'style_config' => json_encode($widget_config, JSON_HEX_TAG | JSON_HEX_APOS),
 ]
+
 ?>
 
 <section class="dark:bg-dark py-8">
@@ -30,7 +37,8 @@ $widget_config = [
       <?php echo $args['desc'] ?? ''; ?>
     </p>
   </div>
-  <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 px-2 md:px-10">
+
+  <ul id="<?php echo $pagination_config['ul_id']; ?>" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 px-2 md:px-10">
     <?php if ($PostData->have_posts()) :
       while ($PostData->have_posts()) : $PostData->the_post();
         get_template_part('template-parts/loop/' . $args['style'], '', $widget_config);
@@ -39,4 +47,8 @@ $widget_config = [
       get_template_part('template-parts/loop/item', 'none');
     endif; ?>
   </ul>
+
+  <?php if ($widget_config['is_pagination']) : ?>
+    <?php capalot_load_more($pagination_config); ?>
+  <?php endif; ?>
 </section>

@@ -8,6 +8,21 @@ let capalot = {
     capalot.swiper();
     capalot.toggle_dark();
     capalot.lazyload();
+    capalot.load_more();
+  },
+
+  ajax: function ({ data, beforeSend, success, complete, error = () => console.log('error') }) {
+    $.ajax({
+      type: 'Post',
+      url: g_p.ajax_url,
+      dataType: 'json',
+      data,
+      async: true,
+      beforeSend,
+      success,
+      complete,
+      error,
+    })
   },
 
   // 轮播初始化
@@ -36,6 +51,34 @@ let capalot = {
   lazyload: function () {
     var lazyLoadInstance = new LazyLoad();
     lazyLoadInstance.update();
+  },
+
+  // 加载更多
+  load_more: function () {
+    const load_button = document.querySelector('#load-more');
+
+    if (!load_button) return;
+
+    load_button.addEventListener('click', function () {
+      currentPage++;
+
+      capalot.ajax({
+        data: {
+          action: 'capalot_load_more',
+          paged: currentPage,
+          style: load_button.dataset.style,
+          style_config: JSON.stringify(load_button.dataset.config)
+        },
+        complete: function ({ responseJSON }) {
+          const { data, code, max_page } = responseJSON;
+
+          if (code === 200) {
+            $(`#${load_button.dataset.ul}`).append(data)
+            console.log(data);
+          }
+        }
+      })
+    })
   }
 };
 

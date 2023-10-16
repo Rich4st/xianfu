@@ -22,5 +22,13 @@ function load_assets()
   // app
   wp_enqueue_style('app', get_template_directory_uri() . '/assets/css/app.css', array(), '1.0.0', 'all');
   wp_enqueue_script('app', get_template_directory_uri() . '/assets/js/app.js', array(), '1.0.0', true);
+
+  // 全局参数
+  $global_params = [
+    'ajax_url' => esc_url(admin_url('admin-ajax.php')),
+    'ajax_nonce' => wp_create_nonce("capalot_ajax"),
+  ];
+  wp_localize_script('app', 'g_p', $global_params);
+
 }
 add_action('wp_enqueue_scripts', 'load_assets');
