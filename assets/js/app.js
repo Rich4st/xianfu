@@ -18,7 +18,6 @@ let capalot = {
 
     swipers.forEach((el) => {
       new Swiper(el, JSON.parse(el.dataset.config));
-      console.log(JSON.parse(el.dataset.config));
     })
   },
 
@@ -35,7 +34,6 @@ let capalot = {
 
   // 懒加载配置
   lazyload: function () {
-    console.log(LazyLoad);
     var lazyLoadInstance = new LazyLoad();
     lazyLoadInstance.update();
   }
