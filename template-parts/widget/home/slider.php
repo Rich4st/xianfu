@@ -34,7 +34,7 @@ foreach ($args['config'] as $key) {
 
         <div class="swiper-slide text-white ">
           <div class="relative h-[20rem] md:h-[36rem]">
-            <img data-src="<?php echo $item['_img']; ?>" src="<?php echo $item['_img']; ?>" class="w-full h-full object-cover">
+            <img src="<?php echo $item['_img']; ?>" class="w-full h-full object-cover">
             <?php echo $args['container']; ?>
             <div class="absolute bottom-1/2 space-y-2 text-center w-full translate-y-1/2 px-10">
               <?php echo $item['_desc']; ?>
