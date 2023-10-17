@@ -1,6 +1,7 @@
 let currentPage = 1;
 const body = jQuery("body");
 const html = jQuery("html");
+var lazyLoadInstance = null;
 
 let capalot = {
   init: function () {
@@ -49,13 +50,14 @@ let capalot = {
 
   // 懒加载配置
   lazyload: function () {
-    var lazyLoadInstance = new LazyLoad();
+    lazyLoadInstance = new LazyLoad();
     lazyLoadInstance.update();
   },
 
   // 加载更多
   load_more: function () {
     const load_button = document.querySelector('#load-more');
+    const loading_icon = document.querySelector('.loading-icon');
 
     if (!load_button) return;
 
@@ -69,12 +71,22 @@ let capalot = {
           style: load_button.dataset.style,
           style_config: JSON.stringify(load_button.dataset.config)
         },
+        beforeSend: function () {
+          loading_icon.classList.remove('hidden');
+        },
         complete: function ({ responseJSON }) {
           const { data, code, max_page } = responseJSON;
 
+          if(currentPage === max_page) {
+            load_button.classList.add('hidden');
+            document.getElementById('no-more-post').classList.remove('hidden');
+          }
+
           if (code === 200) {
+            loading_icon.classList.add('hidden');
+
             $(`#${load_button.dataset.ul}`).append(data)
-            console.log(data);
+            lazyLoadInstance.update();
           }
         }
       })

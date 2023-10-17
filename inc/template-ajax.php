@@ -1,8 +1,9 @@
 <?php
 
-new CapalotAjax();
 
-class CapalotAjax
+new Capalot_Ajax();
+
+class Capalot_Ajax
 {
 
   // 请求前缀
@@ -15,12 +16,7 @@ class CapalotAjax
     $this->init();
   }
 
-  public function init(): Void
-  {
-    $this->add_api('load_more', 0); // 加载更多
-  }
-
-  public function add_api($hook_name, $type = 1): void
+  private function add_api($hook_name, $type = 1)
   {
     if ($type === 1)
       add_action($this->__ajax_prefix . $hook_name, [$this, $hook_name]);
@@ -28,20 +24,26 @@ class CapalotAjax
       add_action($this->__ajax_nopriv_prefix . $hook_name, [$this, $hook_name]);
   }
 
-  public function api_template($data, $extra = []): array
+  private function init()
+  {
+    $this->add_api('load_more'); //加载更多文章
+  }
+
+  function api_template($data = null, $extra = []): array
   {
     return array_merge(
       [
-        'code' => 200,
-        'msg'  => '成功',
+        'code' => $data === null ? 201 : 200,
+        'msg'  => $extra['msg'] ?? '成功',
         'data' => $data,
       ],
       $extra,
     );
   }
 
-  public function load_more()
+  function load_more()
   {
+
     $item_style = $_POST['style'];
     $item_config = $_POST['style_config'];
     // 将json格式$item_config转换为数组
@@ -55,6 +57,12 @@ class CapalotAjax
 
     $response = '';
     $max_page = $Posts->max_num_pages;
+
+    if($Posts->max_num_pages < $paged) {
+      wp_send_json(
+        $this->api_template(null, [ 'msg' => '没有更多了'])
+      );
+    }
 
     if ($Posts->have_posts()) {
       while ($Posts->have_posts()) : $Posts->the_post();
