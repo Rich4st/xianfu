@@ -2,7 +2,6 @@
 
 if (empty($args))
   exit;
-var_dump($args);
 
 
 $query_args = array(
@@ -41,7 +40,7 @@ $pagination_config = [
     </p>
   </div>
 
-  <ul id="<?php echo $pagination_config['ul_id']; ?>" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 px-2 md:px-10">
+  <ul id="<?php echo $pagination_config['ul_id']; ?>" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-8 px-2 md:px-10">
     <?php if ($PostData->have_posts()) :
       while ($PostData->have_posts()) : $PostData->the_post();
         get_template_part('template-parts/loop/' . $args['style'], '', $widget_config);
