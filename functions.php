@@ -45,3 +45,6 @@ require_once get_template_directory() . '/inc/template-clean.php';
 // 主题hooks
 require_once get_template_directory() . '/inc/template-hooks.php';
 
+// ajax
+require_once get_template_directory() . '/inc/template-ajax.php';
+

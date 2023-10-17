@@ -28,11 +28,13 @@ foreach ($args['config'] as $key) {
   <div class="swiper mySwiper mx-auto" data-config='<?php echo json_encode($config); ?>'>
     <div class="swiper-wrapper ">
 
-      <?php foreach ($args['data'] as $item) : ?>
+      <?php
+      if(empty($args['data'])) return;
+      foreach ($args['data'] as $item) : ?>
 
         <div class="swiper-slide text-white ">
-          <div class=" relative h-44 md:h-80">
-            <img data-src="<?php echo $item['_img']; ?>" src="<?php echo $item['_img']; ?>" class="w-full h-full object-cover">
+          <div class="relative h-[20rem] md:h-[36rem]">
+            <img src="<?php echo $item['_img']; ?>" class="w-full h-full object-cover">
             <?php echo $args['container']; ?>
             <div class="absolute bottom-1/2 space-y-2 text-center w-full translate-y-1/2 px-10">
               <?php echo $item['_desc']; ?>

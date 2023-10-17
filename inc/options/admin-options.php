@@ -205,67 +205,6 @@ CSF::createSection($prefix, array(
     ),
 
     array(
-      'id'      => 'post_thumbnail_size',
-      'type'    => 'image_select',
-      'title'   => '全站默认缩略图尺寸比例',
-      'desc'    => '常见宽高3:2比例，3:3正方形，2:3比例，',
-      'options' => array(
-        'ratio-2x3'  => $template_dir . '/assets/img/options/img-2x3.png',
-        'ratio-3x4'  => $template_dir . '/assets/img/options/img-3x4.png',
-        'ratio-1x1'  => $template_dir . '/assets/img/options/img-1x1.png',
-        'ratio-4x3'  => $template_dir . '/assets/img/options/img-4x3.png',
-        'ratio-3x2'  => $template_dir . '/assets/img/options/img-3x2.png',
-        'ratio-16x9' => $template_dir . '/assets/img/options/img-16x9.png',
-        'ratio-21x9' => $template_dir . '/assets/img/options/img-21x9.png',
-      ),
-      'default' => 'ratio-3x2',
-    ),
-
-    array(
-      'id'      => 'archive_item_style',
-      'type'    => 'image_select',
-      'title'   => '全站默认文章列表展示风格',
-      'desc'    => '网格，列表，图片，图标风格',
-      'options' => array(
-        'grid'         => $template_dir . '/assets/img/options/item-grid.png',
-        'grid-overlay' => $template_dir . '/assets/img/options/item-grid-overlay.png',
-        'list'         => $template_dir . '/assets/img/options/item-list.png',
-        'title'        => $template_dir . '/assets/img/options/item-title.png',
-      ),
-      'default' => 'grid',
-    ),
-
-    array(
-      'id'      => 'archive_item_col',
-      'type'    => 'image_select',
-      'title'   => '全站默认文章列表展示列数',
-      'desc'    => '在最大尺寸1080px宽度时显示列数，其他设备自适应展示',
-      'options' => array(
-        '1' => $template_dir . '/assets/img/options/col-1.png',
-        '2' => $template_dir . '/assets/img/options/col-2.png',
-        '3' => $template_dir . '/assets/img/options/col-3.png',
-        '4' => $template_dir . '/assets/img/options/col-4.png',
-        '5' => $template_dir . '/assets/img/options/col-5.png',
-        '6' => $template_dir . '/assets/img/options/col-6.png',
-      ),
-      'default' => '4',
-    ),
-
-    array(
-      'id'      => 'archive_item_entry',
-      'type'    => 'checkbox',
-      'title'   => '全站文章列表辅助信息显示',
-      'options' => array(
-        'category_dot' => '显示分类',
-        'entry_desc'   => '显示摘要',
-        'entry_footer' => '显示时间，阅读数点赞数等',
-        // 'vip_icon'     => 'VIP资源标识',
-      ),
-      'inline'  => true,
-      'default' => array('category_dot', 'entry_desc', 'entry_footer', 'vip_icon'),
-    ),
-
-    array(
       'id'      => 'site_page_nav_type',
       'type'    => 'radio',
       'inline'  => true,

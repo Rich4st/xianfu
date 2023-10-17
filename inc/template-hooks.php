@@ -1,6 +1,6 @@
 <?php
 
-// 获取缩略图url
+// 输出文章缩略图url
 function capalot_get_thumbnail_url($post = null, $size = 'thumbnail')
 {
   if (empty($post)) {
@@ -37,98 +37,13 @@ function get_default_thumbnail_src()
   return _capalot('default_thumb') ? _capalot('default_thumb') : get_template_directory_uri() . '/assets/img/thumb.jpg';
 }
 
-// 获取文章列表显示风格配置
-function get_posts_style_config($cat_id = 0)
-{
-  $item_col = _capalot('archive_item_col', '4');
-  $item_style = _capalot('archive_item_style', 'grid');
-  $media_size = _capalot('post_thumbnail_size', 'radio-3x2');
-
-  $media_size_type = get_thumbnail_size_type();
-  $media_align_type = get_thumbnail_align_type();
-
-  $item_entry = _capalot('archive_item_entry', array(
-    'category_dot',
-    'entry_desc',
-    'entry_footer',
-    'vip_icon',
-  ));
-
-  $term_item_style = _capalot('site_term_item_style', []);
-
-  if (!empty($cat_id) && !empty($term_item_style)) {
-    foreach ($term_item_style as $key => $item) {
-      if ($cat_id == $item['cat_id']) {
-        $item_col   = $item['archive_item_col'];
-        $item_style = $item['archive_item_style'];
-        $media_size = $item['post_thumbnail_size'];
-        $item_entry = $item['archive_item_entry'];
-        continue;
-      }
-    }
-  }
-
-
-  $row_cols = [
-    '1' => 'grid-cols-1 gap-4',
-    '2' => 'grid-cols-1 md:grid-cols-2 gap-4',
-    '3' => 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ',
-    '4' => 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4',
-    '5' => 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xxl:grid-cols-5 gap-4',
-    '6' => 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xxl:grid-cols-5 xxxl:grid-cols-6 gap-4',
-  ];
-
-  if ($item_style == 'list' && $item_col >= 2) {
-    // 列表模式自适应...
-    $row_cols_class = 'grid-cols-1 md:grid-cols-2 gap-4 ';
-  } else {
-    $row_cols_class = $row_cols[$item_col];
-  }
-
-  $config = array(
-    'type'            => $item_style, //grid grid-overlay list list-icon
-    'row_cols_class'  => $row_cols_class,
-    'media_size_type' => $media_size_type,
-    'media_fit_type'  => $media_align_type,
-    'media_class'     => $media_size, // media-3x2 media-3x3 media-2x3
-    'is_vip_icon'     => @in_array('vip_icon', $item_entry),
-    'is_entry_desc'   => @in_array('entry_desc', $item_entry),
-    'is_entry_meta' => @in_array('entry_footer', $item_entry),
-    'is_entry_cat' => @in_array('category_dot', $item_entry),
-  );
-  return $config;
-}
-
-// 获取文章缩略图尺寸
-function get_thumbnail_size_type()
-{
-  $options = ['bg-cover', 'bg-auto', 'bg-contain'];
-  $option = _capalot('site_thumb_size_type', 'bg-cover');
-
-  if (!in_array($option, $options))
-    $option = $options[0];
-
-  return $option;
-}
-
-// 获取文章缩略图对齐方式
-function get_thumbnail_align_type()
-{
-  $options = [
-    'bg-left-top', 'bg-right-top', 'bg-center-top',
-    'bg-left-center', 'bg-right-center', 'bg-center',
-    'bg-left-bottom', 'bg-right-bottom', 'bg-center-bottom'
-  ];
-  $option = _capalot('site_thumb_fit_type', 'bg-center');
-
-  if (!in_array($option, $options))
-    $option = $options[0];
-
-  return $option;
-}
-
-// 获取分类信息
-function capalot_meta_category($num = 2)
+/**
+ * 输出分类信息
+ *
+ * @pram $num 分类数量
+ * @return html li标签输出分类html
+ */
+function capalot_post_category($num = 2)
 {
   $categories = get_the_category();
   $separator = ' ';
@@ -147,8 +62,13 @@ function capalot_meta_category($num = 2)
   }
 }
 
-// 获取文章描述
-function capalot_get_post_excerpt($limit = '48')
+/**
+ * 输出文章描述
+ *
+ * @pram $limit 截取长度
+ * @return html 输出文章描述
+ */
+function capalot_post_excerpt($limit = '48')
 {
   $excerpt = get_the_excerpt();
 
@@ -157,6 +77,54 @@ function capalot_get_post_excerpt($limit = '48')
   }
 
   echo wp_trim_words(strip_shortcodes($excerpt), $limit, '...');
+}
+
+// 输出文章最近修改时间
+function capalot_postupdate_time()
+{
+  $time = get_the_time('U');
+
+  $time_string = sprintf(
+    '<time class="pub-date" datetime="%1$s">%2$s</time>',
+    esc_attr(get_the_date(DATE_W3C)),
+    esc_html(human_time_diff($time, current_time('timestamp')) . '前')
+  );
+
+  if (false) {
+    // 显示最近修改时间
+    $modified_time = get_the_modified_time('U');
+    if ($time != $modified_time) {
+      $time_string .= sprintf(
+        '<time class="mod-date" datetime="%1$s">%2$s</time>',
+        esc_attr(get_the_modified_date(DATE_W3C)),
+        esc_html(human_time_diff($modified_time, current_time('timestamp')) . '前')
+      );
+    }
+  }
+
+  echo $time_string;
+}
+
+/**
+ * 点击加载更多按钮
+ *
+ * @param $config 配置项
+ * @param $config['style'] 列表样式 grid | grid-overlay
+ * @param $config['ul_id'] 列表id
+ * @param $config['style_config'] 列表样式配置
+ *
+ * @return html 输出加载更多按钮
+ */
+function capalot_load_more($config)
+{
+  $config['style_config'] = htmlspecialchars($config['style_config'], ENT_QUOTES, 'UTF-8');
+
+  echo '<div class=" text-sm text-center py-6">
+    <button id="load-more" data-page="1" data-style="' . $config['style'] . '" data-ul="' . $config['ul_id'] . '" data-config="' . $config['style_config'] . '" type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200  rounded-full px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+    <i class="iconify loading-icon text-base inline-block hidden" data-icon="eos-icons:three-dots-loading"></i>加载更多
+    </button>
+    <p id="no-more-post" class="text-gray-400 hidden">没有更多了...</p>
+  </div>';
 }
 
 // 获取商品标签
