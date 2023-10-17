@@ -1,4 +1,3 @@
-let currentPage = 1;
 const body = jQuery("body");
 const html = jQuery("html");
 var lazyLoadInstance = null;
@@ -56,39 +55,42 @@ let capalot = {
 
   // 加载更多
   load_more: function () {
-    const load_button = document.querySelector('#load-more');
-    const loading_icon = document.querySelector('.loading-icon');
+    const load_buttons = document.querySelectorAll('#load-more');
 
-    if (!load_button) return;
+    if (load_buttons.length <= 0) return;
 
-    load_button.addEventListener('click', function () {
-      currentPage++;
+    load_buttons.forEach(button => {
+      const loading_icon = button.querySelector('.loading-icon');
 
-      capalot.ajax({
-        data: {
-          action: 'capalot_load_more',
-          paged: currentPage,
-          style: load_button.dataset.style,
-          style_config: JSON.stringify(load_button.dataset.config)
-        },
-        beforeSend: function () {
-          loading_icon.classList.remove('hidden');
-        },
-        complete: function ({ responseJSON }) {
-          const { data, code, max_page } = responseJSON;
+      button.addEventListener('click', function () {
 
-          if(currentPage === max_page) {
-            load_button.classList.add('hidden');
-            document.getElementById('no-more-post').classList.remove('hidden');
+        capalot.ajax({
+          data: {
+            action: 'capalot_load_more',
+            paged: parseInt(button.dataset.page) + 1,
+            style: button.dataset.style,
+            style_config: JSON.stringify(button.dataset.config)
+          },
+          beforeSend: function () {
+            loading_icon.classList.remove('hidden');
+          },
+          complete: function ({ responseJSON }) {
+            const { data, code, has_next } = responseJSON;
+
+            if (code === 200) {
+              if (!has_next) {
+                button.classList.add('hidden');
+                button.nextElementSibling.classList.remove('hidden');
+              }
+
+              loading_icon.classList.add('hidden');
+
+              $(`#${button.dataset.ul}`).append(data);
+              button.dataset.page = parseInt(button.dataset.page) + 1;
+              lazyLoadInstance.update();
+            }
           }
-
-          if (code === 200) {
-            loading_icon.classList.add('hidden');
-
-            $(`#${load_button.dataset.ul}`).append(data)
-            lazyLoadInstance.update();
-          }
-        }
+        })
       })
     })
   }

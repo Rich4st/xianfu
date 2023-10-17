@@ -224,7 +224,9 @@ function capalot_home_latest_posts_widget($args, $instance)
   $instance = array_merge(
     array(
       'title' => '最新推荐',
-      'desc' => '当前最新发布更新的热门资源，我们将会持续保持更新'
+      'desc'  => '当前最新发布更新的热门资源，我们将会持续保持更新',
+      // 传递widget_id
+      'id'    => 'lp-' . end(explode('_', $args['widget_id'])),
     ),
     $instance
   );

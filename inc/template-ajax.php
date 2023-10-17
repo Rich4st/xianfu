@@ -78,7 +78,7 @@ class Capalot_Ajax
       $this->api_template(
         $response,
         [
-          'max_page' => $max_page
+          'has_next' => $paged < $max_page,
         ]
       )
     );

@@ -2,6 +2,8 @@
 
 if (empty($args))
   exit;
+var_dump($args);
+
 
 $query_args = array(
   'paged' => get_query_var('paged', 1),
@@ -22,9 +24,10 @@ $widget_config = [
 
 $pagination_config = [
   'style' => $args['style'],
-  'ul_id' => 'posts-wrapper-' . time(),
+  'ul_id' => 'posts-wrapper-' . $args['id'],
   'style_config' => json_encode($widget_config, JSON_HEX_TAG | JSON_HEX_APOS),
-]
+];
+
 
 ?>
 
