@@ -11,5 +11,20 @@ module.exports = {
     },
   },
   plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.xf-container': {
+          'max-width': '80rem',
+          'margin': '0 auto',
+          'padding': '0 0.5rem',
+          // media query
+          '@screen sm': {
+            'padding': '0 0',
+          },
+        },
+      }
+
+      addUtilities(newUtilities, ['responsive', 'hover'])
+    }
   ],
 }
