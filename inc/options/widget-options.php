@@ -329,12 +329,6 @@ CSF::createWidget('capalot_home_slider_posts_attributes_widget', array(
       'title'  => '幻灯片内容配置',
       'fields' => array(
         array(
-          'id'      => '_img',
-          'type'    => 'upload',
-          'title'   => '上传幻灯片',
-          'default' => get_template_directory_uri() . '/assets/img/slider.jpg',
-        ),
-        array(
           'id'       => '_attribute',
           'type'     => 'group',
           'title'    => '属性配置',
@@ -344,12 +338,6 @@ CSF::createWidget('capalot_home_slider_posts_attributes_widget', array(
               'type'    => 'text',
               'title'   => '属性标题',
               'default' => '热门',
-            ),
-            array(
-              'id'      => '_color',
-              'type'    => 'color',
-              'title'   => '属性颜色',
-              'default' => '#fff',
             ),
             array(
               'id'      => '_img',
@@ -363,7 +351,7 @@ CSF::createWidget('capalot_home_slider_posts_attributes_widget', array(
           'type'     => 'textarea',
           'title'    => '描述内容，支持html代码',
           'sanitize' => false,
-          'default'  => '<h3 class="text-2xl font-bold">Hello,</h3><p class="hidden md:block">这是一个简单的内容展示,您可以随意插入HTML代码任意组合显示.</p>',
+          'default'  => '这是一个简单的内容展示,您可以随意插入HTML代码任意组合显示.',
         ),
         array(
           'id'      => '_href',

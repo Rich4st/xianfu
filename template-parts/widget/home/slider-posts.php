@@ -90,7 +90,7 @@ $config = [
 
     </div>
 
-    <div class="swiper-button-next after:text-white"></div>
-    <div class="swiper-button-prev after:text-white"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
   </div>
 </section>

@@ -19,41 +19,57 @@ $config = [
     ],
     1024 => [
       'slidesPerView' => 4,
+      'spaceBetween'  => 40
     ]
   ],
 ];
 
 ?>
 
-<section>
-  <div class="swiper mySwiper mx-auto" data-config='<?php echo json_encode($config); ?>'>
+<section class="xf-container">
+  <?php if ($args['title'] || $args['desc']) : ?>
+    <div class="my-8 text-center text-gray-400">
+      <?php if ($args['title']) : ?>
+        <h2>
+          <?php echo $args['title'] ?? '最新文章'; ?>
+        </h2>
+      <?php endif; ?>
+      <?php if ($args['desc']) : ?>
+        <p class="mt-2 text-gray-500 dark:text-gray-400">
+          <?php echo $args['desc'] ?? ''; ?>
+        </p>
+      <?php endif; ?>
+    </div>
+  <?php endif; ?>
+
+  <div class="swiper mySwiper attribute-slider mx-auto" data-config='<?php echo json_encode($config); ?>'>
     <div class="swiper-wrapper ">
 
       <?php
       if (empty($args['data'])) return;
       foreach ($args['data'] as $item) : ?>
 
-        <div class="swiper-slide text-white">
-          <div class="relative h-[20rem] md:h-[36rem]">
-            <img src="<?php echo $item['_img']; ?>" class="w-full h-2/3 object-cover">
+        <div class="swiper-slide">
+          <div class="relative">
+            <img src="<?php echo $item['_attribute'][0]['_img']; ?>" class="w-full h-2/3 object-cover">
+
+            <p class="text-center dark:text-gray-100 my-3 line-clamp-1"><?php echo $args['desc']; ?></p>
 
             <?php if ($item['_attribute']) : ?>
-              <ul class="flex items-center justify-center mt-2 space-x-2">
+              <div class="flex items-center justify-center mt-2 space-x-2">
                 <?php foreach ($item['_attribute'] as $attr) : ?>
-                  <li id="swiper-attribute" data-attr="<?php echo $attr['_img']; ?>" style="background-color: <?php echo $attr['_color']; ?>" class="w-4 h-4 rounded-full">
-                  </li>
+                  <button data-content="<?php echo $attr['_title']; ?>" id="swiper-attribute" data-attr="<?php echo $attr['_img']; ?>" type="button" class="popper-button btn"></button>
                 <?php endforeach; ?>
-              </ul>
+              </div>
             <? endif; ?>
 
           </div>
         </div>
 
       <?php endforeach; ?>
-
     </div>
 
-    <div class="swiper-button-next after:text-white"></div>
-    <div class="swiper-button-prev after:text-white"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
   </div>
 </section>

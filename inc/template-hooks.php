@@ -120,7 +120,7 @@ function capalot_load_more($config)
   $config['style_config'] = htmlspecialchars($config['style_config'], ENT_QUOTES, 'UTF-8');
 
   echo '<div class=" text-sm text-center py-6">
-    <button id="load-more" data-page="1" data-style="' . $config['style'] . '" data-ul="' . $config['ul_id'] . '" data-config="' . $config['style_config'] . '" type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200  rounded-full px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+    <button id="load-more" data-page="1" data-style="' . $config['style'] . '" data-ul="' . $config['ul_id'] . '" data-config="' . $config['style_config'] . '" type="button" class="btn px-5 py-2.5">
     <i class="iconify loading-icon text-base inline-block hidden" data-icon="eos-icons:three-dots-loading"></i>加载更多
     </button>
     <p id="no-more-post" class="text-gray-400 hidden">没有更多了...</p>
