@@ -9,6 +9,7 @@ let capalot = {
     capalot.toggle_dark();
     capalot.lazyload();
     capalot.load_more();
+    capalot.attribute_click();
   },
 
   ajax: function ({ data, beforeSend, success, complete, error = () => console.log('error') }) {
@@ -91,6 +92,22 @@ let capalot = {
             }
           }
         })
+      })
+    })
+  },
+
+  // attribute
+  attribute_click: function () {
+    const attr_buttons = document.querySelectorAll('#swiper-attribute');
+
+    if(attr_buttons.length <= 0) return;
+
+    attr_buttons.forEach(button => {
+      button.addEventListener('click', function () {
+        const img = button.parentNode.parentNode.querySelector('img');
+        if(img.src === button.dataset.attr) return;
+
+        img.src = button.dataset.attr;
       })
     })
   }

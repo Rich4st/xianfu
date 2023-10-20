@@ -7,9 +7,16 @@
   border-radius: 1rem;
 }
 
+/* swiper */
 .swiper-button-disabled {
   cursor: not-allowed !important;
   pointer-events: auto !important;
+}
+
+.slider-post {
+  --swiper-navigation-size: 24px;
+  --swiper-navigation-sides-offset: 0;
+  --swiper-navigation-color: red;
 }
 
 /* 渐变背景 */

@@ -277,14 +277,6 @@ CSF::createWidget('capalot_home_slider_posts_widget', array(
     ),
 
     array(
-      'id' => 'spaceBetween',
-      'type' => 'number',
-      'title' => '幻灯片列间距',
-      'unit' => 'px',
-      'default' => '30',
-    ),
-
-    array(
       'id'          => 'include',
       'type'        => 'checkbox',
       'inline'      => true,
@@ -307,3 +299,106 @@ function capalot_home_slider_posts_widget($args, $instance)
 
   get_template_part('template-parts/widget/home/slider-posts', '', $instance);
 }
+
+/**
+ * 首页 - 幻灯片文章组件
+ */
+CSF::createWidget('capalot_home_slider_posts_attributes_widget', array(
+  'title'     => '幻灯片组件-带属性切换',
+  'className' => 'home-slider-posts-widget',
+  'desc'      => '首页幻灯片组件-带属性切换',
+  'fields'    => [
+
+    array(
+      'id' => 'title',
+      'type' => 'text',
+      'title' => '标题',
+      'default' => '最新文章',
+    ),
+
+    array(
+      'id' => 'desc',
+      'type' => 'text',
+      'title' => '描述介绍',
+      'default' => '当前最新发布更新的热门资源，我们将会持续保持更新',
+    ),
+
+    array(
+      'id'     => 'data',
+      'type'   => 'group',
+      'title'  => '幻灯片内容配置',
+      'fields' => array(
+        array(
+          'id'      => '_img',
+          'type'    => 'upload',
+          'title'   => '上传幻灯片',
+          'default' => get_template_directory_uri() . '/assets/img/slider.jpg',
+        ),
+        array(
+          'id'       => '_attribute',
+          'type'     => 'group',
+          'title'    => '属性配置',
+          'fields'   => array(
+            array(
+              'id'      => '_title',
+              'type'    => 'text',
+              'title'   => '属性标题',
+              'default' => '热门',
+            ),
+            array(
+              'id'      => '_color',
+              'type'    => 'color',
+              'title'   => '属性颜色',
+              'default' => '#fff',
+            ),
+            array(
+              'id'      => '_img',
+              'type'    => 'upload',
+              'title'   => '属性图片',
+            )
+          ),
+        ),
+        array(
+          'id'       => '_desc',
+          'type'     => 'textarea',
+          'title'    => '描述内容，支持html代码',
+          'sanitize' => false,
+          'default'  => '<h3 class="text-2xl font-bold">Hello,</h3><p class="hidden md:block">这是一个简单的内容展示,您可以随意插入HTML代码任意组合显示.</p>',
+        ),
+        array(
+          'id'      => '_href',
+          'type'    => 'text',
+          'title'   => '链接地址',
+          'default' => '',
+        ),
+        array(
+          'id'      => '_target',
+          'type'    => 'radio',
+          'title'   => '链接打开方式',
+          'inline'  => true,
+          'options' => array(
+            '_self'  => '默认',
+            '_blank' => '新窗口打开',
+          ),
+          'default' => '_self',
+        ),
+
+      ),
+
+    ),
+  ]
+));
+function capalot_home_slider_posts_attributes_widget($args, $instance)
+{
+
+  $instance = array_merge(
+    array(
+      'title' => '最新推荐',
+      'desc'  => '当前最新发布更新的热门资源，我们将会持续保持更新',
+    ),
+    $instance
+  );
+
+  get_template_part('template-parts/widget/home/slider-posts-attributes', '', $instance);
+}
+
