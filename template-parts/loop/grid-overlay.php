@@ -12,7 +12,7 @@ $post_id = get_the_id();
   <div class="lazy z-40 bg-no-repeat bg-cover overflow-hidden ratio <?php echo esc_attr($args['thumbs_ratio']); ?>" data-bg="<?php capalot_get_thumbnail_url(); ?>">
     <div class="overlay bg-opacity-10 linear-bg">
 
-      <a href="<?php the_permalink(); ?>" class="absolute top-0 bottom-0 left-0 right-0 z-40" style="display: block;"></a>
+      <a href="<?php the_permalink(); ?>" class="absolute top-0 bottom-0 left-0 right-0 z-40" style="display: block;" aria-label="<?php the_title(); ?>"></a>
 
       <div class="absolute bottom-7 left-2 w-full pr-2 z-50 space-y-1">
         <?php if (in_array('category', $args['extra_info'])) : ?>

@@ -51,14 +51,14 @@ $config = [
 
         <div class="swiper-slide">
           <div class="relative">
-            <img src="<?php echo $item['_attribute'][0]['_img']; ?>" class="w-full h-2/3 object-cover">
+            <img src="<?php echo $item['_attribute'][0]['_img']; ?>" class="w-full h-2/3 object-cover" alt="<?php echo $item['_attribute'][0]['_title'] ?>">
 
             <p class="text-center dark:text-gray-100 my-3 line-clamp-1"><?php echo $args['desc']; ?></p>
 
             <?php if ($item['_attribute']) : ?>
               <div class="flex items-center justify-center mt-2 space-x-2">
                 <?php foreach ($item['_attribute'] as $attr) : ?>
-                  <button data-content="<?php echo $attr['_title']; ?>" id="swiper-attribute" data-attr="<?php echo $attr['_img']; ?>" type="button" class="popper-button btn"></button>
+                  <button aria-label="切换属性" data-content="<?php echo $attr['_title']; ?>" id="swiper-attribute" data-attr="<?php echo $attr['_img']; ?>" type="button" class="popper-button btn"></button>
                 <?php endforeach; ?>
               </div>
             <? endif; ?>

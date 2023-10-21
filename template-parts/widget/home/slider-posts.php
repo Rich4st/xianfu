@@ -1,11 +1,19 @@
 <?php
 
-if (empty($args)) exit;
+if (empty($args)) { ?>
+
+  <h2>请正确配置轮播图</h2>
+
+<?php
+  return;
+};
+
+extract($args);
 
 $query_args = [
   'post_status' => 'publish',
-  'category__in' => $args['include'] ?? [],
-  'posts_per_page' => $args['total'] ?? 6,
+  'category__in' => $include ?? [],
+  'posts_per_page' => $total ?? 6,
 ];
 
 $PostData = new WP_Query($query_args);
@@ -24,23 +32,23 @@ $config = [
       'slidesPerView' => 3,
     ],
     1024 => [
-      'slidesPerView' => $args['slidesPerView'],
+      'slidesPerView' => $slidesPerView,
     ]
   ],
 ]
 ?>
 
 <section class="xf-container">
-  <?php if ($args['title'] || $args['desc']) : ?>
+  <?php if ($title || $desc) : ?>
     <div class="my-8 text-center text-gray-400">
-      <?php if ($args['title']) : ?>
+      <?php if ($title) : ?>
         <h2 class="text-xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
-          <?php echo $args['title'] ?? '最新文章'; ?>
+          <?php echo $title ?? '最新文章'; ?>
         </h2>
       <?php endif; ?>
-      <?php if ($args['desc']) : ?>
+      <?php if ($desc) : ?>
         <p class="mt-2 text-gray-500 dark:text-gray-400">
-          <?php echo $args['desc'] ?? ''; ?>
+          <?php echo $desc ?? ''; ?>
         </p>
       <?php endif; ?>
     </div>
@@ -56,7 +64,7 @@ $config = [
           <div class="swiper-slide border-r  dark:border-r-gray-700 hover:shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] dark:border-b-2 dark:border-b-transparent dark:hover:border-b-pink-500">
             <div class="relative">
               <a href="<?php the_permalink(); ?>">
-                <img src="<?php capalot_get_thumbnail_url(); ?>" class="w-full h-40 object-cover">
+                <img src="<?php capalot_get_thumbnail_url(); ?>" class="w-full h-40 object-cover" alt="<?php the_title(); ?>">
               </a>
               <div class="text-xs my-2 space-y-1 px-2">
                 <ul class="flex items-center space-x-2">

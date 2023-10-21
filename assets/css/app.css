@@ -13,6 +13,10 @@
   pointer-events: auto !important;
 }
 
+.swiper {
+  --swiper-navigation-color: #fff;
+}
+
 .attribute-slider,
 .slider-post {
   --swiper-navigation-size: 24px;

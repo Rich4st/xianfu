@@ -110,6 +110,7 @@ let capalot = {
         if (img.src === button.dataset.attr) return;
 
         img.src = button.dataset.attr;
+        img.alt = button.dataset.content;
       })
     })
   },

@@ -1,8 +1,14 @@
 <?php
 
-if (empty($args)) {
+if (empty($args)) { ?>?
+
+  <h2>请正确配置幻灯片</h2>
+
+<?
   return;
 }
+
+extract($args);
 
 $config = [
   'lazy' => true,
@@ -10,13 +16,14 @@ $config = [
     'nextEl' => '.swiper-button-next',
     'prevEl' => '.swiper-button-prev'
   ],
-  'slidesPerView' => $args['slidesPerView'], // 幻灯片列数
-  'spaceBetween' => $args['spaceBetween'], // 幻灯片列间距
+  'slidesPerView' => $slidesPerView,
+  'spaceBetween' => $spaceBetween,
   'pagination' => [
     'el' => '.swiper-pagination',
     'clickable' => true
   ],
 ];
+
 
 foreach ($args['config'] as $key) {
   $config[$key] = true;
@@ -24,7 +31,7 @@ foreach ($args['config'] as $key) {
 
 ?>
 
-<section>
+<section class="<?php echo $container; ?>">
   <div class="swiper mySwiper mx-auto" data-config='<?php echo json_encode($config); ?>'>
     <div class="swiper-wrapper ">
 
@@ -55,8 +62,8 @@ foreach ($args['config'] as $key) {
 
     <!-- 切换按钮 -->
     <?php if ($config['nav']) : ?>
-      <div class="swiper-button-next after:text-white"></div>
-      <div class="swiper-button-prev after:text-white"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
     <?php endif; ?>
   </div>
 </section>
