@@ -10,6 +10,7 @@ let capalot = {
     capalot.lazyload();
     capalot.load_more();
     capalot.attribute_click();
+    capalot.popper_init();
   },
 
   ajax: function ({ data, beforeSend, success, complete, error = () => console.log('error') }) {
@@ -100,14 +101,36 @@ let capalot = {
   attribute_click: function () {
     const attr_buttons = document.querySelectorAll('#swiper-attribute');
 
-    if(attr_buttons.length <= 0) return;
+    if (attr_buttons.length <= 0) return;
 
     attr_buttons.forEach(button => {
+
       button.addEventListener('click', function () {
         const img = button.parentNode.parentNode.querySelector('img');
-        if(img.src === button.dataset.attr) return;
+        if (img.src === button.dataset.attr) return;
 
         img.src = button.dataset.attr;
+        img.alt = button.dataset.content;
+      })
+    })
+  },
+
+  // popper
+  popper_init: function() {
+    const buttons = document.querySelectorAll('.popper-button')
+
+    if (buttons.length <= 0) return;
+
+    buttons.forEach(button => {
+
+      tippy(button, {
+        content: button.dataset.content,
+        theme: 'light',
+        placement: 'top',
+        allowHTML: true,
+        interactive: true,
+        maxWidth: 500,
+        arrow: true,
       })
     })
   }

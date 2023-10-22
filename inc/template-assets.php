@@ -12,6 +12,9 @@ function load_assets()
 
   // tailwind
   wp_enqueue_style('tailwind', get_template_directory_uri() . '/assets/css/tailwind.css', array(), '1.0.0', 'all');
+  // app
+  wp_enqueue_style('app', get_template_directory_uri() . '/assets/css/app.css', array(), '1.0.0', 'all');
+  wp_enqueue_script('app', get_template_directory_uri() . '/assets/js/app.js', array(), '1.0.0', true);
   // swiper
   wp_enqueue_style('swiper', get_template_directory_uri() . '/assets/css/swiper-bundle.min.css', array(), '10.1.0');
   wp_enqueue_script('swiper', get_template_directory_uri() . '/assets/js/swiper-bundle.min.js', array(), '10.1.0', true);
@@ -19,9 +22,10 @@ function load_assets()
   wp_enqueue_script('icon', get_template_directory_uri() . '/assets/js/iconify.min.js', array(), '1.0.0', true);
   // lazyload
   wp_enqueue_script('lazyload', get_template_directory_uri() . '/assets/js/lazyload.min.js', array(), '17.8.0', true);
-  // app
-  wp_enqueue_style('app', get_template_directory_uri() . '/assets/css/app.css', array(), '1.0.0', 'all');
-  wp_enqueue_script('app', get_template_directory_uri() . '/assets/js/app.js', array(), '1.0.0', true);
+  // popper.js
+  wp_enqueue_script('popper', get_template_directory_uri() . '/assets/js/popper/popper.min.js', array(), '2.11.8', true);
+  wp_enqueue_script('tippy', get_template_directory_uri() . '/assets/js/popper/tippy-bundle.umd.min.js', array(), '6.3.7', true);
+
 
   // 全局参数
   $global_params = [

@@ -13,10 +13,14 @@
   pointer-events: auto !important;
 }
 
+.swiper {
+  --swiper-navigation-color: #fff;
+}
+
+.attribute-slider,
 .slider-post {
   --swiper-navigation-size: 24px;
   --swiper-navigation-sides-offset: 0;
-  --swiper-navigation-color: red;
 }
 
 /* 渐变背景 */

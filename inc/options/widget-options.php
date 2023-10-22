@@ -18,8 +18,8 @@ CSF::createWidget('capalot_home_slider_widget', array(
       'title'   => '布局宽度',
       'inline'  => true,
       'options' => array(
-        'container-full' => '全宽',
-        'container'      => '普通',
+        ''             => '全宽',
+        'xf-container' => '普通',
       ),
       'default' => 'container-full',
     ),
@@ -49,11 +49,11 @@ CSF::createWidget('capalot_home_slider_widget', array(
     ),
 
     array(
-      'id' => 'spaceBetween',
-      'type' => 'number',
-      'title' => '幻灯片列间距',
-      'unit' => 'px',
-      'default' => '0',
+      'id'         => 'spaceBetween',
+      'type'       => 'number',
+      'title'      => '幻灯片列间距',
+      'unit'       => 'px',
+      'default'    => '0',
       'dependency' => array('slidesPerView', '>', '1'),
     ),
 
@@ -113,11 +113,7 @@ function capalot_home_slider_widget($args, $instance)
     $instance
   );
 
-  echo $args['before_widget'];
-
   get_template_part('template-parts/widget/home/slider', '', $instance);
-
-  echo $args['after_widget'];
 }
 
 /**
@@ -230,11 +226,7 @@ function capalot_home_latest_posts_widget($args, $instance)
     $instance
   );
 
-  echo $args['before_widget'];
-
   get_template_part('template-parts/widget/home/latest-posts', '', $instance);
-
-  echo $args['after_widget'];
 }
 
 /**
@@ -329,12 +321,6 @@ CSF::createWidget('capalot_home_slider_posts_attributes_widget', array(
       'title'  => '幻灯片内容配置',
       'fields' => array(
         array(
-          'id'      => '_img',
-          'type'    => 'upload',
-          'title'   => '上传幻灯片',
-          'default' => get_template_directory_uri() . '/assets/img/slider.jpg',
-        ),
-        array(
           'id'       => '_attribute',
           'type'     => 'group',
           'title'    => '属性配置',
@@ -344,12 +330,6 @@ CSF::createWidget('capalot_home_slider_posts_attributes_widget', array(
               'type'    => 'text',
               'title'   => '属性标题',
               'default' => '热门',
-            ),
-            array(
-              'id'      => '_color',
-              'type'    => 'color',
-              'title'   => '属性颜色',
-              'default' => '#fff',
             ),
             array(
               'id'      => '_img',
@@ -363,7 +343,7 @@ CSF::createWidget('capalot_home_slider_posts_attributes_widget', array(
           'type'     => 'textarea',
           'title'    => '描述内容，支持html代码',
           'sanitize' => false,
-          'default'  => '<h3 class="text-2xl font-bold">Hello,</h3><p class="hidden md:block">这是一个简单的内容展示,您可以随意插入HTML代码任意组合显示.</p>',
+          'default'  => '这是一个简单的内容展示,您可以随意插入HTML代码任意组合显示.',
         ),
         array(
           'id'      => '_href',
@@ -400,5 +380,83 @@ function capalot_home_slider_posts_attributes_widget($args, $instance)
   );
 
   get_template_part('template-parts/widget/home/slider-posts-attributes', '', $instance);
+}
+
+/**
+ * 首页 - 图片背景按钮
+ */
+CSF::createWidget('capalot_home_background_buttons', array(
+  'title'     => 'aa图片背景按钮',
+  'icon'      => 'fa fa-image',
+  'className' => 'home-background-buttons',
+  'desc'      => '首页图片背景按钮',
+  'fields'    => array(
+
+    [
+      'id'      => 'title',
+      'type'    => 'text',
+      'title'   => '标题',
+      'default' => '主标题',
+    ],
+
+    [
+      'id'      => 'sub_title',
+      'type'    => 'text',
+      'title'   => '副标题',
+      'default' => '副标题',
+    ],
+
+    [
+      'id'    => 'img',
+      'type'  => 'upload',
+      'title' => '背景图片',
+    ],
+
+    [
+      'id'      => 'is_background_fixed',
+      'type'    => 'switcher',
+      'title'   => '是否固定背景',
+      'default' => true,
+    ],
+
+    [
+      'id'     => 'buttons',
+      'type'   => 'group',
+      'title'  => '按钮配置',
+      'fields' => [
+        [
+          'id'      => '_title',
+          'type'    => 'text',
+          'title'   => '按钮标题',
+          'default' => '按钮标题',
+        ],
+        [
+          'id'      => '_href',
+          'type'    => 'text',
+          'title'   => '按钮链接',
+          'default' => '#',
+        ],
+        [
+          'id'    => '_color',
+          'type'  => 'color',
+          'title' => '按钮颜色',
+        ]
+      ],
+    ]
+
+  )
+));
+function capalot_home_background_buttons($args, $instance)
+{
+
+  $instance = array_merge(
+    array(
+      'title' => '主标题',
+      'sub_title' => '副标题',
+    ),
+    $instance
+  );
+
+  get_template_part('template-parts/widget/home/background-buttons', '', $instance);
 }
 

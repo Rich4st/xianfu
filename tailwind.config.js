@@ -17,8 +17,10 @@ module.exports = {
           'max-width': '80rem',
           'margin': '0 auto',
           'padding': '0 0.5rem',
-          // media query
-          '@screen sm': {
+          '@screen lg': {
+            'padding': '0 1rem',
+          },
+          '@screen lg': {
             'padding': '0 0',
           },
         },
