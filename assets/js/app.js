@@ -45,6 +45,11 @@ let capalot = {
     if (!switcher) return;
 
     switcher.addEventListener('click', function () {
+      const icons = switcher.querySelectorAll('svg');
+      icons.forEach(icon => icon.classList.toggle('hidden'));
+
+      switcher.setAttribute('aria-checked', switcher.getAttribute('aria-checked') === 'true' ? 'false' : 'true');
+
       html.toggleClass('dark');
     })
   },
