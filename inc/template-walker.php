@@ -1,73 +1,72 @@
 <?php
 
-class Capalot_Walker_Nav_Menu  extends Walker_Nav_Menu
+class Capalot_Walker_Nav_Menu extends Walker_Nav_Menu
 {
 
-  public $db_fields = array(
-    'parent' => 'menu_id_parent',
-    'id'     => 'db_id'
-  );
+  public $db_fields = array('parent' => 'menu_item_parent', 'id' => 'db_id');
   protected $mega;
 
-  public  function __construct($mega = false)
+  public function __construct($mega = false)
   {
     $this->mega = $mega;
   }
 
-  public function start_lvl(&$output, $depth = 0, $args = null)
+  public function start_lvl(&$output, $depth = 0, $args = array())
   {
     $indent = str_repeat("\t", $depth);
     $output .= "\n$indent<ul class=\"sub-menu\">\n";
   }
 
-  public function end_lvl(&$output, $depth = 0, $args = null)
+  public function end_lvl(&$output, $depth = 0, $args = array())
   {
     $indent = str_repeat("\t", $depth);
     $output .= "$indent</ul>\n";
   }
 
-  public function start_el(&$output, $data_object, $depth = 0, $args = null, $current_object_id = 0)
+  public function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0)
   {
-    $indent       = ($depth) ? str_repeat("\t", $depth) : '';
-    $classes      = empty($data_object->classes) ? array() : (array) $data_object->classes;
+    $indent = ($depth) ? str_repeat("\t", $depth) : '';
+
+    $classes = empty($item->classes) ? array() : (array) $item->classes;
+
     $keep_classes = ['menu-item', 'menu-item-has-children'];
+    $classes = array_intersect($classes, $keep_classes);
 
-    $classes     = array_intersect($classes, $keep_classes);
-    $class_name  = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $data_object, $args, $depth));
-    $class_names = $class_name ? ' class="' . esc_attr($class_name) . '"' : '';
+    $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args, $depth));
+    $class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
 
-    $current_object_id = '';
+    $id = '';
 
-    $output .= $indent . '<li' . $current_object_id . $class_names . '>';
+    $output .= $indent . '<li' . $id . $class_names . '>';
 
     $atts           = array();
-    $atts['title']  = !empty($data_object->attr_title) ? $data_object->attr_title : '';
-    $atts['target'] = !empty($data_object->target) ? $data_object->target : '';
-    $atts['rel']    = !empty($data_object->xfn) ? $data_object->xfn : '';
-    $atts['href']   = !empty($data_object->url) ? $data_object->url : '';
+    $atts['title']  = !empty($item->attr_title) ? $item->attr_title : '';
+    $atts['target'] = !empty($item->target) ? $item->target : '';
+    $atts['rel']    = !empty($item->xfn) ? $item->xfn : '';
+    $atts['href']   = !empty($item->url) ? $item->url : '';
 
-    $atts = apply_filters('nav_menu_link_attributes', $atts, $data_object, $args, $depth);
+    $atts = apply_filters('nav_menu_link_attributes', $atts, $item, $args, $depth);
 
     $attributes = '';
     foreach ($atts as $attr => $value) {
       if (!empty($value)) {
-        $value       = ('href' === $attr) ? esc_url($value) : esc_attr($value);
+        $value = ('href' === $attr) ? esc_url($value) : esc_attr($value);
         $attributes .= ' ' . $attr . '="' . $value . '"';
       }
     }
 
-    $nav_icon = get_post_meta($data_object->ID, 'menu_icon', true);
+    $nav_icon = get_post_meta($item->ID, 'menu_icon', true);
     if (!empty($nav_icon)) {
-      $data_object->title = '<i class="' . $nav_icon . ' me-1"></i>' . $data_object->title;
+      $item->title = '<i class="' . $nav_icon . ' me-1"></i>' . $item->title;
     }
 
     $item_output = $args->before;
     $item_output .= '<a' . $attributes . '>';
-    $item_output .= $args->link_before . apply_filters('the_title', $data_object->title, $data_object->ID) . $args->link_after;
+    $item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
     $item_output .= '</a>';
     $item_output .= $args->after;
 
-    $output .= apply_filters('walker_nav_menu_start_el', $item_output, $data_object, $depth, $args);
+    $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
   }
 
   public function end_el(&$output, $item, $depth = 0, $args = array())
@@ -75,18 +74,12 @@ class Capalot_Walker_Nav_Menu  extends Walker_Nav_Menu
     $output .= "</li>\n";
   }
 
-  public function display_element($element, &$children_elements, $max_depth, $depth, $args, &$output)
+  public function display_element($element, &$children_elements, $max_depth, $depth = 0, $args, &$output)
   {
-    if (!$element) {
-      return;
-    }
-
     $id_field = $this->db_fields['id'];
-
     if (is_object($args[0])) {
       $args[0]->has_children = !empty($children_elements[$element->$id_field]);
     }
-
     return parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
   }
 
