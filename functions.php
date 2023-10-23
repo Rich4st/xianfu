@@ -9,6 +9,12 @@ function theme_setup()
   add_filter('pre_option_link_manager_enabled', '__return_true');
   // 小工具选择性刷新
   add_theme_support('customize-selective-refresh-widgets');
+  // 顶部菜单
+  register_nav_menus(
+    array(
+      'main-menu' => '全站顶部菜单',
+    )
+  );
 }
 add_action('after_setup_theme', 'theme_setup');
 
@@ -48,3 +54,5 @@ require_once get_template_directory() . '/inc/template-hooks.php';
 // ajax
 require_once get_template_directory() . '/inc/template-ajax.php';
 
+// 重写内置类
+require_once get_template_directory() . '/inc/template-walker.php';
