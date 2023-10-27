@@ -11,6 +11,7 @@ let capalot = {
     capalot.load_more();
     capalot.attribute_click();
     capalot.popper_init();
+    capalot.side_menu();
   },
 
   ajax: function ({ data, beforeSend, success, complete, error = () => console.log('error') }) {
@@ -121,7 +122,7 @@ let capalot = {
   },
 
   // popper
-  popper_init: function() {
+  popper_init: function () {
     const buttons = document.querySelectorAll('.popper-button')
 
     if (buttons.length <= 0) return;
@@ -138,6 +139,58 @@ let capalot = {
         arrow: true,
       })
     })
+  },
+
+  // side-menu
+  side_menu: function () {
+    const openButton = document.getElementById("menu-icon");
+    const closeButton = document.getElementById("closeSidebar");
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+
+    openButton.addEventListener("click", function () {
+      sidebar.classList.remove("translate-x-full");
+      overlay.classList.remove("hidden");
+    });
+
+    closeButton.addEventListener("click", function () {
+      sidebar.classList.add("translate-x-full");
+      overlay.classList.add("hidden");
+      overlay.classList.remove("opacity-50");
+    });
+
+    overlay.addEventListener("click", function () {
+      sidebar.classList.add("translate-x-full");
+      overlay.classList.add("hidden");
+    });
+
+    const menuItems = document.querySelectorAll(".menu-item-has-children");
+
+    menuItems.forEach(menu => {
+      menu.addEventListener('click', function () {
+        const subMenu = menu.querySelector('.sub-menu');
+        subMenu.style.display === 'block' ? subMenu.style.display = 'none' : subMenu.style.display = 'block';
+      })
+    })
+
+    const itemsHasChildren = document.querySelectorAll('.sidebar-main-menu .menu-item-has-children');
+
+    itemsHasChildren.forEach(item => {
+      const i = document.createElement('i');
+
+      i.classList.add('iconify');
+      i.classList.add('hover:bg-gray-100');
+      i.setAttribute('data-icon', 'mingcute:right-fill');
+
+      i.style.position = 'absolute';
+      i.style.width = '2rem';
+      i.style.right = '0';
+      i.style.top = '10px';
+      i.style.marginLeft = '1rem'
+
+      item.insertBefore(i, item.firstChild);
+    })
+
   }
 };
 

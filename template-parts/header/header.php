@@ -44,6 +44,8 @@
       <i class="iconify relative -right-2.5" data-icon="carbon:moon"></i>
       <i class="iconify relative -left-2.5 hidden" data-icon="solar:sun-bold-duotone"></i>
     </button>
-    <i class="iconify text-2xl md:hidden" data-icon="ri:menu-line"></i>
+    <i id="menu-icon" class="iconify text-2xl md:hidden" data-icon="ri:menu-line"></i>
   </div>
+
+  <?php get_template_part('template-parts/header/side-menu', '', ''); ?>
 </header>
