@@ -56,3 +56,7 @@ require_once get_template_directory() . '/inc/template-ajax.php';
 
 // 重写内置类
 require_once get_template_directory() . '/inc/template-walker.php';
+
+//SEO
+require_once get_template_directory() . '/inc/template-seo.php';
+

@@ -5,7 +5,7 @@ $post_id = get_the_ID();
 ?>
 
 <main>
-  <h2>single page</h2>
+  <h2><?php echo the_title(); ?></h2>
 </main>
 
 <?php get_footer(); ?>
