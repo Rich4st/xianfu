@@ -386,8 +386,7 @@ function capalot_home_slider_posts_attributes_widget($args, $instance)
  * 首页 - 图片背景按钮
  */
 CSF::createWidget('capalot_home_background_buttons', array(
-  'title'     => 'aa图片背景按钮',
-  'icon'      => 'fa fa-image',
+  'title'     => '图片背景按钮',
   'className' => 'home-background-buttons',
   'desc'      => '首页图片背景按钮',
   'fields'    => array(
