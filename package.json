@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Rich4st/xianfu#readme",
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.10",
     "tailwindcss": "^3.3.3"
   }
 }
