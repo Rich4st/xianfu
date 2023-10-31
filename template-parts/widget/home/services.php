@@ -34,7 +34,7 @@ extract($args);
       <li>
         <div class="flex items-center">
           <div class="w-1/3">
-            <img src="<?php echo $item['_img']; ?>" alt="<?php echo $item['_title']; ?>">
+            <img src="<?php echo $item['_img']; ?>" alt="<?php echo $item['_title']; ?>" alt="<?php echo $item['_title']; ?>">
           </div>
           <div class="w-2/3 ml-4">
             <h3 class="text-2xl font-bold mb-4">
@@ -50,7 +50,7 @@ extract($args);
   </ul>
   <?php if ($is_show_button) : ?>
     <button class="btn text-lg font-semibold px-8 py-3 group flex items-center mx-auto mt-4">
-      <a href="<?php echo $button_href; ?>">
+      <a aria-label="<?php echo $button_text; ?>" href="<?php echo $button_href; ?>">
         <?php echo $button_text; ?>
       </a>
       <i class="iconify ml-2 group-hover:translate-x-1 duration-300" data-icon="ri:arrow-right-line"></i>
