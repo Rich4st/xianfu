@@ -459,3 +459,84 @@ function capalot_home_background_buttons($args, $instance)
   get_template_part('template-parts/widget/home/background-buttons', '', $instance);
 }
 
+/**
+ * 首页 - Services模块
+ */
+CSF::createWidget('capalot_home_services', array(
+  'title'     => 'Services模块',
+  'className' => 'home-Services',
+  'desc'      => '介绍服务模块',
+  'fields'    => array(
+
+    [
+      'id'      => 'title',
+      'type'    => 'text',
+      'title'   => '标题',
+      'default' => '主标题'
+    ],
+
+    [
+      'id'      => 'data',
+      'type'    => 'group',
+      'title'   => '服务模块配置',
+      'fields'  => array(
+
+        [
+          'id'      => '_title',
+          'type'    => 'text',
+          'title'   => '服务标题',
+          'default' => '服务一'
+        ],
+
+        [
+          'id'      => '_img',
+          'type'    => 'upload',
+          'title'   => '上传图片',
+          'default' => get_template_directory_uri() . '/assets/img/services/1.png'
+        ],
+
+        [
+          'id'      => '_content',
+          'type'    => 'textarea',
+          'title'   => '服务介绍',
+          'default' => '服务介绍'
+        ]
+
+      )
+    ],
+
+    [
+      'id'      => 'is_show_button',
+      'type'    => 'switcher',
+      'title'   => '是否显示按钮',
+      'default' => true
+    ],
+
+    [
+      'id'         => 'button_text',
+      'type'       => 'text',
+      'title'      => '按钮文字',
+      'dependency' => array('is_show_button', '==', 'true'),
+    ],
+
+    [
+      'id'         => 'button_href',
+      'type'       => 'text',
+      'title'      => '按钮链接',
+      'dependency' => array('is_show_button', '==', 'true'),
+    ],
+
+  )
+));
+function capalot_home_services($args, $instance)
+{
+
+  $instance = array_merge(
+    array(
+      'title' => '主标题',
+    ),
+    $instance
+  );
+
+  get_template_part('template-parts/widget/home/services', '', $instance);
+}
