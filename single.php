@@ -4,8 +4,8 @@ $post_id = get_the_ID();
 
 ?>
 
-<section class="dark:bg-dark flex flex-col lg:flex-row md:gap-8 px-4 items-center justify-center">
-  <div class="prose prose-xl prose-p:text-base prose-h1:mb-8">
+<section class="dark:bg-dark flex flex-col lg:flex-row md:gap-8 px-4 justify-center">
+  <div class="prose prose-xl prose-p:text-base prose-h1:mb-8 dark:text-gray-400">
     <div class="my-2">
       <?php
       $categories = get_the_category($post_id);
@@ -23,7 +23,7 @@ $post_id = get_the_ID();
       <?php echo the_content(); ?>
     </div>
   </div>
-  <div id="sidebar" class="w-80">
+  <div id="sidebar" class="md:max-w-[18rem] py-20">
     <?php dynamic_sidebar('single-sidebar'); ?>
   </div>
 </section>

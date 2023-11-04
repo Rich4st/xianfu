@@ -552,3 +552,43 @@ function capalot_home_services($args, $instance)
 
   get_template_part('template-parts/widget/home/services', '', $instance);
 }
+
+/**
+ * 侧边栏 - 作者信息
+ */
+CSF::createWidget('capalot_side_author', array(
+  'title'     => '作者介绍模块',
+  'className' => 'side-author',
+  'desc'      => '侧边栏作者介绍模块',
+  'fields'    => array(
+
+    [
+      'id'      => 'img',
+      'type'    => 'upload',
+      'title'   => '作者照片',
+    ],
+
+    [
+      'id'      => 'name',
+      'type'    => 'text',
+      'title'   => '作者姓名',
+    ],
+
+    [
+      'id'      => 'info',
+      'type'    => 'textarea',
+      'title'   => '作者介绍',
+    ]
+
+  )
+));
+function capalot_side_author($args, $instance)
+{
+
+  $instance = array_merge(
+    array(),
+    $instance
+  );
+
+  get_template_part('template-parts/widget/side/author', '', $instance);
+}
