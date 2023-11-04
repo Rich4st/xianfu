@@ -4,8 +4,8 @@ $post_id = get_the_ID();
 
 ?>
 
-<section class="dark:bg-dark flex flex-col lg:flex-row md:gap-8 px-4 items-center justify-between">
-  <div class="prose lg:prose-xl">
+<section class="dark:bg-dark flex flex-col lg:flex-row md:gap-8 px-4 items-center justify-center">
+  <div class="prose">
     <div class="my-2">
       <?php
       $categories = get_the_category($post_id);
@@ -15,7 +15,7 @@ $post_id = get_the_ID();
             <?php echo $category->name; ?>
           </a>
       <?php endforeach;
-        endif; ?>
+      endif; ?>
     </div>
 
     <h1><?php echo the_title(); ?></h1>
@@ -24,7 +24,7 @@ $post_id = get_the_ID();
     </div>
   </div>
   <div id="sidebar" class="w-80">
-    side bar
+    <?php dynamic_sidebar('single-sidebar'); ?>
   </div>
 </section>
 
