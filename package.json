@@ -2,9 +2,11 @@
   "name": "xianfu",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/tailwind.css --watch"
+    "dev": "vite",
+    "build": "vite build",
+    "bump": "npx taze -w"
   },
   "repository": {
     "type": "git",
@@ -19,6 +21,10 @@
   "homepage": "https://github.com/Rich4st/xianfu#readme",
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
-    "tailwindcss": "^3.3.3"
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.3",
+    "vite": "^4.5.0",
+    "vite-plugin-live-reload": "^3.0.2"
   }
 }
