@@ -4,7 +4,7 @@ $post_id = get_the_ID();
 
 ?>
 
-<section class="dark:bg-dark xf-container flex flex-col lg:flex-row md:gap-8 px-4 items-center justify-between">
+<section class="dark:bg-dark flex flex-col lg:flex-row md:gap-8 px-4 items-center justify-between">
   <div class="prose lg:prose-xl">
     <div class="my-2">
       <?php

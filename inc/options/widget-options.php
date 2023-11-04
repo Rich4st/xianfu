@@ -140,6 +140,13 @@ CSF::createWidget('capalot_home_latest_posts_widget', array(
     ),
 
     array(
+      'id'  => 'bg_color',
+      'type' => 'color',
+      'title' => '背景颜色',
+      'default' => '#fff',
+    ),
+
+    array(
       'id'      => 'style',
       'type'    => 'image_select',
       'title'   => '风格配置',
@@ -293,7 +300,7 @@ function capalot_home_slider_posts_widget($args, $instance)
 }
 
 /**
- * 首页 - 幻灯片文章组件
+ * 首页 - 幻灯片文章组件 - 带属性切换
  */
 CSF::createWidget('capalot_home_slider_posts_attributes_widget', array(
   'title'     => '幻灯片组件-带属性切换',
@@ -473,6 +480,11 @@ CSF::createWidget('capalot_home_services', array(
       'type'    => 'text',
       'title'   => '标题',
       'default' => '主标题'
+    ],
+
+    [
+      'id'      => 'bg_color',
+      'type'    => 'color',
     ],
 
     [

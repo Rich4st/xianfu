@@ -5,29 +5,12 @@ module.exports = {
   theme: {
     extend: {
       backgroundColor: {
-        'dark': '#0c0c0c',
-        'dark-card': '#121212',
+        'dark': '#0c0c0c !important',
+        'dark-card': '#121212 !important',
       }
     },
   },
   plugins: [
-    function ({ addUtilities }) {
-      const newUtilities = {
-        '.xf-container': {
-          'max-width': '80rem',
-          'margin': '0 auto',
-          'padding': '0 0.5rem',
-          '@screen lg': {
-            'padding': '0 1rem',
-          },
-          '@screen lg': {
-            'padding': '0 0',
-          },
-        },
-      }
-
-      addUtilities(newUtilities, ['responsive', 'hover'])
-    },
     require('@tailwindcss/typography')
   ],
 }
