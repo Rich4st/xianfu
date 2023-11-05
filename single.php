@@ -24,6 +24,7 @@ $post_id = get_the_ID();
     </div>
   </div>
   <div id="sidebar" class="md:max-w-[18rem] py-20">
+    <?php get_search_form(); ?>
     <?php dynamic_sidebar('single-sidebar'); ?>
   </div>
 </section>
