@@ -44,7 +44,24 @@ CSF::createSection($prefix, array(
       'title' => '网站暗黑模式',
       'desc' => '开启后,网站可以切换白天黑夜模式',
       'default' => false,
-    )
+    ),
+
+
+    array(
+      'id'          => 'site_default_color_mode',
+      'type'        => 'radio',
+      'inline'      => true,
+      'title'       => '网站默认颜色模式',
+      'desc'        => '自动模式为当地时间早6点开始到晚18点为白天模式,其后为黑夜模式,系统自动识别时区。',
+      'placeholder' => '',
+      'dependency'  => array('site_dark_mode', '==', 'true'),
+      'options'     => array(
+        'light' => '亮色（白天）',
+        'dark'  => '深色（黑夜）',
+        'auto'  => '自动（早晚）',
+      ),
+      'default'     => 'light',
+    ),
 
   ),
 ));
@@ -76,21 +93,6 @@ CSF::createSection($prefix, array(
       'title'   => '网站亮色暗黑模式切换',
       'desc'    => '开启后,网站可以切换白天黑夜模式',
       'default' => true,
-    ),
-
-    array(
-      'id'          => 'site_default_color_mode',
-      'type'        => 'radio',
-      'inline'      => true,
-      'title'       => '网站默认颜色模式',
-      'desc'        => '自动模式为当地时间早6点开始到晚18点为白天模式,其后为黑夜模式,系统自动时候别时区。',
-      'placeholder' => '',
-      'options'     => array(
-        'light' => '亮色（白天）',
-        'dark'  => '深色（黑夜）',
-        'auto'  => '自动（早晚）',
-      ),
-      'default'     => 'light',
     ),
 
     array(

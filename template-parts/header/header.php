@@ -1,4 +1,6 @@
 <?php
+$current_theme = capalot_get_site_theme();
+
 
 ?>
 
@@ -42,8 +44,8 @@
     </div>
     <div class="flex items-center space-x-4">
       <button aria-checked="false" class="toggle-dark rounded-full border hover:border-gray-400 dark:border-gray-700 dark:hover:border-gray-500 transition-all duration-300 px-4 py-1 relative">
-        <i class="iconify relative -right-2.5" data-icon="carbon:moon"></i>
-        <i class="iconify relative -left-2.5 hidden" data-icon="solar:sun-bold-duotone"></i>
+        <i class="iconify relative -right-2.5 <?php echo $current_theme === 'light' ? 'hidden' : '' ?>" data-icon="carbon:moon"></i>
+        <i class="iconify relative -left-2.5  <?php echo $current_theme === 'dark' ? 'hidden' : '' ?>" data-icon="solar:sun-bold-duotone"></i>
       </button>
       <i id="menu-icon" class="iconify text-2xl md:hidden" data-icon="ri:menu-line"></i>
     </div>

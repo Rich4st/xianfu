@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html <?php language_attributes();?> class="<?php echo capalot_get_site_theme(); ?>">
 
 <head>
   <meta charset="UTF-8">

@@ -51,7 +51,17 @@ let capalot = {
 
       switcher.setAttribute('aria-checked', switcher.getAttribute('aria-checked') === 'true' ? 'false' : 'true');
 
-      html.toggleClass('dark');
+      if (html.hasClass('light')) {
+        html.removeClass('light');
+        html.addClass('dark');
+
+        document.cookie = "theme=dark;path=/";
+      } else {
+        html.removeClass('dark');
+        html.addClass('light');
+
+        document.cookie = "theme=light;path=/";
+      }
     })
   },
 
