@@ -630,3 +630,49 @@ function capalot_side_categories($args, $instance)
 
   get_template_part('template-parts/widget/side/categories', '', $instance);
 }
+
+/**
+ * 侧边栏 - 近期文章
+ */
+CSF::createWidget('capalot_side_latest_post', array(
+  'title'     => '【侧边栏】近期文章模块',
+  'className' => 'side-latest-post',
+  'desc'      => '侧边栏近期文章模块',
+  'fields'    => array(
+
+    [
+      'id'      => 'title',
+      'type'    => 'text',
+      'title'   => '标题',
+      'default' => '近期文章'
+    ],
+
+    [
+      'id'      => 'exclude',
+      'type'    => 'checkbox',
+      'inline'  => true,
+      'title'   => '要排除的分类',
+      'options' => 'categories',
+    ],
+
+    [
+      'id'      => 'total',
+      'type'    => 'number',
+      'title'   => '共展示多少文章',
+      'unit'    => '篇',
+      'default' => '6',
+    ]
+  )
+));
+function capalot_side_latest_post($args, $instance)
+{
+
+  $instance = array_merge(
+    array(
+      'title' => '近期文章',
+    ),
+    $instance
+  );
+
+  get_template_part('template-parts/widget/side/latest-post', '', $instance);
+}
