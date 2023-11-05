@@ -57,6 +57,9 @@ function widget_init()
 }
 add_action('widgets_init', 'widget_init');
 
+// core
+require_once get_template_directory() . '/inc/capalot.php';
+
 // codestar framework
 require_once get_template_directory() . '/inc/template-csf.php';
 
