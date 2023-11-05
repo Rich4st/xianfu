@@ -11,7 +11,7 @@ $post_id = get_the_ID();
       $categories = get_the_category($post_id);
       if ($categories) :
         foreach ($categories as $category) : ?>
-          <a href="<?php echo get_category_link($category->term_id); ?>" class="text-gray-500 hover:text-gray-700">
+          <a class="link" href="<?php echo get_category_link($category->term_id); ?>" class="text-gray-500 hover:text-gray-700">
             <?php echo $category->name; ?>
           </a>
       <?php endforeach;

@@ -18,12 +18,12 @@ extract($args);
 
 ?>
 
-<section>
+<section class="my-12">
   <div class="flex flex-col items-center justify-center md:justify-start">
     <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden">
       <img src="<?php echo $img; ?>" alt="头像" class="w-full h-full object-cover">
     </div>
-    <div class="md:ml-8 mt-4 md:mt-0">
+    <div>
       <p class="text-gray-900 dark:text-gray-100 text-lg font-bold">
         <?php echo $name; ?>
       </p>

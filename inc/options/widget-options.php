@@ -592,3 +592,41 @@ function capalot_side_author($args, $instance)
 
   get_template_part('template-parts/widget/side/author', '', $instance);
 }
+
+/**
+ * 侧边栏 - 文章分类
+ */
+CSF::createWidget('capalot_side_categories', array(
+  'title'     => '【侧边栏】文章分类模块',
+  'className' => 'side-categories',
+  'desc'      => '侧边栏文章分类模块',
+  'fields'    => array(
+
+    [
+      'id'      => 'title',
+      'type'    => 'text',
+      'title'   => '标题',
+      'default' => '文章分类'
+    ],
+
+    [
+      'id'      => 'exclude',
+      'type'    => 'checkbox',
+      'inline'  => true,
+      'title'   => '要排除的分类',
+      'options' => 'categories',
+    ]
+  )
+));
+function capalot_side_categories($args, $instance)
+{
+
+  $instance = array_merge(
+    array(
+      'title' => '文章分类',
+    ),
+    $instance
+  );
+
+  get_template_part('template-parts/widget/side/categories', '', $instance);
+}
