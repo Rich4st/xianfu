@@ -28,7 +28,7 @@ $posts = get_posts([
   <ul class="space-y-2 mt-4">
     <?php foreach($posts as $post) : ?>
       <li>
-        <a class="link" href="<?php echo get_permalink($post->ID); ?>">
+        <a class="link" href="<?php echo get_permalink($post->ID); ?>" aria-label="<?php echo $post->post_title; ?>">
           <?php echo $post->post_title; ?>
         </a>
       </li>
