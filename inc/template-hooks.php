@@ -127,23 +127,28 @@ function capalot_load_more($config)
   </div>';
 }
 
-// 获取商品标签
-function capalot_get_post_tags($post_id = null)
+/**
+ * 获取网站颜色模式
+ *
+ * @return string light | dark
+ */
+function capalot_get_site_theme()
 {
-  if (empty($post_id)) {
-    global $post;
-    $post_id = $post->ID;
-  }
+  $theme = _capalot('site_default_color_mode', 'light');
 
-  // 获取文章标签
-  $post_tags = get_the_tags($post);
+  if($theme === 'auto') {
+    $h = wp_date('H');
 
-  // 输出文章标签
-  if (!empty($post_tags)) {
-    foreach ($post_tags as $tag) {
-      echo '<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#' . $tag->name . '</span>';
+    if($h >= 6 && $h <= 18) {
+      $theme = 'light';
+    } else {
+      $theme = 'dark';
     }
   }
+
+  CCK::has('theme') && ($theme = CCK::get('theme'));
+
+  return esc_attr($theme);
 }
 
 // 获取商品图库
@@ -169,17 +174,4 @@ function capalot_get_product_gallery($post_id = null)
   }
 
   return $gallery;
-}
-
-// 获取商品价格
-function capalot_get_product_price($post_id = null)
-{
-  if (empty($post_id)) {
-    global $post;
-    $post_id = $post->ID;
-  }
-
-  $product_info = get_post_meta($post_id, 'product_info', true);
-
-  echo $product_info['product_price'];
 }

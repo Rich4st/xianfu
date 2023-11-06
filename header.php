@@ -1,13 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html <?php language_attributes();?> class="<?php echo capalot_get_site_theme(); ?>">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <meta http-equiv="Cache-Control" content="max-age=3600"> -->
-  <title>xianfu</title>
-  <meta name="description" content="xianfu">
-  <meta name="keywords" content="xianfu">
   <?php wp_head() ?>
 </head>
 

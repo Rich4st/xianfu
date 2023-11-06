@@ -1,6 +1,24 @@
 <?php
 defined('ABSPATH') || exit;
 
+// vite hmr
+function vite_dev_script()
+{
+  if (
+    !defined('VITE_ENV') ||
+    !defined('VITE_DEV_SERVER') ||
+    constant('VITE_ENV') !== 'development'
+  ) {
+    return;
+  }
+
+  $entry_file = constant('VITE_DEV_SERVER') . 'vite.entry.js';
+
+  echo '<script type="module" src="' . esc_attr($entry_file) . '"></script>';
+}
+
+add_action('wp_head', 'vite_dev_script');
+
 function theme_setup()
 {
   // 缩略图功能
@@ -39,6 +57,9 @@ function widget_init()
 }
 add_action('widgets_init', 'widget_init');
 
+// core
+require_once get_template_directory() . '/inc/capalot.php';
+
 // codestar framework
 require_once get_template_directory() . '/inc/template-csf.php';
 
@@ -56,3 +77,7 @@ require_once get_template_directory() . '/inc/template-ajax.php';
 
 // 重写内置类
 require_once get_template_directory() . '/inc/template-walker.php';
+
+//SEO
+require_once get_template_directory() . '/inc/template-seo.php';
+

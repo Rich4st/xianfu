@@ -16,7 +16,7 @@ $bg_style = intval($is_background_fixed) ? 'bg-fixed' : 'bg-scroll';
 
 ?>
 
-<section data-bg="<?php echo $img; ?>" class="lazy <?php echo $bg_style; ?> bg-repeat bg-cover py-8 text-center">
+<section data-bg="<?php echo $img; ?>" class="lazy <?php echo $bg_style; ?> bg-repeat bg-cover py-14 text-center my-8">
   <div>
     <h2 class="dark:text-black">
       <?php echo $title; ?>

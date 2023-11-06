@@ -140,6 +140,13 @@ CSF::createWidget('capalot_home_latest_posts_widget', array(
     ),
 
     array(
+      'id'  => 'bg_color',
+      'type' => 'color',
+      'title' => '背景颜色',
+      'default' => '#fff',
+    ),
+
+    array(
       'id'      => 'style',
       'type'    => 'image_select',
       'title'   => '风格配置',
@@ -293,7 +300,7 @@ function capalot_home_slider_posts_widget($args, $instance)
 }
 
 /**
- * 首页 - 幻灯片文章组件
+ * 首页 - 幻灯片文章组件 - 带属性切换
  */
 CSF::createWidget('capalot_home_slider_posts_attributes_widget', array(
   'title'     => '幻灯片组件-带属性切换',
@@ -386,8 +393,7 @@ function capalot_home_slider_posts_attributes_widget($args, $instance)
  * 首页 - 图片背景按钮
  */
 CSF::createWidget('capalot_home_background_buttons', array(
-  'title'     => 'aa图片背景按钮',
-  'icon'      => 'fa fa-image',
+  'title'     => '图片背景按钮',
   'className' => 'home-background-buttons',
   'desc'      => '首页图片背景按钮',
   'fields'    => array(
@@ -460,3 +466,213 @@ function capalot_home_background_buttons($args, $instance)
   get_template_part('template-parts/widget/home/background-buttons', '', $instance);
 }
 
+/**
+ * 首页 - Services模块
+ */
+CSF::createWidget('capalot_home_services', array(
+  'title'     => 'Services模块',
+  'className' => 'home-Services',
+  'desc'      => '介绍服务模块',
+  'fields'    => array(
+
+    [
+      'id'      => 'title',
+      'type'    => 'text',
+      'title'   => '标题',
+      'default' => '主标题'
+    ],
+
+    [
+      'id'      => 'bg_color',
+      'type'    => 'color',
+    ],
+
+    [
+      'id'      => 'data',
+      'type'    => 'group',
+      'title'   => '服务模块配置',
+      'fields'  => array(
+
+        [
+          'id'      => '_title',
+          'type'    => 'text',
+          'title'   => '服务标题',
+          'default' => '服务一'
+        ],
+
+        [
+          'id'      => '_img',
+          'type'    => 'upload',
+          'title'   => '上传图片',
+          'default' => get_template_directory_uri() . '/assets/img/services/1.png'
+        ],
+
+        [
+          'id'      => '_content',
+          'type'    => 'textarea',
+          'title'   => '服务介绍',
+          'default' => '服务介绍'
+        ]
+
+      )
+    ],
+
+    [
+      'id'      => 'is_show_button',
+      'type'    => 'switcher',
+      'title'   => '是否显示按钮',
+      'default' => true
+    ],
+
+    [
+      'id'         => 'button_text',
+      'type'       => 'text',
+      'title'      => '按钮文字',
+      'dependency' => array('is_show_button', '==', 'true'),
+    ],
+
+    [
+      'id'         => 'button_href',
+      'type'       => 'text',
+      'title'      => '按钮链接',
+      'dependency' => array('is_show_button', '==', 'true'),
+    ],
+
+  )
+));
+function capalot_home_services($args, $instance)
+{
+
+  $instance = array_merge(
+    array(
+      'title' => '主标题',
+    ),
+    $instance
+  );
+
+  get_template_part('template-parts/widget/home/services', '', $instance);
+}
+
+/**
+ * 侧边栏 - 作者信息
+ */
+CSF::createWidget('capalot_side_author', array(
+  'title'     => '作者介绍模块',
+  'className' => 'side-author',
+  'desc'      => '侧边栏作者介绍模块',
+  'fields'    => array(
+
+    [
+      'id'      => 'img',
+      'type'    => 'upload',
+      'title'   => '作者照片',
+    ],
+
+    [
+      'id'      => 'name',
+      'type'    => 'text',
+      'title'   => '作者姓名',
+    ],
+
+    [
+      'id'      => 'info',
+      'type'    => 'textarea',
+      'title'   => '作者介绍',
+    ]
+
+  )
+));
+function capalot_side_author($args, $instance)
+{
+
+  $instance = array_merge(
+    array(),
+    $instance
+  );
+
+  get_template_part('template-parts/widget/side/author', '', $instance);
+}
+
+/**
+ * 侧边栏 - 文章分类
+ */
+CSF::createWidget('capalot_side_categories', array(
+  'title'     => '【侧边栏】文章分类模块',
+  'className' => 'side-categories',
+  'desc'      => '侧边栏文章分类模块',
+  'fields'    => array(
+
+    [
+      'id'      => 'title',
+      'type'    => 'text',
+      'title'   => '标题',
+      'default' => '文章分类'
+    ],
+
+    [
+      'id'      => 'exclude',
+      'type'    => 'checkbox',
+      'inline'  => true,
+      'title'   => '要排除的分类',
+      'options' => 'categories',
+    ]
+  )
+));
+function capalot_side_categories($args, $instance)
+{
+
+  $instance = array_merge(
+    array(
+      'title' => '文章分类',
+    ),
+    $instance
+  );
+
+  get_template_part('template-parts/widget/side/categories', '', $instance);
+}
+
+/**
+ * 侧边栏 - 近期文章
+ */
+CSF::createWidget('capalot_side_latest_post', array(
+  'title'     => '【侧边栏】近期文章模块',
+  'className' => 'side-latest-post',
+  'desc'      => '侧边栏近期文章模块',
+  'fields'    => array(
+
+    [
+      'id'      => 'title',
+      'type'    => 'text',
+      'title'   => '标题',
+      'default' => '近期文章'
+    ],
+
+    [
+      'id'      => 'exclude',
+      'type'    => 'checkbox',
+      'inline'  => true,
+      'title'   => '要排除的分类',
+      'options' => 'categories',
+    ],
+
+    [
+      'id'      => 'total',
+      'type'    => 'number',
+      'title'   => '共展示多少文章',
+      'unit'    => '篇',
+      'default' => '6',
+    ]
+  )
+));
+function capalot_side_latest_post($args, $instance)
+{
+
+  $instance = array_merge(
+    array(
+      'title' => '近期文章',
+    ),
+    $instance
+  );
+
+  get_template_part('template-parts/widget/side/latest-post', '', $instance);
+}
