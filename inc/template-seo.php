@@ -51,15 +51,12 @@ class CapalotSEO
       $keywords = trim(strip_tags($keywords));
       $desc     = trim(strip_tags($desc));
 
+      is_singular() ? $title .= ' - ' . get_bloginfo('name') : '';
+
       echo '<title>' . $title . '</title>';
-      echo '<meta name="keywords" content="' . $keywords . '" />';
       echo '<meta name="description" content="' . $desc . '" />';
+      echo '<meta name="keywords" content="' . $keywords . '" />';
     }
   }
 
-  //标题修正优化
-  public function _wp_get_document_title()
-  {
-      return '123456';
-  }
 }
