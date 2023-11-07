@@ -18,7 +18,7 @@ $post_id = get_the_ID();
       endif; ?>
     </div>
 
-    <!-- <h1><?php echo the_title(); ?></h1> -->
+    <h1><?php echo the_title(); ?></h1>
     <div>
       <?php echo the_content(); ?>
     </div>
