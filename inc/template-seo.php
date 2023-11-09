@@ -46,6 +46,10 @@ class CapalotSEO
       $desc     = get_term_meta(get_queried_object_id(), 'cate_description', true);
     }
 
+    if(_capalot('site_favicon')) {
+      echo '<link rel="shortcut icon" href="' . _capalot('site_favicon') . '" />';
+    }
+
     if (!empty($keywords) || !empty($desc) || !empty($title)) {
       $title    = trim(strip_tags($title));
       $keywords = trim(strip_tags($keywords));
