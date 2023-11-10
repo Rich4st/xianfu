@@ -28,9 +28,9 @@ class CapalotSEO
   {
     global $post;
 
+    $title    = '';
     $keywords = '';
     $desc     = '';
-    $title    = '';
 
     if (is_home() || is_front_page()) {
       $title            = get_bloginfo('name') . $this->separator . get_bloginfo('description');
@@ -41,7 +41,9 @@ class CapalotSEO
       $keywords = get_post_meta($post->ID, 'post_keywords', true);
       $desc     = get_post_meta($post->ID, 'post_description', true);
     } elseif (is_category() || is_tag()) {
-      $title    = single_cat_title('', false);
+      // archive页面SEO设置
+      $title    = get_term_meta(get_queried_object_id(), 'title', true) ?? single_cat_title('', false);
+      $title    = $title . ' - ' . get_bloginfo('name');
       $desc     = get_term_meta(get_queried_object_id(), 'description', true);
       $keywords = get_term_meta(get_queried_object_id(), 'keywords', true);
     }
