@@ -3,22 +3,3 @@
     <path fill="currentColor" d="M12 4.586l-8.293 8.293 1.414 1.414L12 7.414l6.879 6.879 1.414-1.414z"></path>
   </svg>
 </button>
-
-<script>
-  const backToTop = document.querySelector('#back-to-top');
-
-  backToTop.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  });
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-      backToTop.classList.remove('hidden');
-    } else {
-      backToTop.classList.add('hidden');
-    }
-  });
-</script>

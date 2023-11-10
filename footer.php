@@ -19,7 +19,7 @@
 </footer>
 
 <?php get_template_part('template-parts/header/header', '', [
-  'fixed' => 'fixed top-0 left-0 right-0 z-50 hidden ca-header duration-300 transition-all ease-in-out'
+  'fixed' => 'fixed top-0 left-0 right-0 z-50 hidden ca-header'
 ]) ?>
 <?php get_template_part('template-parts/components/back-to-top') ?>
 
