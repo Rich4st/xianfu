@@ -25,10 +25,11 @@ if (!function_exists('_capalot')) {
 if (!class_exists('CSF')) {
 
   $options = array(
-    '/plugins/codestar-framework/codestar-framework.php', //框架CSF
-    '/options/admin-options.php', //后台设置
-    '/options/metabox-options.php', //文章高级设置
-    '/options/widget-options.php', //小工具设置
+    '/plugins/codestar-framework/codestar-framework.php', // 框架CSF
+    '/options/admin-options.php',                         // 后台设置
+    '/options/metabox-options.php',                       // 文章高级设置
+    '/options/widget-options.php',                        // 小工具设置
+    '/options/taxonomy-options.php',                      // 分类设置
   );
 
 
