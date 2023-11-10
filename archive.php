@@ -20,14 +20,19 @@ $posts = new WP_Query($query_args);
 ?>
 
 <section>
-  <div class="bg-gray-700">
-    <h1 class="text-center py-10 font-semibold text-white dark:text-gray-900">
+  <div class="bg-primary dark:bg-dark text-center py-12 text-white">
+    <h1 class="font-semibold text-white">
       <?php
-      if ($category) {
+      if ($category)
         echo '分类: ' . $category->name;
-      }
       ?>
     </h1>
+    <p class="mt-2 excerpt">
+      <?php
+      if ($category)
+        echo $category->description;
+      ?>
+    </p>
   </div>
   <div class="ca-container my-8 ca-page-flex">
     <div>
