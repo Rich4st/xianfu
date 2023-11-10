@@ -9,7 +9,7 @@ extract($args);
 
 ?>
 
-<header class="<?php echo $fixed; ?> bg-white dark:bg-dark shadow-[0_2px_10px_0_rgba(36,50,66,0.075)]">
+<header class="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-dark shadow-[0_2px_10px_0_rgba(36,50,66,0.075)]">
   <div class="max-w-7xl mx-auto px-4 lg:px-0 h-20 dark:text-gray-100 flex items-center justify-between">
     <div class="flex items-center">
       <div class="pr-4 border-r dark:border-gray-700">
@@ -27,7 +27,7 @@ extract($args);
         ?>
       </div>
 
-      <nav class="main-menu navbar hidden lg:block">
+      <nav class="main-menu navbar hidden lg:block z-[999]">
         <?php
 
         $cached_menu = wp_nav_menu(array(

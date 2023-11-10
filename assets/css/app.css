@@ -24,6 +24,9 @@
     background-color: black !important;
   }
 }
+body {
+  padding-top: 80px;
+}
 
 #default-swiper .swiper-slide img {
   position: relative;
