@@ -136,10 +136,10 @@ function capalot_get_site_theme()
 {
   $theme = _capalot('site_default_color_mode', 'light');
 
-  if($theme === 'auto') {
+  if ($theme === 'auto') {
     $h = wp_date('H');
 
-    if($h >= 6 && $h <= 18) {
+    if ($h >= 6 && $h <= 18) {
       $theme = 'light';
     } else {
       $theme = 'dark';
@@ -151,27 +151,27 @@ function capalot_get_site_theme()
   return esc_attr($theme);
 }
 
-// 获取商品图库
-function capalot_get_product_gallery($post_id = null)
+/**
+ * 获取分页查询
+ * @param $page 当前页
+ * @param $max  最大页数
+ */
+function capalot_pagination($page = 0, $max = 0)
 {
-  if (empty($post_id)) {
-    global $post;
-    $post_id = $post->ID;
+  $page_links = paginate_links(array(
+    'base'               => add_query_arg('page', '%#%'),
+    'format'             => '?page=%#%',
+    'total'              => intval($max),
+    'current'            => intval($page),
+    'before_page_number' => '<span aria-label="Page ' . esc_attr($page) . '">',
+    'after_page_number'  => '</span>',
+    'show_all'           => false
+  ));
+
+  if ($page_links) {
+    echo
+    '<nav class="ca-pagination my-3 text-center text-primary font-bold">
+    ' . $page_links . '
+    </nav>';
   }
-
-  $gallery_ids = get_post_meta($post_id, 'product_images', true);
-
-  $gallery_ids = explode(',', $gallery_ids);
-
-  if (empty($gallery_ids)) {
-    return [];
-  }
-
-  $gallery = [];
-
-  foreach ($gallery_ids as $id) {
-    $gallery[] = wp_get_attachment_image_src($id, 'full')[0];
-  }
-
-  return $gallery;
 }

@@ -26,7 +26,7 @@ $config = [
 
 ?>
 
-<section class="xf-container">
+<section class="ca-container">
   <?php if ($args['title'] || $args['desc']) : ?>
     <div class="my-8 text-center text-gray-400">
       <?php if ($args['title']) : ?>

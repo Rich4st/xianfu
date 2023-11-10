@@ -25,7 +25,7 @@ extract($args);
 ?>
 
 <section class="dark:bg-dark py-8" style="background-color: <?php echo $bg_color; ?>;">
-  <div class="xf-container">
+  <div class="ca-container">
     <h2 class="text-center mb-8">
       <?php echo $title ?? '服务'; ?>
     </h2>

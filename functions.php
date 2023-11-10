@@ -40,20 +40,29 @@ function widget_init()
 {
 
   register_sidebar(array(
-    'name'          => '首页模块',
     'id'            => 'home-module',
+    'name'          => '首页模块',
     'description'   => '首页模块主内容区域',
     'before_widget' => '<div id="%1$s" class="home-widget %2$s">',
     'after_widget'  => '</div>',
   ));
 
   register_sidebar(array(
-    'name'          => '文章侧边栏',
     'id'            => 'single-sidebar',
+    'name'          => '文章侧边栏',
     'description'   => '文章模块侧边栏区域',
     'before_widget' => '<div id="%1$s" class="widget %2$s">',
     'after_widget'  => '</div>',
   ));
+
+  register_sidebar(array(
+    'id'          => 'page-sidebar',
+    'name'        => '其他页面侧边',
+    'description' => '其他页面侧边栏区域',
+    'before_widget' => '<div id="%1$s" class="widget %2$s">',
+    'after_widget'  => '</div>',
+  ));
+
 }
 add_action('widgets_init', 'widget_init');
 

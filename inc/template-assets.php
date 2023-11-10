@@ -11,7 +11,7 @@ function load_assets()
   wp_enqueue_script('jquery', get_template_directory_uri() . '/assets/js/jquery.min.js', array(), '3.6.0', false);
 
   // tailwind
-  wp_enqueue_style('tailwind', get_template_directory_uri() . '/assets/css/tailwind.css', array(), '1.0.0', 'all');
+  wp_enqueue_style('tailwind', get_template_directory_uri() . '/dist/vite.entry.css', array(), '1.0.0', 'all');
   // app
   wp_enqueue_style('app', get_template_directory_uri() . '/assets/css/app.css', array(), '1.0.0', 'all');
   wp_enqueue_script('app', get_template_directory_uri() . '/assets/js/app.js', array(), '1.0.0', true);

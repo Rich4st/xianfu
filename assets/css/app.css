@@ -1,3 +1,8 @@
+:root{
+  --ca-primary-color: #8054b3;
+  --ca-secondary-color: #aa88d8;
+}
+
 #default-swiper .swiper-slide img {
   position: relative;
   left: 50%;
@@ -314,4 +319,12 @@
 .sidebar-main-menu .nav-list .sub-menu .sub-menu li {
   width: 100%;
   float: none;
+}
+
+/* 分页 */
+.ca-pagination .current {
+  color: black;
+}
+.dark .ca-pagination .current {
+  color: rgb(120, 120, 120);
 }
