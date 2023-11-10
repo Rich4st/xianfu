@@ -1,13 +1,5 @@
 <?php
 
-if (empty($args)) { ?>
-
-  <h2>请正确配置组件</h2>
-
-<?php
-  exit;
-}
-
 /**
  * @var string $title   标题
  * @var string $exclude 要排除显示的文章分类
@@ -16,9 +8,13 @@ if (empty($args)) { ?>
  */
 extract($args);
 
+if(empty($title)) {
+  $title = '近期文章';
+}
+
 $posts = get_posts([
-  'numberposts' => $total,
-  'category'    => $exclude,
+  'numberposts' => $total ?? 6,
+  'category__not_in' => $exclude,
 ]);
 
 ?>
