@@ -1,30 +1,26 @@
 <?php
 
 /**
- * @var string $title   标题
- * @var string $total   显示的文章数量
- * @var string $exclude 要排除显示的文章分类
- * @var string include  要显示的文章分类      - get_template_parts时使用
+ * @var string $title             标题
+ * @var string $total             显示的文章数量
+ * @var string $exclude           要排除显示的文章分类
+ * @var string $only_current_cat  仅显示当前分类文章
  *
  */
 extract($args);
 
-if(empty($title)) {
-  $title = '近期文章';
-}
-
-if(empty($total)) {
-  $total = 10;
+if($only_current_cat) {
+  $include = array(get_queried_object()->term_id);
 }
 
 $posts = new WP_Query(array(
-  'post_type'       => 'post',
-  'post_status'     => 'publish',
-  'posts_per_page'  => $total,
-  'orderby'         => 'date',
-  'order'           => 'DESC',
+  'post_type'        => 'post',
+  'post_status'      => 'publish',
+  'posts_per_page'   => $total,
+  'orderby'          => 'date',
+  'order'            => 'DESC',
   'category__not_in' => $exclude,
-  'category__in'    => $include,
+  'category__in'     => $include,
 ));
 
 ?>

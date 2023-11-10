@@ -8,6 +8,7 @@ module.exports = {
         'dark': '#0c0c0c !important',
         'dark-card': '#121212 !important',
         'primary': '#8054b3',
+        'primary-hover': '#aa88d8'
       },
     },
   },

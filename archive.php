@@ -47,10 +47,9 @@ $posts = new WP_Query($query_args);
       ?>
     </div>
     <div class="sm:max-w-xs">
-      <?php get_search_form(); ?>
-      <?php get_template_part('template-parts/widget/side/latest-post', '', array(
-        'include' => $category->term_id,
-      )) ?>
+      <?php get_search_form();
+      dynamic_sidebar('page-sidebar');
+      ?>
     </div>
   </div>
 </section>

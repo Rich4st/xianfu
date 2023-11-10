@@ -5,15 +5,15 @@
   <ul class="flex flex-col md:flex-row items-center justify-evenly">
     <li>
       Copyright © 2023
-      <a class="text-primary" href="<?php echo home_url(); ?>" aria-label="">先富网站</a>
+      <a class="primary" href="<?php echo home_url(); ?>" aria-label="">先富网站</a>
       版权所有
     </li>
     <li>
       客服信箱: hi.xianfu@gmail.com
     </li>
     <li>
-      <a class="text-primary hover:text-sky-500" href="">服务条款</a>
-      <a class="text-primary hover:text-sky-500" href="">隐私政策</a>
+      <a class="primary" href="">服务条款</a>
+      <a class="primary" href="">隐私政策</a>
     </li>
   </ul>
 </footer>
