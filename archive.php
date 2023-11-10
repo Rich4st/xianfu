@@ -15,7 +15,7 @@ $query_args = array(
   'order'           => 'DESC',
 );
 
-$PostData = new WP_Query($query_args);
+$posts = new WP_Query($query_args);
 
 ?>
 
@@ -31,16 +31,16 @@ $PostData = new WP_Query($query_args);
   </div>
   <div class="xf-container my-8 flex flex-col md:flex-row justify-around">
     <div>
-      <?php if ($PostData->have_posts()) : ?>
+      <?php if ($posts->have_posts()) : ?>
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-8">
           <?php
-          while ($PostData->have_posts()) : $PostData->the_post(); ?>
+          while ($posts->have_posts()) : $posts->the_post(); ?>
             <?php get_template_part('template-parts/loop/grid') ?>
           <?php endwhile; ?>
         </ul>
       <?php
         wp_reset_postdata();
-        capalot_pagination($page, $PostData->max_num_pages);
+        capalot_pagination($page, $posts->max_num_pages);
       else :
         get_template_part('template-parts/content/none');
       endif;
