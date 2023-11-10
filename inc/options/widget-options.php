@@ -19,7 +19,7 @@ CSF::createWidget('capalot_home_slider_widget', array(
       'inline'  => true,
       'options' => array(
         ''             => '全宽',
-        'xf-container' => '普通',
+        'ca-container' => '普通',
       ),
       'default' => 'container-full',
     ),

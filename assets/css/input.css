@@ -21,8 +21,12 @@
     @apply text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 font-medium rounded-full text-sm p-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700;
   }
 
-  .xf-container {
-    @apply max-w-7xl mx-auto px-2 sm:px-4 lg:px-6;
+  .ca-container {
+    @apply max-w-7xl mx-auto px-2 sm:px-4 xl:px-0;
+  }
+
+  .ca-page-flex {
+    @apply flex flex-col md:flex-row justify-between md:gap-4 lg:gap-8;
   }
 
   .link {

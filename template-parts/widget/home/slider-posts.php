@@ -38,7 +38,7 @@ $config = [
 ]
 ?>
 
-<section class="xf-container">
+<section class="ca-container">
   <?php if ($title || $desc) : ?>
     <div class="my-8 text-center text-gray-400">
       <?php if ($title) : ?>

@@ -18,7 +18,7 @@ $posts = new WP_Query($args);
 ?>
 
 <section class="py-8">
-  <div class="xf-container flex justify-around">
+  <div class="ca-container ca-page-flex">
     <div>
       <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
         <?php if ($posts->have_posts()) : ?>
@@ -32,7 +32,7 @@ $posts = new WP_Query($args);
       <?php wp_reset_postdata();
       capalot_pagination($page, $posts->max_num_pages); ?>
     </div>
-    <div>
+    <div class="sm:max-w-xs">
       <?php get_search_form(); ?>
       <?php dynamic_sidebar('page-sidebar'); ?>
     </div>

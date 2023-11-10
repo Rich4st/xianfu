@@ -50,7 +50,7 @@ $pagination_config = [
 ?>
 
 <section class="dark:bg-dark py-8" style="background-color: <?php echo $bg_color; ?>;">
-  <div class="xf-container">
+  <div class="ca-container">
     <?php if ($title || $desc) : ?>
       <div class="my-8 text-center text-gray-400">
         <?php if ($title) : ?>

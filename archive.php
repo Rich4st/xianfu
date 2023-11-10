@@ -29,10 +29,10 @@ $posts = new WP_Query($query_args);
       ?>
     </h1>
   </div>
-  <div class="xf-container my-8 flex flex-col md:flex-row justify-around">
+  <div class="ca-container my-8 ca-page-flex">
     <div>
       <?php if ($posts->have_posts()) : ?>
-        <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-8">
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 lg:gap-4">
           <?php
           while ($posts->have_posts()) : $posts->the_post(); ?>
             <?php get_template_part('template-parts/loop/grid') ?>
@@ -46,9 +46,11 @@ $posts = new WP_Query($query_args);
       endif;
       ?>
     </div>
-    <div>
+    <div class="sm:max-w-xs">
       <?php get_search_form(); ?>
-      <?php get_template_part('template-parts/widget/side/latest-post') ?>
+      <?php get_template_part('template-parts/widget/side/latest-post', '', array(
+        'include' => $category->term_id,
+      )) ?>
     </div>
   </div>
 </section>
