@@ -1,6 +1,28 @@
-:root{
+:root {
   --ca-primary-color: #8054b3;
   --ca-secondary-color: #aa88d8;
+
+  ::selection {
+    background-color: var(--ca-primary-color);
+    color: white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--ca-primary-color);
+    border-radius: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: black !important;
+  }
 }
 
 #default-swiper .swiper-slide img {
@@ -325,6 +347,7 @@
 .ca-pagination .current {
   color: black;
 }
+
 .dark .ca-pagination .current {
   color: rgb(120, 120, 120);
 }
