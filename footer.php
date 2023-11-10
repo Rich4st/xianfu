@@ -18,7 +18,40 @@
   </ul>
 </footer>
 
+<?php get_template_part('template-parts/header/header', '', [
+  'fixed' => 'fixed top-0 left-0 right-0 z-50 hidden ca-header duration-300 transition-all ease-in-out'
+]) ?>
 <?php get_template_part('template-parts/components/back-to-top') ?>
+
+<script>
+  const backToTop = document.querySelector('#back-to-top');
+
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      backToTop.classList.remove('hidden');
+    } else {
+      backToTop.classList.add('hidden');
+    }
+  });
+
+  const fixed_header = document.querySelector('.ca-header');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+      fixed_header.classList.remove('hidden')
+    } else {
+      fixed_header.classList.add('hidden');
+    }
+  });
+</script>
+
 
 <?php wp_footer(); ?>
 
