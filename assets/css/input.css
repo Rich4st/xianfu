@@ -33,7 +33,4 @@
     @apply text-[#0094b9] no-underline hover:text-pink-500
   }
 
-  .text-primary {
-    @apply text-[var(--ca-primary-color)]
-  }
 }

@@ -1,5 +1,6 @@
 </main>
 
+
 <footer class="mt-2 py-4 bg-gray-800 text-white font-semibold">
   <ul class="flex flex-col md:flex-row items-center justify-evenly">
     <li>
@@ -16,6 +17,8 @@
     </li>
   </ul>
 </footer>
+
+<?php get_template_part('template-parts/components/back-to-top') ?>
 
 <?php wp_footer(); ?>
 
