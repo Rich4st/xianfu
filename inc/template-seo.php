@@ -42,10 +42,11 @@ class CapalotSEO
       $desc     = get_post_meta($post->ID, 'post_description', true);
     } elseif (is_category() || is_tag()) {
       $title    = single_cat_title('', false);
-      $keywords = get_term_meta(get_queried_object_id(), 'cate_keywords', true);
-      $desc     = get_term_meta(get_queried_object_id(), 'cate_description', true);
+      $desc     = get_term_meta(get_queried_object_id(), 'description', true);
+      $keywords = get_term_meta(get_queried_object_id(), 'keywords', true);
     }
 
+    // 自定义网站favicon
     if(_capalot('site_favicon')) {
       echo '<link rel="shortcut icon" href="' . _capalot('site_favicon') . '" />';
     }
