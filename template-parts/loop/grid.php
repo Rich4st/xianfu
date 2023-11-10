@@ -11,6 +11,16 @@ $post_id = get_the_id();
  */
 extract($args);
 
+if(empty($thumbs_ratio)) {
+  $thumbs_ratio = 'ratio-16x9';
+}
+
+if(empty($extra_info)) {
+  $extra_info = array(
+    'desc'
+  );
+}
+
 ?>
 
 <li class="rounded-md border overflow-hidden bg-white dark:bg-dark-card dark:border-gray-700 hover:-translate-y-1 duration-300

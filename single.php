@@ -4,7 +4,7 @@ $post_id = get_the_ID();
 
 ?>
 <?php get_template_part('template-parts/components/single-header') ?>
-<section class="dark:bg-dark flex flex-col lg:flex-row md:gap-8 px-4 lg:px-0 justify-center">
+<section class="dark:bg-dark flex flex-col lg:flex-row md:gap-8 px-4 xl:px-0 justify-center">
   <div class="w-full prose prose-xl prose-p:text-base prose-h1:mb-8 prose-li:text-base dark:text-gray-400">
     <div class="my-2">
       <?php
