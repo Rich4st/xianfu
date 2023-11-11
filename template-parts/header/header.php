@@ -10,9 +10,9 @@ extract($args);
 ?>
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-dark shadow-[0_2px_10px_0_rgba(36,50,66,0.075)]">
-  <div class="max-w-7xl mx-auto px-4 lg:px-0 h-20 dark:text-gray-100 flex items-center justify-between">
+  <div class="ca-container h-20 dark:text-gray-100 flex items-center justify-between">
     <div class="flex items-center">
-      <div class="pr-4 border-r dark:border-gray-700">
+      <div class="pr-10 dark:border-gray-700">
         <?php
         $site_logo = _capalot('site_logo');
         $site_name = get_bloginfo('name');
