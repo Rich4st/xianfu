@@ -1,7 +1,7 @@
 </main>
 
-
-<footer class="mt-2 py-4 bg-gray-800 text-white font-semibold">
+<?php get_template_part('template-parts/footer/primary-footer') ?>
+<footer class="py-4 bg-gray-800 text-white font-semibold">
   <ul class="flex flex-col md:flex-row items-center justify-evenly">
     <li>
       Copyright © 2023
