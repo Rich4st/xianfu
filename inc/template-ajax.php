@@ -26,7 +26,19 @@ class Capalot_Ajax
 
   private function init()
   {
-    $this->add_api('load_more'); //加载更多文章
+    $this->add_api('load_more'); // 加载更多文章
+    $this->add_api('ajax_comment'); // 添加评论
+  }
+
+  private function valid_nonce_ajax()
+  {
+
+    if (!check_ajax_referer('capalot_ajax', 'nonce', false)) {
+      wp_send_json(array(
+        'status' => 0,
+        'msg'    => '非法请求',
+      ));
+    }
   }
 
   function api_template($data = null, $extra = []): array
@@ -58,9 +70,9 @@ class Capalot_Ajax
     $response = '';
     $max_page = $Posts->max_num_pages;
 
-    if($Posts->max_num_pages < $paged) {
+    if ($Posts->max_num_pages < $paged) {
       wp_send_json(
-        $this->api_template(null, [ 'msg' => '没有更多了'])
+        $this->api_template(null, ['msg' => '没有更多了'])
       );
     }
 
@@ -82,5 +94,36 @@ class Capalot_Ajax
         ]
       )
     );
+  }
+
+  function ajax_comment()
+  {
+    $this->valid_nonce_ajax(); #安全验证
+
+    $comment = wp_handle_comment_submission(wp_unslash($_POST));
+    if (is_wp_error($comment)) {
+      $error_data = intval($comment->get_error_data());
+      if (!empty($error_data)) {
+        wp_die($comment->get_error_message(), __('Comment Submission Failure'), array('response' => $error_data, 'back_link' => true));
+        exit;
+      } else {
+        wp_die('Unknown error', __('Comment Submission Failure'), array('response' => 500, 'back_link' => true));
+        exit;
+      }
+    }
+
+    $user = wp_get_current_user();
+    do_action('set_comment_cookies', $comment, $user);
+
+    wp_send_json(
+      $this->api_template(
+        null,
+        [
+          'msg' => '评论成功',
+          '$comment' => $comment
+        ]
+      )
+    );
+    exit;
   }
 }

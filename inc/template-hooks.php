@@ -1,5 +1,17 @@
 <?php
 
+// 当前页面URL
+function capalot_current_url() {
+  return esc_url(home_url(add_query_arg(array())));
+}
+
+if (!function_exists('get_current_url')) {
+  function get_current_url() {
+      $current_url = home_url(add_query_arg(array()));
+      return esc_url($current_url);
+  }
+}
+
 // 输出文章缩略图url
 function capalot_get_thumbnail_url($post = null, $size = 'thumbnail')
 {
@@ -65,7 +77,7 @@ function capalot_post_category($num = 2)
 /**
  * 输出文章描述
  *
- * @pram $limit 截取长度
+ * @param $limit 截取长度
  * @return html 输出文章描述
  */
 function capalot_post_excerpt($limit = '48')

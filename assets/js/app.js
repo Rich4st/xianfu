@@ -12,8 +12,16 @@ let capalot = {
     capalot.attribute_click();
     capalot.popper_init();
     capalot.side_menu();
+    capalot.add_comment();
   },
 
+  /**
+   * ajax请求
+   * @param {object} data 请求数据
+   * @param {function} beforeSend 发送请求前回调
+   * @param {function} success 请求成功回调
+   * @param {function} complete 请求完成回调
+   */
   ajax: function ({ data, beforeSend, success, complete, error = () => console.log('error') }) {
     $.ajax({
       type: 'Post',
@@ -26,6 +34,29 @@ let capalot = {
       complete,
       error,
     })
+  },
+
+  /**
+   * toast 提示
+   * @param {string} title 标题
+   * @param {string} icon 图标 'success' | 'error'
+   * @param {number} timer 延迟时间 ms后自动关闭
+   * @param {function} cb 关闭后回调
+   */
+  toast: function ({
+    title = '成功', icon = 'success', timer = 2000, cb = () => { }
+  }) {
+    Swal.fire({
+      title,
+      icon,
+      timer,
+      toast: true,
+      position: 'top',
+      showConfirmButton: false,
+      customClass: {
+        container: 'mt-10'
+      }
+    }).then(cb())
   },
 
   // 轮播初始化
@@ -201,7 +232,91 @@ let capalot = {
       item.insertBefore(i, item.firstChild);
     })
 
-  }
+  },
+
+  // 添加评论
+  add_comment: function () {
+    const commentform = jQuery("#commentform");
+    commentform.find('input[type="submit"]');
+    commentform.submit(function (e) {
+      e.preventDefault();
+      const submit_button = jQuery("#submit");
+
+      const comment = commentform.serialize().split('&').map(item => item.split('=')[1])[0];
+
+      if(comment === '') {
+        capalot.toast({
+          title: '评论内容不能为空',
+          icon: 'error',
+        })
+        return;
+      }
+
+      jQuery.ajax({
+        type: "POST",
+        url: g_p.ajax_url,
+        data: commentform.serialize() + "&action=capalot_ajax_comment&nonce=" + g_p.ajax_nonce,
+        beforeSend: function () {
+          submit_button.val('提交中...');
+        },
+        error: function ({ responseText: errorMsg }) {
+          console.log(errorMsg);
+          capalot.toast({
+            title: errorMsg,
+            icon: 'error',
+          })
+        },
+        success: function (response) {
+          console.log(response);
+          const { msg } = response;
+
+          if (msg !== '评论成功') {
+            capalot.toast({
+              title: response,
+              icon: 'error',
+            })
+            return;
+          }
+
+          capalot.toast({
+            title: msg,
+            cb: () => {
+              window.location.reload();
+            }
+          });
+        },
+        complete: function (e) {
+          submit_button.val('提交评论')
+        }
+      })
+    });
+    var comments_list = jQuery(".comments-list");
+    const scroll_button = jQuery(".infinite-scroll-button");
+    const scroll_status = jQuery(".infinite-scroll-status");
+    const scroll_msg = jQuery(".infinite-scroll-msg");
+    scroll_button.length && (
+      comments_list.on("request.infiniteScroll", function (e, t) {
+        scroll_status.show()
+      }),
+      comments_list.on("load.infiniteScroll", function (e, t, n) {
+        scroll_status.hide()
+      }),
+      comments_list.on("last.infiniteScroll", function (e, t, n) {
+        scroll_button.hide(), scroll_msg.show()
+      }),
+      comments_list.infiniteScroll({
+        append: ".comments-list > *",
+        debug: !1,
+        hideNav: ".comments-pagination",
+        history: !1,
+        path: ".comments-pagination a.next",
+        prefill: !1,
+        scrollThreshold: !1,
+        button: ".infinite-scroll-button"
+      })
+    )
+  },
+
 };
 
 document.addEventListener('DOMContentLoaded', () => {

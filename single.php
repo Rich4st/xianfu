@@ -24,12 +24,16 @@ $post_id = get_the_ID();
     <div>
       <?php echo the_content(); ?>
     </div>
+
+    <?= comments_template(); ?>
+
   </div>
   <div id="sidebar" class="md:max-w-[18rem] pt-20">
     <?php get_search_form(); ?>
     <?php dynamic_sidebar('single-sidebar'); ?>
   </div>
 </section>
+
 <?php get_template_part('template-parts/single/related-posts', '', [$post_id]) ?>
 
 <?php get_footer(); ?>
