@@ -25,6 +25,13 @@ function load_assets()
   // popper.js
   wp_enqueue_script('popper', get_template_directory_uri() . '/assets/js/popper/popper.min.js', array(), '2.11.8', true);
   wp_enqueue_script('tippy', get_template_directory_uri() . '/assets/js/popper/tippy-bundle.umd.min.js', array(), '6.3.7', true);
+  // sweetalert2
+  wp_enqueue_script('sweetalert2', get_template_directory_uri() . '/assets/js/sweetalert2.min.js', array(), '11.10.0', true);
+
+  if (is_singular() && comments_open() && get_option('thread_comments')) {
+    wp_enqueue_script('comment-reply');
+  }
+
 
 
   // 全局参数
@@ -33,6 +40,5 @@ function load_assets()
     'ajax_nonce' => wp_create_nonce("capalot_ajax"),
   ];
   wp_localize_script('app', 'g_p', $global_params);
-
 }
 add_action('wp_enqueue_scripts', 'load_assets');
