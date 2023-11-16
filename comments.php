@@ -41,7 +41,13 @@ if (post_password_required() || !comments_open()) return;
 			?>
 		</ul>
 
-
+		<?php if ($the_paginate = paginate_comments_links(array('echo' => false))) : ?>
+			<div class="comments-nav flex justify-center">
+				<div class="comments-pagination">
+					<?= $the_paginate; ?>
+				</div>
+			</div>
+		<?php endif; ?>
 
 	<?php endif; ?>
 

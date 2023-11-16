@@ -543,6 +543,10 @@ body {
   padding: 20px 0;
 }
 
+#comments .comments-nav a {
+  text-decoration: none;
+}
+
 #comments .comments-nav .page-numbers {
   padding: 0.6rem 1rem;
   margin: 0 4px;
@@ -552,12 +556,12 @@ body {
 }
 
 #comments .comments-nav .page-numbers:hover {
-  background-color: #1e1e20;
+  background-color: var(--ca-primary-color-hover);
   color: white;
 }
 
 #comments .comments-nav .current {
-  background-color: #1e1e20;
+  background-color: var(--ca-primary-color);
   color: white;
   font-weight: bold;
 }
