@@ -837,14 +837,14 @@ CSF::createSection($prefix, array(
           'attributes' => array(
             'style'    => 'width: 100%;',
           ),
-          'default'    => _capalot('site_seo:keywords', bloginfo('name')),
+          'default'    => _capalot('site_seo:keywords', ''),
         ),
         array(
           'id'       => 'description',
           'type'     => 'textarea',
           'sanitize' => false,
           'title'    => '网站描述',
-          'default'  => _capalot('site_seo:description', bloginfo('name')),
+          'default'  => _capalot('site_seo:description', ''),
         ),
 
       ),
