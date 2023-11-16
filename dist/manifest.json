@@ -1,0 +1,14 @@
+{
+  "vite.entry.css": {
+    "file": "vite.entry.css",
+    "src": "vite.entry.css"
+  },
+  "vite.entry.js": {
+    "css": [
+      "vite.entry.css"
+    ],
+    "file": "main.js",
+    "isEntry": true,
+    "src": "vite.entry.js"
+  }
+}
