@@ -30,6 +30,7 @@ if (!class_exists('CSF')) {
     '/options/metabox-options.php',                       // 文章高级设置
     '/options/widget-options.php',                        // 小工具设置
     '/options/taxonomy-options.php',                      // 分类设置
+    '/options/page-options.php',                          // 页面高级设置
   );
 
 
