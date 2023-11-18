@@ -65,7 +65,7 @@ function capalot_post_category($num = 2)
       if ($key == $num) {
         break;
       }
-      $output .=  '<li class="flex items-center w-fit hover:text-pink-500 dark:text-gray-100 dark:hover:text-pink-500">
+      $output .= '<li class="flex items-center w-fit hover:text-primary dark:text-gray-100 dark:hover:text-primary">
       <i class="iconify" data-icon="ri:price-tag-3-line"></i>' .
         '<a href="' . esc_url(get_category_link($category->term_id)) . '" title="' . esc_html($category->name) . '">' . esc_html($category->name) .
         '</a></li>' . $separator;

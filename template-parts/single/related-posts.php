@@ -28,7 +28,7 @@ $config = [
       <?php if ($related_posts->have_posts()) : ?>
 
         <?php while ($related_posts->have_posts()) : $related_posts->the_post(); ?>
-          <?php get_template_part('template-parts/loop/grid', '', $config); ?>
+          <?php get_template_part('template-parts/loop/grid-readmore', '', $config); ?>
         <?php endwhile; ?>
 
       <?php else : ?>

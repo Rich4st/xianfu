@@ -26,7 +26,7 @@ if(empty($extra_info)) {
 <li class="rounded-md border overflow-hidden bg-white dark:bg-dark-card dark:border-gray-700 hover:-translate-y-1 duration-300
   hover:shadow-xl">
   <div class="ratio <?php echo esc_attr($thumbs_ratio); ?>">
-    <a data-bg="<?php capalot_get_thumbnail_url(); ?>" class="lazy bg-no-repeat bg-cover" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+    <a data-bg="<?php capalot_get_thumbnail_url(); ?>" class="lazy bg-no-repeat bg-cover bg-center" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
     </a>
   </div>
   <div class="py-4 px-3 text-xs space-y-1">
