@@ -21,8 +21,8 @@ $PostData = new WP_Query($query_args);
 $config = [
   'lazy' => true,
   'navigation' => [
-    'nextEl' => '.swiper-button-next',
-    'prevEl' => '.swiper-button-prev',
+    'prevEl' => '.swiper-posts-prev',
+    'nextEl' => '.swiper-posts-next',
   ],
   'breakpoints' => [
     320 => [
@@ -54,7 +54,7 @@ $config = [
     </div>
   <?php endif; ?>
 
-  <div class="swiper mySwiper slider-post" data-config='<?php echo json_encode($config); ?>'>
+  <div class="swiper mySwiper slider-posts" data-config='<?php echo json_encode($config); ?>'>
     <div class="swiper-wrapper py-0.5">
 
       <?php
@@ -100,5 +100,15 @@ $config = [
 
   </div>
 
-  <?php get_template_part('template-parts/components/swiper-nav') ?>
+  <div class="swiper-button-prev swiper-posts-prev hidden 2xl:block text-primary hover:text-primary-hover absolute top-1/2 translate-y-1/2 -left-10"></div>
+  <div class="swiper-button-next swiper-posts-next hidden 2xl:block text-primary hover:text-primary-hover absolute top-1/2 translate-y-1/2 -right-10"></div>
+
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const el = document.querySelector('.slider-posts');
+
+    new Swiper(el, JSON.parse(el.dataset.config));
+  });
+</script>

@@ -7,8 +7,8 @@ if (empty($args)) {
 $config = [
   'lazy' => true,
   'navigation' => [
-    'nextEl' => '.swiper-button-next',
-    'prevEl' => '.swiper-button-prev'
+    'prevEl' => '.swiper-attribute-slider-prev',
+    'nextEl' => '.swiper-attribute-slider-next',
   ],
   'breakpoints' => [
     320 => [
@@ -69,7 +69,15 @@ $config = [
       <?php endforeach; ?>
     </div>
 
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
   </div>
+  <div class="swiper-button-prev swiper-attribute-slider-prev hidden 2xl:block text-primary hover:text-primary-hover absolute top-1/2 translate-y-1/2 -left-10"></div>
+  <div class="swiper-button-next swiper-attribute-slider-next hidden 2xl:block text-primary hover:text-primary-hover absolute top-1/2 translate-y-1/2 -right-10"></div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const el = document.querySelector('.attribute-slider');
+
+    new Swiper(el, JSON.parse(el.dataset.config));
+  });
+</script>

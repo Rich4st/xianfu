@@ -30,12 +30,12 @@ extract($args);
 $swiper_config = [
   'lazy' => true,
   'pagination' => [
-    'el' => '.swiper-pagination',
+    'el' => '.swiper-customer-fb-pagination',
     'clickable' => true
   ],
   'navigation' => [
-    'nextEl' => '.swiper-button-next',
-    'prevEl' => '.swiper-button-prev'
+    'prevEl' => '.swiper-customer-fb-prev',
+    'nextEl' => '.swiper-customer-fb-next',
   ],
   'breakpoints' => [
     320 => [
@@ -103,14 +103,23 @@ if (in_array('autoplay', $config)) {
 
 
     <?php if (in_array('dots', $config)) : ?>
-      <div class="swiper-pagination mt-8"></div>
+      <div class="swiper-pagination swiper-customer-fb-pagination mt-8"></div>
     <?php endif; ?>
 
   </div>
 
   <?php if (in_array('nav', $config)) : ?>
-    <?php get_template_part('template-parts/components/swiper-nav') ?>
+    <div class="swiper-button-prev swiper-customer-fb-prev hidden 2xl:block text-primary hover:text-primary-hover absolute top-1/2 translate-y-1/2 -left-10"></div>
+    <div class="swiper-button-next swiper-customer-fb-next hidden 2xl:block text-primary hover:text-primary-hover absolute top-1/2 translate-y-1/2 -right-10"></div>
+
   <?php endif; ?>
 
 </section>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const el = document.querySelector('.customer-fb');
+
+    new Swiper(el, JSON.parse(el.dataset.config));
+  });
+</script>

@@ -32,8 +32,8 @@ foreach ($args['config'] as $key) {
 ?>
 
 <section class="<?php echo $container; ?>">
-  <div class="swiper mySwiper mx-auto" data-config='<?php echo json_encode($config); ?>'>
-    <div class="swiper-wrapper ">
+  <div class="swiper mySwiper pb-10" data-config='<?php echo json_encode($config); ?>'>
+    <div class="swiper-wrapper">
 
       <?php
       if(empty($args['data'])) return;
@@ -56,7 +56,7 @@ foreach ($args['config'] as $key) {
 
     </div>
     <!-- 圆点按钮 -->
-    <?php if($config['dots'] && !$config['nav']): ?>
+    <?php if($config['dots']): ?>
       <div class="swiper-pagination"></div>
     <?php endif; ?>
 
@@ -67,3 +67,11 @@ foreach ($args['config'] as $key) {
     <?php endif; ?>
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const el = document.querySelector('.mySwiper');
+
+    new Swiper(el, JSON.parse(el.dataset.config));
+  });
+</script>

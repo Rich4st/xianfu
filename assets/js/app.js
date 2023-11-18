@@ -5,7 +5,6 @@ var lazyLoadInstance = null;
 let capalot = {
   init: function () {
 
-    capalot.swiper();
     capalot.toggle_dark();
     capalot.lazyload();
     capalot.load_more();
@@ -57,17 +56,6 @@ let capalot = {
         container: 'mt-10'
       }
     }).then(cb())
-  },
-
-  // 轮播初始化
-  swiper: function () {
-    const swipers = document.querySelectorAll('.mySwiper');
-
-    if (swipers.length === 0) return;
-
-    swipers.forEach((el) => {
-      new Swiper(el, JSON.parse(el.dataset.config));
-    })
   },
 
   // 深色模式切换
