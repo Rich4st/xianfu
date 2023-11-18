@@ -30,11 +30,11 @@
   }
 
   .excerpt{
-    @apply text-gray-100 dark:text-gray-400;
+    @apply text-gray-400 dark:text-gray-500;
   }
 
   .ca-container {
-    @apply max-w-7xl mx-auto px-2 sm:px-4 xl:px-0;
+    @apply max-w-7xl mx-auto px-2 sm:px-4 xl:px-0 relative;
   }
 
   .ca-page-flex {
@@ -51,6 +51,10 @@
 
   .primary {
     @apply text-primary hover:text-primary-hover;
+  }
+
+  .ca-border {
+    @apply border dark:border-gray-700;
   }
 
 }

@@ -557,6 +557,121 @@ function capalot_home_services($args, $instance)
   get_template_part('template-parts/widget/home/services', '', $instance);
 }
 
+
+/**
+ * 首页 - 客户反馈
+ */
+CSF::createWidget('capalot_home_customer_fb', array(
+  'id'        => 'capalot_home_customer_fb',
+  'title'     => '【首页】客户反馈轮播',
+  'className' => 'home-customer-fb',
+  'desc'      => '首页客户反馈轮播',
+  'fields'    => array(
+
+    [
+      'id'    => 'title',
+      'type'  => 'text',
+      'title' => '标题',
+    ],
+
+    [
+      'id'    => 'desc',
+      'type'  => 'text',
+      'title' => '描述',
+    ],
+
+    [
+      'id'      => 'config',
+      'type'    => 'checkbox',
+      'title'   => '幻灯片配置',
+      'options' => [
+        'autoplay' => '自动播放',
+        'loop'     => '循环播放',
+        'nav'      => '切换按钮',
+        'dots'     => '导航圆点',
+      ],
+      'inline'  => true,
+      'default' => array('autoplay', 'nav'),
+    ],
+
+    [
+      'id'          => 'slidesPerView',
+      'type'        => 'number',
+      'title'       => '幻灯片列数',
+      'unit'        => '列',
+      'output'      => '.heading',
+      'output_mode' => 'width',
+      'default'     => '1',
+    ],
+
+    [
+      'id'         => 'spaceBetween',
+      'type'       => 'number',
+      'title'      => '幻灯片列间距',
+      'unit'       => 'px',
+      'default'    => '0',
+      'dependency' => ['slidesPerView', '>', '1'],
+
+    ],
+
+    [
+      'id'      => 'data',
+      'type'    => 'group',
+      'title'   => '客户反馈配置',
+      'fields'  => array(
+
+        [
+          'id'      => '_img',
+          'type'    => 'upload',
+          'title'   => '客户头像',
+          'default' => get_template_directory_uri() . '/assets/img/customer-fb/1.png'
+        ],
+
+        [
+          'id'      => '_from',
+          'type'    => 'text',
+          'title'   => '客户来源',
+        ],
+
+        [
+          'id'      => '_content',
+          'type'    => 'textarea',
+          'title'   => '客户反馈内容',
+          'default' => '客户反馈内容'
+        ],
+
+        [
+          'id'      => '_name',
+          'type'    => 'text',
+          'title'   => '客户姓名',
+          'default' => '客户姓名'
+        ],
+
+        [
+          'id'      => '_job',
+          'type'    => 'text',
+          'title'   => '客户职位',
+          'default' => '客户职位'
+        ]
+
+      )
+    ],
+
+  )
+));
+function capalot_home_customer_fb($args, $instance)
+{
+
+  $instance = array_merge(
+    [
+      'title' => '客户反馈',
+    ],
+    $instance
+  );
+
+  get_template_part('template-parts/widget/home/customer-fb', '', $instance);
+}
+
 /**
  * 侧边栏 - 作者信息
  */
