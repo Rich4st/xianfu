@@ -40,7 +40,7 @@ $posts = new WP_Query($query_args);
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 lg:gap-4">
           <?php
           while ($posts->have_posts()) : $posts->the_post(); ?>
-            <?php get_template_part('template-parts/loop/grid') ?>
+            <?php get_template_part('template-parts/loop/grid-readmore') ?>
           <?php endwhile; ?>
         </ul>
       <?php
