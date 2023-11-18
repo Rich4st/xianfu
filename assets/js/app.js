@@ -208,7 +208,8 @@ let capalot = {
       const i = document.createElement('i');
 
       i.classList.add('iconify');
-      i.classList.add('hover:bg-gray-100');
+      i.classList.add('cursor-pointer');
+      i.classList.add('hover:bg-gray-100')
       i.setAttribute('data-icon', 'mingcute:right-fill');
 
       i.style.position = 'absolute';

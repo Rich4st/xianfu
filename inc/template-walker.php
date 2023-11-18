@@ -167,7 +167,7 @@ class Capalot_Walker_Nav_Menu extends Walker_Nav_Menu
     }
 
     $fb_output .= '>';
-    $fb_output .= '<li class="menu-item"><a href="' . esc_url(admin_url('nav-menus.php')) . '">Add Menus</a></li>';
+    $fb_output .= '<li class="menu-item"><a href="' . esc_url(admin_url('nav-menus.php')) . '">添加菜单</a></li>';
     $fb_output .= '</ul>';
 
     if ($container) {

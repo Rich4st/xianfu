@@ -4,7 +4,7 @@
 
 <div id="overlay" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
 <div id="sidebar" class="bg-white dark:bg-dark w-11/12 max-w-lg h-full fixed top-0 right-0 transform translate-x-full transition-transform duration-300 ease-in-out z-50 dark:text-gray-400">
-  <button aria-label="close side menu" id="closeSidebar" class="p-2 absolute top-4 right-4">
+  <button aria-label="close side-menu" id="closeSidebar" class="p-2 absolute top-4 right-4 bg-opacity-60 hover:bg-primary-hover rounded-full hover:text-white duration-300">
     <i class="iconify" data-icon="pajamas:close"></i>
   </button>
 
