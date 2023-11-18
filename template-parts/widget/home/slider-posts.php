@@ -98,7 +98,7 @@ $config = [
 
     </div>
 
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
   </div>
+
+  <?php get_template_part('template-parts/components/swiper-nav') ?>
 </section>
