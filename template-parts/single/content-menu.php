@@ -16,7 +16,7 @@ if ($fixed) {
 
 ?>
 
-<div class="w-fit border p-2 mt-4 z-50 bg-white dark:bg-dark-card <?php echo $fixed_menu; ?>">
+<div class="w-fit border dark:border-gray-700 p-2 mt-4 z-50 bg-white dark:bg-dark-card <?php echo $fixed_menu; ?>">
   <div class="flex items-center justify-between font-bold">
     <div>
       <i class="iconify text-4xl inline-block align-bottom" data-icon="system-uicons:side-menu"></i>
