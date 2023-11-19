@@ -67,11 +67,3 @@ foreach ($args['config'] as $key) {
     <?php endif; ?>
   </div>
 </section>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const el = document.querySelector('.mySwiper');
-
-    new Swiper(el, JSON.parse(el.dataset.config));
-  });
-</script>

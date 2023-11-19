@@ -75,9 +75,3 @@ $config = [
 </section>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const el = document.querySelector('.attribute-slider');
-
-    new Swiper(el, JSON.parse(el.dataset.config));
-  });
-</script>

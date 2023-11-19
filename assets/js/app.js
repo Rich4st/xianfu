@@ -12,6 +12,7 @@ let capalot = {
     capalot.popper_init();
     capalot.side_menu();
     capalot.add_comment();
+    capalot.swiper();
   },
 
   /**
@@ -304,6 +305,16 @@ let capalot = {
         button: ".infinite-scroll-button"
       })
     )
+  },
+
+  swiper: function () {
+    const swipers = document.querySelectorAll('.mySwiper');
+
+    if (swipers.length === 0) return;
+
+    swipers.forEach((el) => {
+      new Swiper(el, JSON.parse(el.dataset.config));
+    })
   },
 
 };

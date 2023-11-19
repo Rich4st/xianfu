@@ -104,11 +104,3 @@ $config = [
   <div class="swiper-button-next swiper-posts-next hidden 2xl:block text-primary hover:text-primary-hover absolute top-1/2 translate-y-1/2 -right-10"></div>
 
 </section>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const el = document.querySelector('.slider-posts');
-
-    new Swiper(el, JSON.parse(el.dataset.config));
-  });
-</script>
