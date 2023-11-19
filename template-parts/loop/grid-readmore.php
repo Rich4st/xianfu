@@ -44,8 +44,8 @@ if (empty($extra_info)) {
       </ul>
     <?php endif; ?>
 
-    <a class="block text-base w-fit font-bold text-gray-600 hover:text-black dark:text-gray-100 dark:hover:text-gray-300" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-      <h4><?php the_title(); ?></h4>
+    <a class="block text-base w-fit font-bold text-gray-600 dark:text-gray-100 dark:hover:text-gray-300" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+      <h4 class="hover:text-primary-hover"><?php the_title(); ?></h4>
     </a>
 
     <?php if (in_array('desc', $extra_info)) : ?>
