@@ -36,9 +36,12 @@ function load_assets()
 
   // 全局参数
   $global_params = [
-    'ajax_url' => esc_url(admin_url('admin-ajax.php')),
-    'ajax_nonce' => wp_create_nonce("capalot_ajax"),
+    'ajax_url'    => esc_url(admin_url('admin-ajax.php')),
+    'ajax_nonce'  => wp_create_nonce("capalot_ajax"),
   ];
+  if(is_singular()) {
+    $global_params['post_id'] = get_the_ID();
+  }
   wp_localize_script('app', 'g_p', $global_params);
 }
 add_action('wp_enqueue_scripts', 'load_assets');

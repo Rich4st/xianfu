@@ -13,6 +13,7 @@ let capalot = {
     capalot.side_menu();
     capalot.add_comment();
     capalot.swiper();
+    capalot.content_menu();
   },
 
   /**
@@ -316,6 +317,22 @@ let capalot = {
       new Swiper(el, JSON.parse(el.dataset.config));
     })
   },
+
+  // 文章目录
+  content_menu: function() {
+    if(!g_p.hasOwnProperty('post_id')) return;;
+
+    const btn = document.querySelectorAll('#content-menu-btn');
+
+    if(btn.length === 0) return;
+
+    btn.forEach(el => {
+      el.addEventListener('click', function() {
+        const menu = el.parentNode.parentNode.querySelector('#content-menu-body');
+        menu.classList.toggle('hidden');
+      })
+    })
+  }
 
 };
 
