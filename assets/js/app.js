@@ -9,11 +9,13 @@ let capalot = {
     capalot.lazyload();
     capalot.load_more();
     capalot.attribute_click();
-    capalot.popper_init();
     capalot.side_menu();
     capalot.add_comment();
     capalot.swiper();
     capalot.content_menu();
+
+    capalot.code_block();
+    capalot.popper_init();
   },
 
   /**
@@ -235,7 +237,7 @@ let capalot = {
 
       const comment = commentform.serialize().split('&').map(item => item.split('=')[1])[0];
 
-      if(comment === '') {
+      if (comment === '') {
         capalot.toast({
           title: '评论内容不能为空',
           icon: 'error',
@@ -319,19 +321,70 @@ let capalot = {
   },
 
   // 文章目录
-  content_menu: function() {
-    if(!g_p.hasOwnProperty('post_id')) return;;
+  content_menu: function () {
+    if (!g_p.hasOwnProperty('post_id')) return;;
 
     const btn = document.querySelectorAll('#content-menu-btn');
 
-    if(btn.length === 0) return;
+    if (btn.length === 0) return;
 
     btn.forEach(el => {
-      el.addEventListener('click', function() {
+      el.addEventListener('click', function () {
         const menu = el.parentNode.parentNode.querySelector('#content-menu-body');
         menu.classList.toggle('hidden');
       })
     })
+  },
+
+  // code block
+  code_block: function () {
+    const blocks = document.querySelectorAll('pre code');
+
+    blocks.forEach((block) => {
+      const codeHeader = document.createElement('div');
+      const copyBtn = document.createElement('button');
+      const langText = document.createElement('span');
+
+      codeHeader.className = 'code-header flex items-center justify-between pb-2';
+
+      const lang = block.className.split('-')[1];
+      langText.innerText = lang;
+
+      codeHeader.appendChild(langText);
+
+      const copyIcon = document.createElement('i');
+      copyIcon.className = 'iconify';
+      copyIcon.setAttribute('data-icon', 'mdi:content-copy');
+
+      copyBtn.className = 'copy-button';
+      copyBtn.setAttribute('aria-label', '复制代码');
+      copyBtn.appendChild(copyIcon);
+
+      codeHeader.appendChild(copyBtn);
+
+      block.parentNode.insertBefore(codeHeader, block);
+    });
+
+    // 添加点击事件
+    const copyButtons = document.querySelectorAll('.copy-button');
+
+    copyButtons.forEach((button) => {
+      button.addEventListener('click', function () {
+        const code = button.parentNode.nextElementSibling.innerText;
+        const input = document.createElement('input');
+        input.value = code;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+
+        capalot.toast({
+          title: '复制成功',
+        })
+      })
+    }
+    )
+
   }
 
 };
