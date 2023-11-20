@@ -1,5 +1,12 @@
 <?php
+
 $current_theme = capalot_get_site_theme();
+
+if ($current_theme === 'light') {
+  $button_label = '切换为暗色模式';
+} else {
+  $button_label = '切换为亮色模式';
+}
 
 /**
  * @var string $fixed 固定在顶部
@@ -47,9 +54,9 @@ extract($args);
 
     </div>
     <div class="flex items-center space-x-4">
-      <button aria-checked="false" class="toggle-dark rounded-full border hover:border-gray-400 dark:border-gray-700 dark:hover:border-gray-500 transition-all duration-300 px-4 py-1 relative">
+      <button role="button" aria-label="<?php echo $button_label; ?>" class="toggle-dark rounded-full border hover:border-gray-400 dark:border-gray-700 dark:hover:border-gray-500 transition-all duration-300 px-4 py-1 relative">
         <i class="iconify relative -right-2.5 <?php echo $current_theme === 'light' ? 'hidden' : '' ?>" data-icon="carbon:moon"></i>
-        <i class="iconify relative -left-2.5  <?php echo $current_theme === 'dark' ? 'hidden' : '' ?>" data-icon="solar:sun-bold-duotone"></i>
+        <i class="iconify relative -left-2.5 <?php echo $current_theme === 'dark' ? 'hidden' : '' ?>" data-icon="solar:sun-bold-duotone"></i>
       </button>
       <i id="menu-icon" class="iconify text-2xl md:hidden" data-icon="ri:menu-line"></i>
     </div>
