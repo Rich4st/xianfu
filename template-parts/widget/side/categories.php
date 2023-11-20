@@ -29,7 +29,7 @@ $categories = get_categories(array(
   <ul class="space-y-2 mt-4">
     <?php foreach ($categories as $category) : ?>
       <li>
-        <a class="link" href="<?php echo get_category_link($category->term_id); ?>" aria-title="<?php echo $category->name; ?>">
+        <a class="link" href="<?php echo get_category_link($category->term_id); ?>" aria-label="<?php echo $category->name; ?>">
           <?php echo $category->name; ?>
         </a>
         <span class="text-gray-500 dark:text-gray-400 ml-1">
