@@ -25,7 +25,7 @@ extract($args);
         $site_name = get_bloginfo('name');
 
         if (!empty($site_logo)) {
-          $logo_html = sprintf('<img class="h-10 w-10 rounded-full" src="%s" alt="%s">', esc_url($site_logo), esc_attr($site_name));
+          $logo_html = sprintf('<img class="w-14 h-full" src="%s" alt="%s">', esc_url($site_logo), esc_attr($site_name));
         } else {
           $logo_html = sprintf('<span class="text-2xl font-bold">%s</span>', esc_html($site_name));
         }
