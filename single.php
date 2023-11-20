@@ -6,7 +6,7 @@ $post_id = get_the_ID();
 
 
 <section class="dark:bg-dark flex flex-col lg:flex-row md:gap-8 px-4 xl:px-0 justify-center">
-  <div class="w-full prose prose-xl prose-p:text-base dark:prose-p:text-gray-400 prose-h1:mb-4 prose-h1:text-2xl md:prose-h1:text-4xl xl:prose-h1:text-5xl prose-li:text-basedark:text-gray-400">
+  <div class="w-full prose prose-xl prose-p:text-base dark:prose-p:text-gray-400 prose-h1:mb-4 prose-h1:text-2xl md:prose-h1:text-4xl xl:prose-h1:text-5xl prose-li:text-base prose-strong:text-primary dark:prose-code:text-gray-500 dark:prose-a:text-primary-hover">
     <div class="my-2">
       <?php
       $categories = get_the_category($post_id);
