@@ -4,7 +4,6 @@
 
   --ca-icon-color: red;
 
-  /* swiper */
   --swiper-theme-color: #8054b3 !important;
 
 }
@@ -13,33 +12,26 @@ body {
   padding-top: 80px;
 }
 
-/* 滚动条 */
 ::selection {
   background-color: var(--ca-primary-color);
   color: white;
 }
 
-
-/* lg屏幕 */
-@media (min-width: 1024px) {
-  ::-webkit-scrollbar {
-    width: 2px;
-  }
-}
-
-
-::-webkit-scrollbar-track {
-  background-color: transparent;
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: var(--ca-primary-color);
-  border-radius: 8px;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: black !important;
 }
+/* 滚动条 end */
 
 #default-swiper .swiper-slide img {
   position: relative;
@@ -131,7 +123,6 @@ body {
 .ratio-21x9 {
   --ca-aspect-ratio: 42.8571428571%
 }
-
 
 /* 导航 */
 .navbar .nav-list {
