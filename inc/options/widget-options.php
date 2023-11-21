@@ -805,3 +805,42 @@ function capalot_side_latest_post($args, $instance)
 
   get_template_part('template-parts/widget/side/latest-post', '', $instance);
 }
+
+/**
+ * 侧边栏 - 标签云
+ */
+CSF::createWidget('capalot_side_tag_cloud', array(
+  'title'    => '【侧边栏】标签云模块',
+  'className' => 'side-tag-cloud',
+  'desc'      => '侧边栏标签云模块',
+  'fields'    => array(
+
+    [
+      'id'      => 'title',
+      'type'    => 'text',
+      'title'   => '标题',
+      'default' => '标签云'
+    ],
+
+    [
+      'id'      => 'exclude',
+      'type'    => 'checkbox',
+      'inline'  => true,
+      'title'   => '要排除的标签',
+      'options' => 'tags',
+    ]
+
+  )
+));
+function capalot_side_tag_cloud($args, $instance)
+{
+
+  $instance = array_merge(
+    [
+      'title' => '标签云',
+    ],
+    $instance
+  );
+
+  get_template_part('template-parts/widget/side/tag-cloud', '', $instance);
+}
