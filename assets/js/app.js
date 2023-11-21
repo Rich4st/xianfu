@@ -341,50 +341,46 @@ let capalot = {
     const blocks = document.querySelectorAll('pre code');
 
     blocks.forEach((block) => {
-      const codeHeader = document.createElement('div');
-      const copyBtn = document.createElement('button');
-      const langText = document.createElement('span');
+      const preElement = block.parentNode;
 
-      codeHeader.className = 'code-header flex items-center justify-between pb-2';
+      const codeHeader = document.createElement('div');
+      codeHeader.className = 'code-header flex items-center justify-between py-1 px-6 bg-gray-500';
 
       const lang = block.className.split('-')[1];
+      const langText = document.createElement('span');
       langText.innerText = lang;
-
       codeHeader.appendChild(langText);
 
+      const copyBtn = document.createElement('button');
+      copyBtn.className = 'copy-button';
+      copyBtn.setAttribute('aria-label', 'Copy Code');
       const copyIcon = document.createElement('i');
       copyIcon.className = 'iconify';
       copyIcon.setAttribute('data-icon', 'mdi:content-copy');
-
-      copyBtn.className = 'copy-button';
-      copyBtn.setAttribute('aria-label', '复制代码');
       copyBtn.appendChild(copyIcon);
-
       codeHeader.appendChild(copyBtn);
 
-      block.parentNode.insertBefore(codeHeader, block);
+      preElement.insertBefore(codeHeader, block);
+
+      copyBtn.addEventListener('click', () => capalot.copyToClipboard(block, copyBtn));
     });
+  },
+  copyToClipboard: function (block, button) {
+    const code = block.innerText;
+    const buttonIcon = button.innerHTML;
 
-    // 添加点击事件
-    const copyButtons = document.querySelectorAll('.copy-button');
+    const input = document.createElement('input');
+    input.value = code;
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand('copy');
+    document.body.removeChild(input);
 
-    copyButtons.forEach((button) => {
-      button.addEventListener('click', function () {
-        const code = button.parentNode.nextElementSibling.innerText;
-        const input = document.createElement('input');
-        input.value = code;
-        document.body.appendChild(input);
-        input.select();
-        document.execCommand('copy');
-        document.body.removeChild(input);
+    button.innerText = '复制成功!';
 
-        capalot.toast({
-          title: '复制成功',
-        })
-      })
-    }
-    )
-
+    setTimeout(() => {
+      button.innerHTML = buttonIcon;
+    }, 2000);
   }
 
 };
