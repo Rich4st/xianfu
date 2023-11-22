@@ -17,18 +17,20 @@ $posts = new WP_Query($args);
 
 ?>
 
-<section class="py-8">
-  <div class="ca-container ca-page-flex">
-    <div>
-      <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
-        <?php if ($posts->have_posts()) : ?>
+<section>
+  <?php get_template_part('template-parts/components/hero-header'); ?>
+
+  <div class="ca-container my-8 ca-page-flex">
+    <div class="w-full">
+      <?php if ($posts->have_posts()) : ?>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
           <?php while ($posts->have_posts()) : $posts->the_post(); ?>
-            <?php get_template_part('template-parts/loop/grid') ?>
+            <?php get_template_part('template-parts/loop/grid-readmore') ?>
           <?php endwhile; ?>
         <?php else : ?>
           <?php get_template_part('template-parts/loop/item-none'); ?>
-        <?php endif; ?>
-      </ul>
+        </ul>
+      <?php endif; ?>
       <?php wp_reset_postdata();
       capalot_pagination($page, $posts->max_num_pages); ?>
     </div>

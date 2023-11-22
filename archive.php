@@ -1,41 +1,45 @@
 <?php get_header();
 
-$category = get_queried_object();
+$term = get_queried_object();
 
 $page = isset($_GET['page']) ? absint($_GET['page']) : 1;
 $limit = 10;
+
+$is_tag_page = is_tag();
 
 $query_args = array(
   'post_type'       => 'post',
   'post_status'     => 'publish',
   'paged'           => $page,
   'posts_per_page'  => $limit,
-  'category__in'    => $category->term_id,
   'orderby'         => 'date',
   'order'           => 'DESC',
 );
+
+if ($term && !$is_tag_page) {
+  $query_args['category__in'] = $term->term_id;
+} else if ($is_tag_page) {
+  $query_args['tag'] = $term->slug; // 使用标签的slug
+}
 
 $posts = new WP_Query($query_args);
 
 ?>
 
 <section>
-  <div class="bg-primary dark:bg-dark text-center py-12 text-white">
-    <h1 class="font-semibold text-white">
-      <?php
-      if ($category)
-        echo '分类: ' . $category->name;
-      ?>
-    </h1>
-    <p class="mt-2">
-      <?php
-      if ($category)
-        echo $category->description;
-      ?>
-    </p>
-  </div>
+  <?php
+  if ($is_tag_page)
+    $title = '标签: ' . $term->name;
+  else
+    $title = '分类: ' . $term->name;
+
+  get_template_part('template-parts/components/hero-header', '', [
+    'title' => $title,
+    'description' => $term->description,
+  ]);
+  ?>
   <div class="ca-container my-8 ca-page-flex">
-    <div>
+    <div class="w-full">
       <?php if ($posts->have_posts()) : ?>
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 lg:gap-4">
           <?php
@@ -47,7 +51,7 @@ $posts = new WP_Query($query_args);
         wp_reset_postdata();
         capalot_pagination($page, $posts->max_num_pages);
       else :
-        get_template_part('template-parts/content/none');
+        get_template_part('template-parts/loop/item-none');
       endif;
       ?>
     </div>
