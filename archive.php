@@ -27,7 +27,7 @@ $posts = new WP_Query($query_args);
         echo '分类: ' . $category->name;
       ?>
     </h1>
-    <p class="mt-2 excerpt">
+    <p class="mt-2">
       <?php
       if ($category)
         echo $category->description;
