@@ -43,7 +43,7 @@ foreach ($contact_list as $subArray) {
 <?php if ($foundTrue) : ?>
   <div class="flex items-center gap-2">
     <?php foreach ($contact_list as $i) :
-      if (reset($i) === "") continue;
+      if (reset($i) === "" || reset($i) === '0') continue;
 
       $icon_key = key($i);
       $color = '';
