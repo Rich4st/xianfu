@@ -67,6 +67,140 @@ CSF::createSection($prefix, array(
 ));
 
 /**
+ * 内容配置
+ */
+CSF::createSection($prefix, array(
+  'title'  => '内容配置',
+  'icon'   => 'dashicons dashicons-admin-users',
+  'fields' => array(
+
+    [
+      'id'     => 'contact_list',
+      'type'   => 'group',
+      'title'  => '联系方式',
+      'fields' => array(
+
+        [
+          'id'    => 'is_wx',
+          'type'  => 'switcher',
+          'title' => '是否显示微信联系方式',
+          'default' => false,
+        ],
+        [
+          'id'    => 'wx_fieldset',
+          'type'  => 'fieldset',
+          'title' => '微信联系方式',
+          'dependency' => array('is_wx', '==', 'true'),
+          'fields' => [
+            [
+              'id'    => 'wx_qrcode',
+              'type'  => 'upload',
+              'title' => '微信二维码',
+            ],
+            [
+              'id'    => 'wx_text',
+              'type'  => 'text',
+              'title' => '微信号',
+            ],
+          ],
+        ],
+
+        [
+          'id'    => 'is_qq',
+          'type'  => 'switcher',
+          'title' => '是否显示QQ联系方式',
+          'default' => false,
+        ],
+        [
+          'id'    => 'qq_fieldset',
+          'type'  => 'fieldset',
+          'title' => 'QQ联系方式',
+          'dependency' => array('is_qq', '==', 'true'),
+          'fields' => [
+            [
+              'id'    => 'qq_qrcode',
+              'type'  => 'upload',
+              'title' => 'QQ二维码',
+            ],
+            [
+              'id'    => 'qq_text',
+              'type'  => 'text',
+              'title' => 'QQ号',
+            ],
+          ],
+        ],
+
+        [
+          'id'      => 'is_email',
+          'type'    => 'switcher',
+          'title'   => '是否显示邮箱联系方式',
+          'default' => false,
+        ],
+        [
+          'id'    => 'email_fieldset',
+          'type'  => 'text',
+          'title' => '邮箱地址',
+          'dependency' => array('is_email', '==', 'true'),
+        ],
+
+        [
+          'id'      => 'is_phone',
+          'type'    => 'switcher',
+          'title'   => '是否显示电话联系方式',
+          'default' => false,
+        ],
+        [
+          'id'    => 'phone_fieldset',
+          'type'  => 'text',
+          'title' => '电话号码',
+          'dependency' => array('is_phone', '==', 'true'),
+        ],
+
+        [
+          'id'      => 'is_x',
+          'type'    => 'switcher',
+          'title'   => '是否显示X(twitter)联系方式',
+          'default' => false,
+        ],
+        [
+          'id'         => 'x_fieldset',
+          'type'       => 'text',
+          'title'      => 'x(twitter)链接',
+          'dependency' => array('is_x', '==', 'true'),
+        ],
+
+        [
+          'id'      => 'is_fb',
+          'type'    => 'switcher',
+          'title'   => '是否显示FaceBook联系方式',
+          'default' => false,
+        ],
+        [
+          'id'         => 'fb_fieldset',
+          'type'       => 'text',
+          'title'      => 'FaceBook链接',
+          'dependency' => array('is_fb', '==', 'true'),
+        ],
+
+        [
+          'id'      => 'is_ins',
+          'type'    => 'switcher',
+          'title'   => '是否显示Instagram联系方式',
+        ],
+        [
+          'id'         => 'ins_fieldset',
+          'type'       => 'text',
+          'title'      => 'Instagram链接',
+          'dependency' => array('is_ins', '==', 'true'),
+        ]
+
+      )
+    ]
+
+  )
+));
+
+/**
  * 布局设置
  */
 CSF::createSection($prefix, array(
