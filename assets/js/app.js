@@ -164,12 +164,17 @@ let capalot = {
 
       tippy(button, {
         content: button.dataset.content,
-        theme: 'light',
+        theme: 'translucent',
         placement: 'top',
         allowHTML: true,
         interactive: true,
         maxWidth: 500,
         arrow: true,
+        onShown() {
+          if(button.dataset.show ==='copyText') {
+            capalot.copyText();
+          }
+        }
       })
     })
   },
@@ -310,6 +315,7 @@ let capalot = {
     )
   },
 
+  // 轮播初始化
   swiper: function () {
     const swipers = document.querySelectorAll('.mySwiper');
 
@@ -381,6 +387,33 @@ let capalot = {
     setTimeout(() => {
       button.innerHTML = buttonIcon;
     }, 2000);
+  },
+
+  //全局复制事件
+  copyText: function() {
+    const copyBtn = document.querySelectorAll('#copy-btn');
+
+    if (copyBtn.length === 0) return;
+
+    copyBtn.forEach((btn) => {
+      const btnIcon = btn.innerHTML;
+
+      btn.addEventListener('click', function() {
+        const text = btn.parentNode.querySelector('.copy-text');
+        const input = document.createElement('input');
+        input.value = text.innerText;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+
+        btn.innerText = '复制成功!';
+
+        setTimeout(() => {
+          btn.innerHTML = btnIcon;
+        }, 2000);
+      })
+    })
   }
 
 };
