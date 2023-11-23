@@ -31,6 +31,8 @@ $post_id = get_the_ID();
       <?php echo the_content(); ?>
     </div>
 
+    <?php get_template_part('template-parts/single/content-footer') ?>
+
     <?php get_template_part('template-parts/single/post-navigation') ?>
 
     <?= comments_template(); ?>
