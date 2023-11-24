@@ -19,7 +19,7 @@ if (post_password_required() || !comments_open()) return;
 		'title_reply'        => '提示：请文明发言',
 		'title_reply_to'     => '',
 		'fields'             => $fields,
-		'comment_field'      => '<div class="comment-form-comment "><textarea class="w-full dark:border-gray-500 dark:bg-dark form-control p-1.5 border rounded-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary" id="comment" name="comment" rows="3" placeholder="' . '请输入评论内容...' . '"></textarea></div>',
+		'comment_field'      => '<div class="comment-form-comment "><textarea class="w-full dark:border-gray-700 dark:bg-dark form-control p-1.5 border rounded-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary" id="comment" name="comment" rows="3" placeholder="' . '请输入评论内容...' . '"></textarea></div>',
 		'must_log_in'        => '<div class="flex justify-center "><a rel="nofollow noopener noreferrer" href="' . esc_url(wp_login_url(get_current_url())) . '" class="btn bg-black px-4 py-1 rounded-lg hover:bg-[#3c3c41]"><i class="far fa-user me-1"></i>' . '登录后评论' . '</a></div>',
 		'logged_in_as'       => '',
 		'label_submit'       => '提交评论',
