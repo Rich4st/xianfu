@@ -33,10 +33,6 @@ $post_id = get_the_id();
       <li>
         <?php capalot_postupdate_time(); ?>
       </li>
-      <li class="flex items-center">
-        <i class="iconify mr-1 text-sm" data-icon="ph:eye-fill"></i>
-        <span>99+</span>
-      </li>
     </ul>
   <?php endif; ?>
 </li>
