@@ -7,17 +7,8 @@ $post_id = get_the_ID();
 
 <section class="dark:bg-dark flex flex-col lg:flex-row md:gap-8 px-4 xl:px-0 justify-center">
   <div class="w-full prose prose-xl prose-p:text-base dark:prose-p:text-gray-400 prose-h1:mb-4 prose-h1:text-2xl md:prose-h1:text-4xl xl:prose-h1:text-5xl prose-li:text-base prose-strong:text-primary dark:prose-a:text-primary-hover prose-pre:px-0 prose-pre:pt-0 prose-code:px-6">
-    <div class="my-2">
-      <?php
-      $categories = get_the_category($post_id);
-      if ($categories) :
-        foreach ($categories as $category) : ?>
-          <a class="link" href="<?php echo get_category_link($category->term_id); ?>" class="text-gray-500 hover:text-gray-700">
-            <?php echo $category->name; ?>
-          </a>
-      <?php endforeach;
-      endif; ?>
-    </div>
+
+    <?php get_template_part('template-parts/components/breadcrumbs') ?>
 
     <h1><?php echo the_title(); ?></h1>
     <?php get_template_part('template-parts/single/post-info') ?>
