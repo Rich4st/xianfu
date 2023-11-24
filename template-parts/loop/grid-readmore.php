@@ -4,10 +4,11 @@ $post_id = get_the_id();
 
 /**
  * @var string $thumbs_ratio 缩略图比例
- * @var array $extra_info 额外信息
- *    - category 分类
- *    - desc 描述
- *    - footer 底部信息
+ * @var array $extra_info    额外信息
+ *    - category             分类
+ *    - desc                 描述
+ *    - footer               底部信息
+ * @ var string direction    方向  row | col
  */
 extract($args);
 
@@ -21,11 +22,15 @@ if (empty($extra_info)) {
   );
 }
 
+if(empty($direction)){
+  $direction = 'col';
+}
+
 ?>
 
-<li class="rounded-md overflow-hidden">
+<li class="rounded-md overflow-hidden flex flex-col md:flex-<?php echo $direction; ?> gap-4 items-center" >
   <div class="ratio <?php echo esc_attr($thumbs_ratio); ?>">
-    <a data-bg="<?php capalot_get_thumbnail_url(); ?>" class="lazy bg-no-repeat bg-cover bg-center" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+    <a data-bg="<?php capalot_get_thumbnail_url(); ?>" class="lazy bg-no-repeat bg-cover bg-center h-full" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
     </a>
   </div>
   <div class="py-4 text-xs space-y-2">
@@ -53,6 +58,7 @@ if (empty($extra_info)) {
         <?php capalot_post_excerpt(100); ?>
       </p>
     <?php endif; ?>
+
 
     <a class="link text-base flex items-center" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
       <span>阅读全文</span>

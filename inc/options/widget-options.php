@@ -752,6 +752,55 @@ function capalot_home_hero($args, $instance)
 }
 
 /**
+ * 首页 - CMS文章
+ */
+CSF::createWidget('capalot_home_cms_posts', array(
+  'id'        => 'capalot_home_cms_posts',
+  'title'     => '【首页】CMS文章',
+  'className' => 'home-cms-posts',
+  'desc'      => '首页CMS文章',
+  'fields'    => array(
+
+    [
+      'id'      => 'title',
+      'type'    => 'text',
+      'title'   => '标题',
+      'default' => 'CMS文章'
+    ],
+
+    [
+      'id'      => 'desc',
+      'type'    => 'text',
+      'title'   => '描述',
+      'default' => 'CMS文章'
+    ],
+
+    [
+      'id'          => 'category',
+      'type'        => 'select',
+      'title'       => '要展示的文章分类',
+      'placeholder' => '选择分类',
+      'desc'        => '不设置则展示最新文章',
+      'options'     => 'categories',
+    ],
+
+  )
+));
+function capalot_home_cms_posts($args, $instance)
+{
+
+  $instance = array_merge(
+    [
+      'title' => 'CMS文章',
+      'desc'  => 'CMS文章',
+    ],
+    $instance
+  );
+
+  get_template_part('template-parts/widget/home/cms-posts', '', $instance);
+}
+
+/**
  * 侧边栏 - 作者信息
  */
 CSF::createWidget('capalot_side_author', array(
