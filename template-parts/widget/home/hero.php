@@ -28,7 +28,7 @@ extract($args);
   <?php if (in_array($bg_type, ['img', 'video'])) : ?>
     <div style="height: calc(75vh - 80px);">
       <?php if ($bg_type == 'video') : ?>
-        <video autoplay muted loop>
+        <video autoplay muted loop class="h-full w-full object-cover">
           <source src="<?php echo $bg_video; ?>" type="video/mp4">
         </video>
       <?php else : ?>
