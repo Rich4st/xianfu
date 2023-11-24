@@ -16,6 +16,7 @@ let capalot = {
 
     capalot.code_block();
     capalot.popper_init();
+    capalot.code_highlight();
   },
 
   /**
@@ -414,6 +415,13 @@ let capalot = {
         }, 2000);
       })
     })
+  },
+
+  // code highlight
+  code_highlight: function() {
+    if (!g_p.hasOwnProperty('post_id')) return;;
+
+    hljs.highlightAll();
   }
 
 };
