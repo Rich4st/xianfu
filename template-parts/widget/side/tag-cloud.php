@@ -16,7 +16,7 @@ extract($args);
 
 $tags = get_terms([
   'taxonomy' => 'post_tag',
-  'hide_empty' => false,
+  'hide_empty' => true,
   'orderby' => 'count',
   'order' => 'DESC',
   'exclude' => $exclude
