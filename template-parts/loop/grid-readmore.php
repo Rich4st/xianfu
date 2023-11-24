@@ -54,18 +54,6 @@ if (empty($extra_info)) {
       </p>
     <?php endif; ?>
 
-    <?php if (in_array('footer', $extra_info)) : ?>
-      <ul class="flex items-center space-x-2 text-gray-400">
-        <li>
-          <?php capalot_postupdate_time(); ?>
-        </li>
-        <li class="flex items-center">
-          <i class="iconify mr-1 text-sm" data-icon="ph:eye-fill"></i>
-          <span>99+</span>
-        </li>
-      </ul>
-    <?php endif; ?>
-
     <a class="link text-base flex items-center" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
       <span>阅读全文</span>
       <i class="iconify" data-icon="ep:top-right"></i>
