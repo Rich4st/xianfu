@@ -29,7 +29,8 @@ function load_assets()
   wp_enqueue_script('tippy', get_template_directory_uri() . '/assets/js/popper/tippy-bundle.umd.min.js', array(), '6.3.7', true);
   // sweetalert2
   wp_enqueue_script('sweetalert2', get_template_directory_uri() . '/assets/js/sweetalert2.min.js', array(), '11.10.0', true);
-
+  // typed.js
+  wp_enqueue_script('typed', get_template_directory_uri() . '/assets/js/typed.umd.js', array(), '2.1.0', true);
 
   // app
   wp_enqueue_style('app', get_template_directory_uri() . '/assets/css/app.css', array(), '1.0.0', 'all');
