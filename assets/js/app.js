@@ -350,7 +350,7 @@ let capalot = {
       const preElement = block.parentNode;
 
       const codeHeader = document.createElement('div');
-      codeHeader.className = 'code-header flex items-center justify-between py-1 px-6 bg-gray-500';
+      codeHeader.className = 'code-header flex items-center justify-between py-1 px-6 bg-gray-500 absolute top-0 left-0 w-full rounded-t';
 
       const lang = block.className.split('-')[1];
       const langText = document.createElement('span');
