@@ -17,6 +17,7 @@ let capalot = {
     capalot.code_block();
     capalot.popper_init();
     capalot.code_highlight();
+    capalot.typed_text();
   },
 
   /**
@@ -422,6 +423,23 @@ let capalot = {
     if (!g_p.hasOwnProperty('post_id')) return;;
 
     hljs.highlightAll();
+  },
+
+  // 打字机效果
+  typed_text: function() {
+    const typed = document.querySelectorAll('.typed-text');
+
+    if (typed.length === 0) return;
+
+    typed.forEach((el) => {
+      const strings = el.dataset.strings.split(',');
+
+      new Typed(el, {
+        strings,
+        typeSpeed: 200,
+        backSpeed: 100,
+      });
+    })
   }
 
 };

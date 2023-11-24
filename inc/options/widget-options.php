@@ -7,7 +7,7 @@ defined('ABSPATH') || exit;
  * 首页 - 幻灯片模块
  */
 CSF::createWidget('capalot_home_slider_widget', array(
-  'title'       => '幻灯片模块',
+  'title'       => '【首页】幻灯片模块',
   'className'   => 'home-slider-widget',
   'desc'        => '首页幻灯片模块',
   'fields'      => array(
@@ -120,7 +120,7 @@ function capalot_home_slider_widget($args, $instance)
  * 首页 - 最新文章组件
  */
 CSF::createWidget('capalot_home_latest_posts_widget', array(
-  'title' => '最新文章组件',
+  'title' => '【首页】最新文章组件',
   'className' => 'home-latest-posts-widget',
   'desc' => '首页最新文章组件',
   'fields' => array(
@@ -240,7 +240,7 @@ function capalot_home_latest_posts_widget($args, $instance)
  * 首页 - 幻灯片文章组件
  */
 CSF::createWidget('capalot_home_slider_posts_widget', array(
-  'title'     => '幻灯片文章组件',
+  'title'     => '【首页】幻灯片文章组件',
   'className' => 'home-slider-posts-widget',
   'desc'      => '首页幻灯片文章组件',
   'fields'    => array(
@@ -303,7 +303,7 @@ function capalot_home_slider_posts_widget($args, $instance)
  * 首页 - 幻灯片文章组件 - 带属性切换
  */
 CSF::createWidget('capalot_home_slider_posts_attributes_widget', array(
-  'title'     => '幻灯片组件-带属性切换',
+  'title'     => '【首页】幻灯片组件-带属性切换',
   'className' => 'home-slider-posts-widget',
   'desc'      => '首页幻灯片组件-带属性切换',
   'fields'    => array(
@@ -397,7 +397,7 @@ function capalot_home_slider_posts_attributes_widget($args, $instance)
  * 首页 - 图片背景按钮
  */
 CSF::createWidget('capalot_home_background_buttons', array(
-  'title'     => '图片背景按钮',
+  'title'     => '【首页】图片背景按钮',
   'className' => 'home-background-buttons',
   'desc'      => '首页图片背景按钮',
   'fields'    => array(
@@ -474,7 +474,7 @@ function capalot_home_background_buttons($args, $instance)
  * 首页 - Services模块
  */
 CSF::createWidget('capalot_home_services', array(
-  'title'     => 'Services模块',
+  'title'     => '【首页】Services模块',
   'className' => 'home-Services',
   'desc'      => '介绍服务模块',
   'fields'    => array(
@@ -556,7 +556,6 @@ function capalot_home_services($args, $instance)
 
   get_template_part('template-parts/widget/home/services', '', $instance);
 }
-
 
 /**
  * 首页 - 客户反馈
@@ -673,10 +672,92 @@ function capalot_home_customer_fb($args, $instance)
 }
 
 /**
+ * 首页 - hero模块
+ */
+CSF::createWidget('capalot_home_hero', array(
+  'id'        => 'capalot_home_hero',
+  'title'     => '【首页】hero模块',
+  'className' => 'home-hero',
+  'desc'      => '首页hero模块',
+  'fields'    => array(
+
+    [
+      'id'    => 'title',
+      'type'  => 'text',
+      'title' => '标题',
+    ],
+
+    [
+      'id'      => 'is_typed',
+      'type'    => 'switcher',
+      'title'   => '是否开启打字效果,如果要输入多行文字,请用英文逗号分隔',
+      'default' => true,
+    ],
+
+    [
+      'id'    => 'desc',
+      'type'  => 'text',
+      'title' => '描述',
+    ],
+
+    [
+      'id'      => 'bg_type',
+      'type'    => 'radio',
+      'title'   => '背景类型',
+      'inline'  => true,
+      'options' => [
+        'img'     => '图片',
+        'video'   => '视频',
+        'waves'   => '动态方块',
+        'clouds'  => '动态天空',
+        'net'     => '动态线条',
+        'halo'    => '动态流光',
+      ],
+      'default'   => 'img'
+    ],
+
+    [
+      'id'        => 'bg_overlay',
+      'type'      => 'switcher',
+      'title'     => '是否开启背景遮罩',
+      'default'   => true,
+    ],
+
+    [
+      'id'         => 'bg_img',
+      'type'       => 'upload',
+      'title'      => '背景图片',
+      'dependency' => array('bg_type', '==', 'img'),
+    ],
+
+    [
+      'id'         => 'bg_video',
+      'type'       => 'upload',
+      'title'      => '背景视频',
+      'dependency' => array('bg_type', '==', 'video'),
+    ]
+
+  )
+));
+function capalot_home_hero($args, $instance)
+{
+
+  $instance = array_merge(
+    [
+      'title' => '主标题',
+      'desc'  => '副标题',
+    ],
+    $instance
+  );
+
+  get_template_part('template-parts/widget/home/hero', '', $instance);
+}
+
+/**
  * 侧边栏 - 作者信息
  */
 CSF::createWidget('capalot_side_author', array(
-  'title'     => '作者介绍模块',
+  'title'     => '【侧边栏】作者介绍模块',
   'className' => 'side-author',
   'desc'      => '侧边栏作者介绍模块',
   'fields'    => array(
