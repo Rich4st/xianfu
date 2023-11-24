@@ -43,7 +43,7 @@ extract($args);
     }
     ?>
     <p data-strings="<?php echo $title; ?>" class="<?php echo $typed; ?> inline-block w-fit text-3xl md:text-4xl xl:text-5xl">
-      <?php if($type !== 'typed-text') {
+      <?php if($typed !== 'typed-text') {
         echo $title;
       } ?>
     </p>
