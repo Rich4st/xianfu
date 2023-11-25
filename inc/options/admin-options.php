@@ -70,7 +70,15 @@ CSF::createSection($prefix, array(
  * 内容配置
  */
 CSF::createSection($prefix, array(
-  'title'  => '内容配置',
+  'id'      => 'content_options',
+  'icon'    => 'dashicons dashicons-admin-page',
+  'title'   => '内容配置',
+));
+
+// 内容配置 - 联系方式配置
+CSF::createSection($prefix, array(
+  'parent' => 'content_options',
+  'title'  => '联系方式配置',
   'icon'   => 'dashicons dashicons-admin-users',
   'fields' => array(
 
@@ -196,6 +204,44 @@ CSF::createSection($prefix, array(
 
       )
     ]
+
+  )
+));
+
+// 内容配置 - 做品配置
+CSF::createSection($prefix, array(
+  'parent'    => 'content_options',
+  'title'     => '作品配置',
+  'icon'      => 'dashicons dashicons-admin-customizer',
+  'fields'    => array(
+
+    [
+      'id'       => 'portfolio',
+      'type'     => 'group',
+      'title'    => '作品',
+      'fields'   => array(
+        [
+          'id'    => '_title',
+          'type'  => 'text',
+          'title' => '作品标题',
+        ],
+        [
+          'id'    => '_desc',
+          'type'  => 'textarea',
+          'title' => '作品描述',
+        ],
+        [
+          'id'    => '_img',
+          'type'  => 'upload',
+          'title' => '作品图片',
+        ],
+        [
+          'id'    => '_url',
+          'type'  => 'text',
+          'title' => '作品链接',
+        ],
+      ),
+    ],
 
   )
 ));

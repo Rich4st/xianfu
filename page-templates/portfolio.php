@@ -5,14 +5,14 @@
  * Description: A Page Template that adds a sidebar to pages
  */
 
-$portfolio = get_post_meta(get_the_ID(), 'portfolio', true);
+$portfolio = _capalot('portfolio', []);
 
 get_header(); ?>
 
-<section class="ca-container py-8">
+<section class="px-2 py-8">
   <ul id="masonry-container">
     <?php foreach ($portfolio as $item) : ?>
-      <li class="item mb-2 relative w-96 bg-primary p-2 rounded-md group">
+      <li class="item mb-2 relative md:w-[30rem] bg-primary p-1 rounded-md group mx-auto">
         <img src="<?= $item['_img'] ?>" alt="<?php echo $item['_title'] ?>">
         <a class="absolute top-0 left-0 right-0 rounded-md bottom-0 hidden group-hover:flex group-hover:bg-primary-hover flex-col px-2 text-center items-center justify-center" href="<?php echo $item['_url']; ?>">
           <h3><?php echo $item['_title']; ?></h3>
@@ -30,7 +30,7 @@ get_header(); ?>
     var $masonryContainer = $('#masonry-container');
     $masonryContainer.masonry({
       itemSelector: '.item',
-      columnWidth: 10,
+      columnWidth: 70,
       percentPosition: true,
     });
   });
