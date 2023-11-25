@@ -4,7 +4,7 @@
 
 @layer base {
   h1 {
-    @apply text-3xl lg:text-4xl text-gray-900 dark:text-gray-100;
+    @apply text-4xl lg:text-5xl text-gray-900 dark:text-gray-100;
   }
 
   h2 {
@@ -18,11 +18,27 @@
   h4 {
     @apply text-lg lg:text-xl text-gray-900 dark:text-gray-100;
   }
+
+  hr {
+    @apply border-gray-200 dark:border-gray-700 my-4;
+  }
+
+  label {
+    @apply dark:text-gray-400
+  }
+
+  p {
+    @apply dark:text-gray-400
+  }
 }
 
 @layer components {
   .btn {
     @apply text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 font-medium rounded-full text-sm p-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700;
+  }
+
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-hover text-white dark:text-gray-200 px-4 py-2 rounded-sm;
   }
 
   .hv-center {
@@ -59,6 +75,10 @@
 
   .ca-border {
     @apply border dark:border-gray-700;
+  }
+
+  .input {
+    @apply dark:bg-dark dark:text-gray-400 px-2 py-3 pr-2 w-full outline-none ring-gray-400 dark:ring-gray-700 ring-1 rounded-sm focus:ring-primary active:ring-primary dark:focus:ring-primary-hover dark:active:ring-primary-hover;
   }
 
 }
