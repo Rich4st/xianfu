@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <?php wp_head() ?>
+  <meta name="shenma-site-verification" content="92c25166fdc405fef9ace70831431779_1700898736"/>
 </head>
 
 <body class="dark:bg-dark">
