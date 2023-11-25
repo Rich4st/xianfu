@@ -45,34 +45,3 @@ CSF::createSection($prefix, array(
 
   ),
 ));
-
-// 商品信息设置
-CSF::createSection($prefix, array(
-  'title' => '商品信息',
-  'type'  => 'fields',
-  'fields' => array(
-    array(
-      'id'    => 'product_info',
-      'type'  => 'fieldset',
-      'title' => '商品信息',
-      'fields' => array(
-        array(
-          'id'    => 'product_price',
-          'type'  => 'text',
-          'title' => '商品价格',
-        ),
-        array(
-          'id'    => 'product_link',
-          'type'  => 'text',
-          'title' => '商品链接',
-        ),
-      ),
-    ),
-
-    array(
-      'id'    => 'product_images',
-      'type'  => 'gallery',
-      'title' => '商品图片',
-    ),
-  ),
-));

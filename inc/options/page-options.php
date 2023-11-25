@@ -11,7 +11,7 @@ $prefix = _OPTIONS_PREFIX . '-page';
  * 文章高级设置
  */
 CSF::createMetabox($prefix, array(
-  'title'     => '作品设置',
+  'title'     => 'SEO设置',
   'nav'       => 'inline',
   'post_type' => array('page'),
   'data_type' => 'unserialize',
@@ -20,36 +20,28 @@ CSF::createMetabox($prefix, array(
 
 // 自定义SEO
 CSF::createSection($prefix, array(
-  'title'  => '添加作品信息',
+  'title'  => '自定义SEO信息',
   'fields' => array(
+    array(
+      'id'       => 'post_title',
+      'type'     => 'text',
+      'title'    => '自定义SEO标题',
+      'subtitle' => '留空则不设置',
+    ),
 
-    [
-      'id'       => 'portfolio',
-      'type'     => 'group',
-      'title'    => '作品信息',
-      'fields'   => array(
-        [
-          'id'    => '_title',
-          'type'  => 'text',
-          'title' => '作品标题',
-        ],
-        [
-          'id'    => '_desc',
-          'type'  => 'textarea',
-          'title' => '作品描述',
-        ],
-        [
-          'id'    => '_img',
-          'type'  => 'upload',
-          'title' => '作品图片',
-        ],
-        [
-          'id'    => '_url',
-          'type'  => 'text',
-          'title' => '作品链接',
-        ],
-      ),
-    ],
+    array(
+      'id'       => 'post_description',
+      'type'     => 'textarea',
+      'title'    => '自定义SEO描述',
+      'subtitle' => '字数控制到80-180最佳,留空则不设置',
+    ),
+
+    array(
+      'id'       => 'post_keywords',
+      'type'     => 'text',
+      'title'    => '自定义SEO关键词',
+      'subtitle' => '关键词用英文逗号,隔开,留空则不设置',
+    ),
 
   ),
 ));

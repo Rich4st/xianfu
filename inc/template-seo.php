@@ -46,6 +46,21 @@ class CapalotSEO
       $title    = $title . ' - ' . get_bloginfo('name');
       $desc     = get_term_meta(get_queried_object_id(), 'description', true);
       $keywords = get_term_meta(get_queried_object_id(), 'keywords', true);
+    } elseif (is_search()) {
+      // 搜索页面SEO设置
+      $title    = '搜索结果：' . get_search_query() . ' - ' . get_bloginfo('name');
+      $desc     = get_bloginfo('description');
+      $keywords = get_bloginfo('name');
+    } elseif (is_404()) {
+      // 404页面SEO设置
+      $title    = '404 - 页面未找到';
+      $desc     = get_bloginfo('description');
+      $keywords = get_bloginfo('name');
+    } elseif (is_page()) {
+      // 其他页面SEO设置
+      $title    = get_bloginfo('name');
+      $desc     = get_bloginfo('description');
+      $keywords = get_bloginfo('name');
     }
 
     // 自定义网站favicon
