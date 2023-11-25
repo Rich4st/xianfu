@@ -51,22 +51,31 @@ foreach ($contact_list as $subArray) {
 
       next($i);
 
-      if (is_array(current($i))) {
-        $values = array_values(current($i));
+      if (is_array(current($i)) || strpos(current($i), 'http') !== 0) {
+        if (is_array(current($i))) {
+          $values = array_values(current($i));
 
-        $html = "<img class='w-48' src='$values[0]' />
+          $html = "<img class='w-48' src='$values[0]' />
         <div class='flex items-center justify-around'>
-          <span class='copy-text'>$values[1]</span>
+          <span class='copy-text excerpt'>$values[1]</span>
           <button role='button' id='copy-btn' aria-label='复制到剪切板'>
-            <i class='iconify inline-block text-2xl' data-icon='line-md:clipboard-arrow-twotone'></i>
+            <i class='iconify dark:text-gray-400 inline-block text-2xl' data-icon='line-md:clipboard-arrow-twotone'></i>
           </button>
         </div>";
+        } else {
+          $html = "<div class='flex items-center justify-around'>
+          <span class='copy-text excerpt mr-2'>" . current($i) . "</span>
+          <button role='button' id='copy-btn' aria-label='复制到剪切板'>
+            <i class='iconify dark:text-gray-400 inline-block text-2xl' data-icon='line-md:clipboard-arrow-twotone'></i>
+          </button>
+        </div>";
+        }
     ?>
         <i class="iconify text-3xl <?php echo $color; ?> popper-button" data-icon="<?php echo $icon_map[$icon_key]; ?>" data-content="<?php echo $html; ?>" data-show="copyText"></i>
       <?php
       } else { ?>
         <a href="<?php echo current($i); ?>" aria-label="社媒链接">
-          <i class="iconify text-3xl popper-button" data-content="去我主页看看" data-icon="<?php echo $icon_map[$icon_key]; ?>"></i>
+          <i class="iconify dark:text-gray-400 text-3xl popper-button" data-content="去我主页看看" data-icon="<?php echo $icon_map[$icon_key]; ?>"></i>
         </a>
       <?php } ?>
     <?php endforeach; ?>
