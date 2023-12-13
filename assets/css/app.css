@@ -144,6 +144,8 @@ body {
 
 .navbar .nav-list a {
   color: #4d4d4d;
+  border-bottom: 3px solid transparent;
+  font-size: 18px !important;
 }
 
 .dark .navbar .nav-list a {
@@ -151,7 +153,8 @@ body {
 }
 
 .navbar .nav-list a:hover {
-  color: var(--ca-primary-color-hover);
+  color: blue;
+  border-bottom: 3px solid blue;
 }
 
 .navbar .nav-list .menu-item {

@@ -34,6 +34,10 @@ extract($args);
         ?>
       </div>
 
+
+    </div>
+    <div class="flex items-center space-x-4">
+
       <nav class="main-menu navbar hidden lg:block z-[999]">
         <?php
 
@@ -51,14 +55,9 @@ extract($args);
         echo $cached_menu;
         ?>
       </nav>
-
-    </div>
-    <div class="flex items-center space-x-4">
-      <button role="button" aria-label="<?php echo $button_label; ?>" class="toggle-dark rounded-full border hover:border-gray-400 dark:border-gray-700 dark:hover:border-gray-500 transition-all duration-300 px-4 py-1 relative">
-        <i class="iconify relative -right-2.5 <?php echo $current_theme === 'light' ? 'hidden' : '' ?>" data-icon="carbon:moon"></i>
-        <i class="iconify relative -left-2.5 <?php echo $current_theme === 'dark' ? 'hidden' : '' ?>" data-icon="solar:sun-bold-duotone"></i>
+      <button class="text-white bg-[#005cde] py-2 px-6">
+        免费回电
       </button>
-      <i id="menu-icon" class="iconify text-2xl md:hidden" data-icon="ri:menu-line"></i>
     </div>
 
     <?php get_template_part('template-parts/header/side-menu', '', ''); ?>

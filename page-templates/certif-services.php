@@ -1,11 +1,11 @@
-<?php get_header();
+<?php
 
-$term = get_queried_object();
+/**
+ * Template Name: 认证服务
+ */
 
-$page = isset($_GET['page']) ? absint($_GET['page']) : 1;
-$limit = 10;
+get_header();
 
-$is_tag_page = is_tag();
 
 $query_args = array(
   'post_type'       => 'post',
@@ -14,6 +14,7 @@ $query_args = array(
   'posts_per_page'  => $limit,
   'orderby'         => 'date',
   'order'           => 'DESC',
+  'category_name'   => 'certify-service',
 );
 
 $posts = new WP_Query($query_args);
@@ -24,20 +25,13 @@ $posts = new WP_Query($query_args);
   <div class="ca-container my-8 ca-page-flex">
 
     <div class="w-full">
-      <h2>认证回答</h2>
+      <h2>认证服务</h2>
 
       <?php if ($posts->have_posts()) : ?>
-        <ul>
+        <ul class="grid grid-cols-4 gap-4 mt-8">
           <?php
           while ($posts->have_posts()) : $posts->the_post(); ?>
-            <li class="py-8 border-b">
-              <a href="<?php echo the_permalink(); ?>">
-                <h3 class="py-4 font-bold"><?php the_title(); ?></h3>
-                <span>
-                  <?php capalot_post_excerpt(999) ?>
-                </span>
-              </a>
-            </li>
+            <?php get_template_part('template-parts/loop/grid-readmore') ?>
           <?php endwhile; ?>
         </ul>
       <?php

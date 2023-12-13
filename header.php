@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html <?php language_attributes(); ?> class="<?php echo capalot_get_site_theme(); ?>">
+<html <?php language_attributes(); ?>>
 
 <head>
   <meta charset="UTF-8">
@@ -24,4 +24,4 @@
 
   <?php get_template_part('template-parts/header/header') ?>
 
-  <main>
+  <main class="mx-auto max-w-[92rem]">

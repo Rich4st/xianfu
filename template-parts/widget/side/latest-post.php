@@ -26,17 +26,14 @@ $posts = new WP_Query(array(
 ?>
 
 <section class="my-12">
-  <h3><?php echo $title; ?></h3>
+  <h2 class="font-bold"><?php echo $title; ?></h2>
   <ul class="space-y-2 mt-4">
     <?php if ($posts->have_posts()):
       while ($posts->have_posts()) : $posts->the_post(); ?>
-        <li class="flex items-center justify-between">
-          <a class="link w-full line-clamp-2" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+        <li class="flex items-center justify-between py-4 border-b">
+          <a class="w-full line-clamp-2 text-lg href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
             <?php the_title(); ?>
           </a>
-          <p class="text-gray-400 w-16 text-xs">
-            <?php capalot_postupdate_time(); ?>
-          </p>
         </li>
       <?php endwhile; ?>
     <?php else:
